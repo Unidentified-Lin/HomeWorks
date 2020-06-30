@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+body {
+    background-image: url("/assets/asset\ 15.jpeg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hover-black button:hover {
+    background-color: #000;
+    border: 2px solid #000;
+    color: #fff;
+}
+.hover-blue button:hover {
+    background-color: #7abee9;
+    border: 2px solid #7abee9;
+    color: #fff;
+}

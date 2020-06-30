@@ -1,0 +1,80 @@
+.section-donate {
+	background-image: url("/assets/asset 9.jpeg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 645px;
+	background-color: #aaa;
+	display: flex;
+}
+.section-donate p {
+	font-size: 24px;
+	color: #535353;
+}
+.section-about {
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+}
+.section-about p {
+	font-size: 14px;
+	color: #8d8d8d;
+}
+.section-about img {
+	width: 570px;
+}
+.section-help {
+	background-color: #f9f9f9;
+	display: flex;
+	padding: 90px 0;
+	text-align: center;
+}
+.img-group {
+	display: flex;
+	justify-content: space-between;
+	padding: 55px 0 0;
+}
+.section {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0 135px;
+}
+.section-content {
+	width: inherit;
+	margin: auto;
+	display: flex;
+	align-items: center;
+}
+.section-content.block {
+	display: block;
+}
+.section-item h1 {
+	font-size: 80px;
+	color: #7abee9;
+}
+.section-item h2 {
+	font-size: 50px;
+	color: #535353;
+}
+.section-item h3 {
+	font-size: 30px;
+	color: #7abee9;
+}
+.section-btn {
+	padding: 40px 0 0;
+}
+.section-btn button {
+	background-color: #f93;
+	border: 2px solid #f93;
+	padding: 20px 54px;
+	color: #fff;
+	font-size: 14px;
+}
+.section-temp {
+	height: 400px;
+	background-color: #ccc;
+}
+.invisible {
+	background-color: transparent;
+}
