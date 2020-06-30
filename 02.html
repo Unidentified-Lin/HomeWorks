@@ -5,12 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-		<link rel="stylesheet" href="/css/02/site.css">
-		<link rel="stylesheet" href="/css/02/header.css">
-		<link rel="stylesheet" href="/css/02/section.css">
-		<style>
-			
-		</style>
+		<link rel="stylesheet" href="/css/02/site.css" />
+		<link rel="stylesheet" href="/css/02/header.css" />
+		<link rel="stylesheet" href="/css/02/section.css" />
+		<style></style>
 	</head>
 	<body>
 		<div class="header contact-header">
@@ -25,6 +23,7 @@
 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 		</div>
+		<div class="header-blank"></div>
 		<div class="header main-header">
 			<div class="header-item brand">
 				<img src="./assets/asset 0.png" />
@@ -32,7 +31,7 @@
 			</div>
 			<div class="header-item">
 				<nav>
-					<a href="#">Home</a>
+					<a href="#" class="active">Home</a>
 					<a href="#">About</a>
 					<a href="#">Events</a>
 					<a href="#">News</a>
@@ -43,72 +42,105 @@
 				<button>DONATE NOW!</button>
 			</div>
 		</div>
+		<div class="header-blank"></div>
+		<a href="#" id="contact-btn"><i class="fas fa-phone-alt" style="color: #f93;"></i></a>
 		<div class="content">
 			<div class="section-donate">
-				<div class="section">
-					<div class="section-content">
-						<div class="section-item">
-							<h2>Animals Need</h2>
-							<h1>YOUR Help!</h1>
-							<p>You can clip in with money & effort!</p>
-							<div class="section-btn hover-black">
-								<button>DONATE NOW!</button>
-							</div>
+				<div class="section-area">
+					<div class="section-item">
+						<h2>Animals Need</h2>
+						<h1>YOUR Help!</h1>
+						<p class="desc-24">You can clip in with money & effort!</p>
+						<div class="section-btn hover-black">
+							<button>DONATE NOW!</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="section-about">
-				<div class="section">
-					<div class="section-content">
-						<div class="section-item">
-							<img src="./assets/asset 1.jpeg" alt="Woman and dog" />
-						</div>
-						<div class="section-item">
-							<h2>About Us</h2>
-							<h3>What Makes Us Care About Pets?</h3>
-							<p>&nbsp;</p>
-							<p>
-								If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by domestic
-								animals and pets all the time till she went to college – there might have been no Anilove animal shelter
-								now. So as soon as she graduated with her Veterinary degree 12 years ago, she already knew what she will
-								be doing for a living.
-							</p>
-							<p>&nbsp;</p>
-							<p>
-								All in all, with thousands of animals saved off the streets and cared for every year, we hope to
-								encourage much more pet adoptions to happen!
-							</p>
-							<div class="section-btn hover-black">
-								<button>LEARN MORE</button>
-							</div>
+				<div class="section-area">
+					<div class="section-item">
+						<img src="./assets/asset 1.jpeg" alt="Woman and dog" />
+					</div>
+					<div class="section-item">
+						<h2>About Us</h2>
+						<h3>What Makes Us Care About Pets?</h3>
+						<p>&nbsp;</p>
+						<p class="section-description">
+							If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by domestic
+							animals and pets all the time till she went to college – there might have been no Anilove animal shelter
+							now. So as soon as she graduated with her Veterinary degree 12 years ago, she already knew what she will
+							be doing for a living.
+						</p>
+						<p>&nbsp;</p>
+						<p class="section-description">
+							All in all, with thousands of animals saved off the streets and cared for every year, we hope to encourage
+							much more pet adoptions to happen!
+						</p>
+						<div class="section-btn hover-black">
+							<button>LEARN MORE</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="section-help">
-				<div class="section">
-					<div class="section-content block">
-						<div class="section-item">
-							<h2>How You Can Help</h2>
-							<h3>There Are Countless Ways You Can Join In & Help Us!</h3>
-						</div>
-						<div class="section-item">
-							<div class="img-group">
-								<div>
-									<img src="/assets/asset 10.jpeg" alt="Volunteer">
+				<div class="section-area block">
+					<div class="section-item">
+						<h2>How You Can Help</h2>
+						<h3>There Are Countless Ways You Can Join In & Help Us!</h3>
+					</div>
+					<div class="section-item">
+						<div class="img-group">
+							<div id="asset10">
+								<div class="img-cover">
 									<a href="#">Volunteer</a>
 								</div>
-								<img src="/assets/asset 11.jpeg" alt="Adopt">
-								<img src="/assets/asset 12.jpeg" alt="Sponsor">
+							</div>
+							<div id="asset11">
+								<div class="img-cover">
+									<a href="#">Adopt</a>
+								</div>
+							</div>
+							<div id="asset12">
+								<div class="img-cover">
+									<a href="#">Sponsor</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="section-temp invisible"></div>
-			<div class="section-temp"></div>
-			<div class="section-temp"></div>
+			<div class="section-volunteer">
+				<div class="section-area">
+					<div class="section-item" style="width: 470px;">
+						<h2 class="right">Volunteer to Save</h2>
+						<h2 class="right">Animals Now!</h2>
+						<img src="/assets/asset 2.jpeg" alt="" />
+					</div>
+					<div class="section-item" style="width: 570px;">
+						<img src="/assets/asset 3.jpeg" alt="" />
+						<p class="section-description">
+							With so many pets less fortunate than your cat and dog, there’s always something you can do about it!
+						</p>
+						<div class="section-btn hover-black">
+							<button>VOLUNTEER</button>
+						</div>
+					</div>
+				</div>
+				<div class="section-area block">
+					<div class="section-item" id="asset13">
+						<h2>Upcoming Events</h2>
+						<h3>Kennel Training Class</h3>
+						<p class="desc-24">FR, June 11th</p>
+						<div class="section-btn hover-black">
+							<button>DETAILS</button>
+							<button>VIEW ALL</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section-blank invisible"></div>
+			<div class="section-block"></div>
 			<div class="section-temp"></div>
 			<div class="section-temp"></div>
 			<div class="section-temp"></div>

@@ -1,63 +1,81 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 135px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header-blank {
+	height: 15px;
+	background-color: #fff;
 }
 .contact-header {
-    height: 30px;
-    background-color: #272626;
-    color: #fff;
+	padding: 15px 135px;
+	height: 30px;
+	background-color: #272626;
+	color: #fff;
 }
 .contact-header a {
-    text-decoration: none;
-    color: #fff;
+	text-decoration: none;
+	color: #fff;
 }
 .contact-header a:hover {
-    color: #f93;
+	color: #f93;
+}
+.media-group {
+	display: flex;
 }
 .media-group i {
-    vertical-align: 25%;
-    background-color: #fff;
-    color: #272626;
-    font-size: 5px;
-    width: 12px;
-    height: 12px;
-    text-align: center;
-    padding: 4px;
-    border-radius: 10px;
+	color: #272626;
+	font-size: 5px;
 }
-.media-group i:hover {
-    background-color: #f93;
+.media-group a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+	background-color: #fff;
+	border-radius: 10px;
+	margin-left: 5px;
+}
+.media-group a:hover {
+	background-color: #f93;
 }
 .main-header {
-    height: 90px;
-    background-color: #fff;
+	height: 90px;
+	background-color: #fff;
+	padding: 0 135px;
+	position: sticky;
+	top: 0;
+	left: 0;
 }
 .main-header a {
-    text-decoration: none;
-    color: #272626;
-    margin: 0 25px;
-    padding: 15px 0;
+	text-decoration: none;
+	color: #272626;
+	margin: 0 25px;
+	padding: 15px 0;
+}
+.main-header nav a.active {
+	border-bottom: 3px solid #f93;
 }
 .main-header nav a:hover {
-    border-bottom: 3px solid #f93;
+	border-bottom: 3px solid #f93;
 }
 .main-header button {
-    background-color: #fff;
-    display: inline-block;
-    line-height: 20px;
-    font-size: 12px;
-    color: #f93;
-    border: 2px solid #f93;
-    border-radius: 2px;
-    padding: 13px 30px;
+	background-color: #fff;
+	display: inline-block;
+	line-height: 20px;
+	font-size: 12px;
+	color: #f93;
+	border: 2px solid #f93;
+	border-radius: 2px;
+	padding: 13px 30px;
 }
 .brand {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 .brand a {
-    font-size: 50px;
-    font-weight: 700;
+	font-size: 50px;
+	font-weight: 700;
 }
