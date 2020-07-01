@@ -7,11 +7,15 @@
 	height: 15px;
 	background-color: #fff;
 }
-.contact-header {
-	padding: 15px 135px;
+.contact-header-area {
 	height: 30px;
+	width: 1200px;
 	background-color: #272626;
+	margin: auto;
 	color: #fff;
+}
+.contact-header {
+	background-color: #272626;
 }
 .contact-header a {
 	text-decoration: none;
@@ -41,10 +45,15 @@
 .media-group a:hover {
 	background-color: #f93;
 }
-.main-header {
+.main-header-area {
 	height: 90px;
+	width: 1200px;
 	background-color: #fff;
-	padding: 0 135px;
+	margin: auto;
+}
+.main-header {
+	background-color: #fff;
+	margin: auto;
 	position: sticky;
 	top: 0;
 	left: 0;
