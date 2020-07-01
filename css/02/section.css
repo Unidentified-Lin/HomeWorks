@@ -39,8 +39,10 @@
 	display: flex;
 	align-items: center;
 	height: inherit;
+	width: 1200px;
 	padding: 0 15px;
-	margin: 0 120px;
+	margin: auto;
+	box-sizing: border-box;
 	justify-content: space-between;
 }
 .section-area.block {
