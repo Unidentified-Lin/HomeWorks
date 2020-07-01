@@ -1,5 +1,5 @@
 .section-donate {
-	background-image: url("/assets/asset 9.jpeg");
+	background-image: url("/assets/asset 15.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -16,6 +16,10 @@
 	background-color: #f9f9f9;
 	padding: 90px 0;
 }
+.section-help .img-group a{
+	font-size: 34px;
+	margin: 0 0 40px;
+}
 .section-volunteer {
 	background-color: #fff;
 	padding: 90px 0;
@@ -30,10 +34,25 @@
 	background-color: #fff;
 	padding: 90px 0;
 }
+.section-news {
+	background-color: #fff;
+	padding: 90px 0;
+}
+.section-news .img-group p{
+	padding: 0 60px;
+}
 .img-group {
 	display: flex;
 	justify-content: space-between;
 	padding: 55px 0 0;
+}
+.media{
+	padding: 80px 0 0;
+}
+.avatar{
+	width: 108px;
+	height: 108px;
+	border-radius: 54px;
 }
 .section-area {
 	display: flex;
@@ -49,11 +68,19 @@
 	display: block;
 	text-align: center;
 }
-.section-area p.desc-24 {
+.section-description-30 {
+	font-size: 30px;
+	color: #fff;
+}
+.section-description-24 {
 	font-size: 24px;
 	color: #535353;
 }
-.section-area p.section-description {
+.section-description-16 {
+	font-size: 16px;
+	color: #fff;
+}
+.section-description-14 {
 	font-size: 14px;
 	color: #8d8d8d;
 }
@@ -79,29 +106,29 @@
 	color: #fff;
 	font-size: 14px;
 }
-#asset10 {
-	background-image: url("/assets/asset 10.jpeg");
+#help-asset1 {
+	background-image: url("/assets/asset 16.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 451px;
 }
-#asset11 {
-	background-image: url("/assets/asset 11.jpeg");
+#help-asset2 {
+	background-image: url("/assets/asset 17.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 451px;
 }
-#asset12 {
-	background-image: url("/assets/asset 12.jpeg");
+#help-asset3 {
+	background-image: url("/assets/asset 18.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 451px;
 }
-#asset13 {
-	background-image: url("/assets/asset 13.jpeg");
+#volunteer-asset3 {
+	background-image: url("/assets/asset 19.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -111,11 +138,28 @@
 	justify-content: center;
 	margin-top: 90px;
 }
+#news-asset1 {
+	background-image: url("/assets/asset 22.jpeg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 570px;
+	height: 353px;
+	padding-top: 40px;
+}
+#news-asset2 {
+	background-image: url("/assets/asset 23.jpeg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 570px;
+	height: 353px;
+	padding-top: 40px;
+}
 .img-group a {
 	text-decoration: none;
-	font-size: 34px;
 	color: #fff;
-	margin: 0 0 40px;
+	font-size: inherit;
 }
 .img-group a:hover {
 	color: #f93;
