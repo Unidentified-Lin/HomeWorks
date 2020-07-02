@@ -4,20 +4,14 @@
 	font-size: 20px;
 }
 
-body {
-	background-image: url("/assets/asset\ 21.jpeg");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.hover-black button:hover {
+.hover-black button:hover,
+.hover-black a:hover {
 	background-color: #000;
 	border: 2px solid #000;
 	color: #fff;
 }
-.hover-blue button:hover {
+.hover-blue button:hover,
+.hover-blue a:hover {
 	background-color: #7abee9;
 	border: 2px solid #7abee9;
 	color: #fff;
@@ -38,6 +32,23 @@ body {
 }
 #contact-btn i {
 	font-size: 45px;
+}
+#go-top-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 58px;
+	height: 58px;
+	text-decoration: none;
+	background-color: #f93;
+	border-radius: 2px;
+	position: fixed;
+	bottom: 80px;
+	right: 20px;
+}
+#go-top-btn i {
+	font-size: 18px;
+	color: #fff;
 }
 .brand {
 	display: flex;
@@ -88,12 +99,6 @@ body {
 	font-size: 5px;
 	margin: 0 2.5px;
 }
-/* .social-media-group a.hov-opacity:hover {
-	opacity: 0.8;
-}
-.social-media-group a.hov-bg-org:hover {
-	background-color: #f93;
-} */
 #social-twitter {
 	background-color: #00aeef;
 }
@@ -109,10 +114,10 @@ body {
 .hov-org:hover {
 	color: #f93;
 }
-.hov-bg-org:hover{
+.hov-bg-org:hover {
 	background-color: #f93;
 }
-.hov-bg-opacity:hover{
+.hov-bg-opacity:hover {
 	opacity: 0.8;
 }
 .fas {

@@ -298,8 +298,9 @@
 }
 .section-blank {
 	height: 697px;
-	background-color: #fff;
-}
-.invisible {
-	background-color: transparent;
+	background-image: url("/assets/asset\ 21.jpeg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
