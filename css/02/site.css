@@ -39,3 +39,83 @@ body {
 #contact-btn i {
 	font-size: 45px;
 }
+.brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.brand a {
+	text-decoration: none;
+	font-size: 50px;
+	font-weight: 700;
+	margin: 0 25px;
+}
+.social-media-group {
+	display: flex;
+	justify-content: center;
+}
+.social-media-group i {
+	color: inherit;
+	font-size: inherit;
+}
+.social-media-group a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: #272626;
+	background-color: #fff;
+}
+.social-media-group a.reverse {
+	color: #fff;
+	background-color: #272626;
+}
+.social-media-group a.i-square {
+	border-radius: 2px;
+}
+.social-media-group a.i-circle {
+	border-radius: 9999px;
+}
+.social-media-group a.i-medium {
+	width: 56px;
+	height: 56px;
+	font-size: 22px;
+	margin: 0 4px;
+}
+.social-media-group a.i-small {
+	width: 20px;
+	height: 20px;
+	font-size: 5px;
+	margin: 0 2.5px;
+}
+/* .social-media-group a.hov-opacity:hover {
+	opacity: 0.8;
+}
+.social-media-group a.hov-bg-org:hover {
+	background-color: #f93;
+} */
+#social-twitter {
+	background-color: #00aeef;
+}
+#social-facebook {
+	background-color: #547cd5;
+}
+#social-pinterest {
+	background-color: #c30;
+}
+#social-linkedin {
+	background-color: #0075b6;
+}
+.hov-org:hover {
+	color: #f93;
+}
+.hov-bg-org:hover{
+	background-color: #f93;
+}
+.hov-bg-opacity:hover{
+	opacity: 0.8;
+}
+.fas {
+	color: #f93;
+	font-size: inherit;
+}
