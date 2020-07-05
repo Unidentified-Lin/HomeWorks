@@ -1,0 +1,24 @@
+.top-header {
+	background-color: #679509;
+	color: #fff;
+	padding: 6px 0;
+}
+#message {
+	color: inherit;
+	font-size: 14px;
+}
+#member-options {
+	color: inherit;
+	font-size: 12px;
+}
+#member-options li {
+	padding: 0 17px;
+}
+.menu-header {
+	background-color: #fff;
+	padding: 4px 0;
+}
+.menu-header a {
+	color: inherit;
+	padding: 0 17px;
+}

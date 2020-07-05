@@ -1,0 +1,111 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.7;
+	font-family: "PT Sans", sans-serif;
+	letter-spacing: 0em;
+	text-align: left;
+	color: #a5a5a5;
+}
+.container {
+	width: 1200px;
+	margin: auto;
+}
+.row,
+.row > ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.item-group {
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -20px;
+}
+.center {
+	text-align: center;
+	justify-content: center;
+}
+h1 {
+    color: #333;
+	font-size: 82px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+h2 {
+	font-size: 48px;
+	color: #505050;
+}
+h3 {
+	font-size: 32px;
+	color: #505050;
+}
+h4{
+    font-size: 20px;
+    color: #4f4f4f;
+}
+a {
+	text-decoration: none;
+}
+button {
+	position: relative;
+	font-family: inherit;
+	font-weight: 900;
+	font-size: 14px;
+	line-height: 1;
+	background-color: #86ae34;
+	color: #fff;
+	padding: 22px 42px;
+	border: 0;
+	cursor: pointer;
+	transition: all 0.5s;
+	z-index: 1;
+}
+button.size-m{
+    font-size: 12px;
+    font-weight: 700;
+    padding: 13px 18px;
+}
+button.size-sm {
+	padding: 2px 9px;
+	font-size: 12px;
+	font-weight: 400;
+}
+button.hov-dark:not(.tran):hover {
+	background: #1e1d24;
+}
+button.hov-dark.tran.tran-ltr:after {
+	content: "";
+	position: absolute;
+	width: 0%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transition: all 0.5s;
+	background-color: #1e1d24;
+	z-index: -1;
+}
+button.hov-dark.tran.tran-ltr:hover:after {
+	width: 100%;
+}
+input:focus {
+	outline: 0;
+	background-color: #fff;
+	border-color: #e3e3e3;
+	box-shadow: inset 0 0 0 1px #e3e3e3;
+}
+input[type="email"] {
+	box-sizing: border-box;
+	min-width: 150px;
+	min-height: 45px;
+	padding: 9.5px 20px;
+	border: 1px solid;
+	border-color: #e3e3e3;
+	color: #79787f;
+}
