@@ -1,5 +1,5 @@
-body{
-	font-family: 'Noto Sans TC', sans-serif;
+body {
+	font-family: "Noto Sans TC", sans-serif;
 }
 .container {
 	width: 960px;
@@ -64,10 +64,10 @@ h2 {
 	font-size: 110px;
 	font-weight: 200;
 	transform: rotate(90deg);
-	font-family: 'Roboto', sans-serif;
+	font-family: "Roboto", sans-serif;
 	margin-left: -23px;
 }
-.content.opposite .info-title span:first-of-type{
+.content.opposite .info-title span:first-of-type {
 	margin-left: 0;
 	margin-right: -18px;
 }
@@ -133,10 +133,10 @@ h2 {
 	color: #333;
 	font-size: 18px;
 }
-.detail-box .detail-content p::before{
-    content: "・";
-    color: #bb0504;
-    font-weight: 900;
+.detail-box .detail-content p::before {
+	content: "・";
+	color: #bb0504;
+	font-weight: 900;
 }
 .play-btn {
 	position: relative;
