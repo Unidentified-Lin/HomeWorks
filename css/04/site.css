@@ -1,3 +1,6 @@
+body{
+	font-family: 'Noto Sans TC', sans-serif;
+}
 .container {
 	width: 960px;
 	margin: auto;
@@ -61,6 +64,12 @@ h2 {
 	font-size: 110px;
 	font-weight: 200;
 	transform: rotate(90deg);
+	font-family: 'Roboto', sans-serif;
+	margin-left: -23px;
+}
+.content.opposite .info-title span:first-of-type{
+	margin-left: 0;
+	margin-right: -18px;
 }
 .info-content {
 	background-color: #000;
