@@ -5,21 +5,30 @@
 }
 .content {
 	position: relative;
-    width: 695px;
-    height: 430px;
-    margin: 0px 195px 240px;
-    padding: 120px 0;
+	width: 695px;
+	height: 430px;
+	margin: 0px 195px 240px;
+	padding: 120px 0;
 }
-.content::after{
-    display: block;
-    content: " ";
-    width: 439px;
-    height: 290px;
-    background-color: #f4f4f4;
-    position: relative;
-    top: -550px;
-    left: 325px;
-    z-index: -1;
+.content.opposite {
+	margin: 0 70px 240px;
+}
+.content::after {
+	display: block;
+	content: " ";
+	width: 439px;
+	height: 290px;
+	background-color: #f4f4f4;
+	position: relative;
+	top: -550px;
+	left: 325px;
+	z-index: -1;
+}
+.content.opposite::after {
+	width: 518px;
+	height: 413px;
+	top: -535px;
+	left: 260px;
 }
 h2 {
 	display: inline-block;
@@ -28,11 +37,15 @@ h2 {
 }
 .info-box {
 	width: 355px;
-    height: 388px;
-    position: absolute;
-    top: 0px;
-    left: -195px;
-    z-index: 2;
+	min-height: 360px;
+	position: absolute;
+	top: 0px;
+	left: -195px;
+	z-index: 2;
+}
+.content.opposite .info-box {
+	right: -195px;
+	left: auto;
 }
 .info-title {
 	background-color: #bb0504;
@@ -41,10 +54,18 @@ h2 {
 	display: flex;
 	align-items: center;
 }
+.content.opposite .info-title {
+	flex-direction: row-reverse;
+}
+.info-title span:first-of-type {
+	font-size: 110px;
+	font-weight: 200;
+	transform: rotate(90deg);
+}
 .info-content {
 	background-color: #000;
 	color: #fff;
-	min-height: 235px;
+	min-height: 200px;
 	padding: 20px;
 }
 .info-content h3 {
@@ -58,21 +79,18 @@ h2 {
 	line-height: 1.5;
 	letter-spacing: 2px;
 }
-.info-title span:first-of-type {
-	font-size: 120px;
-	font-weight: 200;
-	transform: rotate(90deg);
-}
-
 .detail-box {
 	background-color: #eee;
-    width: 682px;
-    height: 275px;
-    padding: 20px;
-    position: absolute;
-    top: 517px;
-    left: -145px;
-    z-index: 2;
+	width: 682px;
+	padding: 20px;
+	position: absolute;
+	top: 517px;
+	left: -145px;
+	z-index: 2;
+}
+.content.opposite .detail-box {
+	right: -195px;
+	left: auto;
 }
 .detail-box h3 {
 	display: inline-block;
@@ -110,8 +128,11 @@ h2 {
 /*-------position-------*/
 
 .play-btn {
-    position: relative;
-    top: -215px;
-    right: -650px;
-    z-index: 2;
+	position: relative;
+	top: -215px;
+	left: 652px;
+	z-index: 2;
+}
+.content.opposite .play-btn {
+	left: -10px;
 }
