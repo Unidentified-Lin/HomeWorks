@@ -1,3 +1,6 @@
+header .row {
+	align-items: center;
+}
 .top-header {
 	background-color: #679509;
 	color: #fff;
