@@ -7,6 +7,9 @@
 	height: 15px;
 	background-color: #fff;
 }
+.header-item {
+	font-weight: lighter;
+}
 .contact-header-area {
 	height: 30px;
 	width: 1200px;
@@ -21,6 +24,7 @@
 .contact-header a {
 	text-decoration: none;
 	color: #fff;
+	font-weight: lighter;
 }
 .main-header-area {
 	height: 90px;
@@ -40,6 +44,9 @@
 	color: #272626;
 	margin: 0 25px;
 	padding: 15px 0;
+}
+.main-header nav a {
+	font-weight: lighter;
 }
 .main-header nav a.active {
 	border-bottom: 3px solid #f93;

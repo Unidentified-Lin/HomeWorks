@@ -2,18 +2,25 @@
 	padding: 0;
 	margin: 0;
 	font-size: 20px;
+	font-family: "Lato", sans-serif;
+	font-weight: normal;
+}
+h1,
+h2,
+button {
+	font-weight: bold;
 }
 
 .hover-black button:hover,
 .hover-black a:hover {
 	background-color: #000;
-	border: 2px solid #000;
+	border-color: #000;
 	color: #fff;
 }
 .hover-blue button:hover,
 .hover-blue a:hover {
 	background-color: #7abee9;
-	border: 2px solid #7abee9;
+	border-color: #7abee9;
 	color: #fff;
 }
 #contact-btn {
@@ -60,6 +67,9 @@
 	font-size: 50px;
 	font-weight: 700;
 	margin: 0 25px;
+	font-family: "PT Serif", serif;
+	font-weight: 700;
+	color: #535353;
 }
 .social-media-group {
 	display: flex;
