@@ -8,13 +8,14 @@ body {
 }
 .content {
 	position: relative;
-	width: 695px;
-	height: 430px;
-	margin: 0px 195px 240px;
-	padding: 120px 0;
+	/* width: 695px;
+	height: 430px; */
+	/* margin: 0px 195px 240px; */
+	margin: 0px 70px 0 195px;
+	padding: 120px 0 0;
 }
 .content.opposite {
-	margin: 0 70px 240px;
+	margin: 0 260px 0 5px;
 }
 .content::after {
 	display: block;
@@ -22,16 +23,16 @@ body {
 	width: 439px;
 	height: 290px;
 	background-color: #f4f4f4;
-	position: relative;
-	top: -550px;
-	left: 325px;
+	position: absolute;
+	top: 30px;
+	right: -70px;
 	z-index: -1;
 }
 .content.opposite::after {
 	width: 518px;
 	height: 413px;
-	top: -535px;
-	left: 260px;
+	top: 40px;
+	right: -90px;
 }
 h2 {
 	display: inline-block;
@@ -92,13 +93,16 @@ h2 {
 	background-color: #eee;
 	width: 682px;
 	padding: 20px;
-	position: absolute;
+	/* position: absolute;
 	top: 517px;
-	left: -145px;
+	left: -145px; */
+	position: relative;
+	top: -70px;
+	right: 160px;
 	z-index: 2;
 }
 .content.opposite .detail-box {
-	right: -195px;
+	right: -235px;
 	left: auto;
 }
 .detail-box h3 {
@@ -138,12 +142,16 @@ h2 {
 	color: #bb0504;
 	font-weight: 900;
 }
+.play-area {
+	position: relative;
+}
 .play-btn {
 	position: relative;
-	top: -215px;
+	top: -220px;
 	left: 652px;
 	z-index: 2;
 }
 .content.opposite .play-btn {
 	left: -10px;
+	top: -210px;
 }
