@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Show Style</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/css/grid_sys.css" />
+		<link rel="stylesheet" href="/css/show_style/site.css" />
+		<link rel="stylesheet" href="/css/show_style/content.css" />
+	</head>
+	<body>
+		<div class="title-blank">
+			<h1>display : flex;</h1>
+			<h2>
+				<span class="red-box">Red box</span> set <span class="attr-color1">display</span> :
+				<span class="attr-color2">flex</span> and set...
+			</h2>
+		</div>
+		<section class="container">
+			<div class="row">
+				<div class="item col-6">
+					<h3>justify-content</h3>
+					<div class="input-group">
+						<input type="radio" name="justify-content" sValue="space-between" id="space-between" checked />
+						<label for="space-between">space-between</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="justify-content" sValue="space-around" id="space-around" />
+						<label for="space-around">space-around</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="justify-content" sValue="space-evenly" id="space-evenly" />
+						<label for="space-evenly">space-evenly</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="justify-content" sValue="flex-start" id="jc-flex-start" />
+						<label for="jc-flex-start">flex-start</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="justify-content" sValue="center" id="jc-center" />
+						<label for="jc-center">center</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="justify-content" sValue="flex-end" id="jc-flex-end" />
+						<label for="jc-flex-end">flex-end</label>
+					</div>
+					<div class="wrap" target="justify-content">
+						<div class="cube">1</div>
+						<div class="cube">2</div>
+						<div class="cube">3</div>
+					</div>
+				</div>
+				<div class="item col-6">
+					<h3>align-items</h3>
+					<div class="input-group">
+						<input type="radio" name="align-items" sValue="flex-start" id="flex-start" checked />
+						<label for="flex-start">flex-start</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="align-items" sValue="center" id="center" />
+						<label for="center">center</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="align-items" sValue="flex-end" id="flex-end" />
+						<label for="flex-end">flex-end</label>
+					</div>
+					<div class="wrap" target="align-items">
+						<div class="cube" style="height: 120px;">1</div>
+						<div class="cube">2</div>
+						<div class="cube" style="height: 130px;">3</div>
+					</div>
+				</div>
+				<div class="item col-6">
+					<h3>flex-direction</h3>
+					<div class="input-group">
+						<input type="radio" name="flex-direction" sValue="row" id="row" checked />
+						<label for="row">row</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="flex-direction" sValue="row-reverse" id="row-reverse" />
+						<label for="row-reverse">row-reverse</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="flex-direction" sValue="column" id="column" />
+						<label for="column">column</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="flex-direction" sValue="column-reverse" id="column-reverse" />
+						<label for="column-reverse">column-reverse</label>
+					</div>
+					<div class="wrap" target="flex-direction">
+						<div class="cube">1</div>
+						<div class="cube">2</div>
+						<div class="cube">3</div>
+					</div>
+				</div>
+				<div class="item col-6">
+					<h3>flex-wrap</h3>
+					<div class="input-group">
+						<input type="radio" name="flex-wrap" sValue="wrap" id="wrap" checked />
+						<label for="wrap">wrap</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="flex-wrap" sValue="wrap-reverse" id="wrap-reverse" />
+						<label for="wrap-reverse">wrap-reverse</label>
+					</div>
+					<div class="input-group">
+						<input type="radio" name="flex-wrap" sValue="nowrap" id="nowrap" />
+						<label for="nowrap">nowrap</label>
+					</div>
+					<div class="wrap" target="flex-wrap">
+						<div class="cube">1</div>
+						<div class="cube">2</div>
+						<div class="cube">3</div>
+						<div class="cube">4</div>
+						<div class="cube">5</div>
+						<div class="cube">6</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			Copyright © 2012 Apple Inc. All rights reserved
+		</footer>
+	</body>
+	<script>
+		window.onload = function () {
+			console.log("ready");
+
+			var input = document.getElementsByTagName("input");
+			for (let index = 0; index < input.length; index++) {
+				const element = input[index];
+				document.addEventListener("click", radioClick);
+			}
+		};
+		function radioClick(e) {
+			var element = e.target;
+			if (element.type == "radio") {
+				var styleAttr = element.name;
+				var wrap = document.querySelector('[target="' + styleAttr + '"]');
+				wrap.setAttribute("style", styleAttr + ":" + element.getAttribute("svalue") + ";");
+			}
+		}
+	</script>
+</html>
