@@ -1,6 +1,6 @@
 body {
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: 400;
+	font-family: "Noto Sans", sans-serif;
+	font-weight: 400;
 }
 .title-blank {
 	background-color: #1e1e1e;
@@ -24,36 +24,18 @@ footer {
 	margin-top: 20px;
 }
 
-.red-box {
-	border: 1px solid red;
-	padding: 2px;
+.red-box1 {
+	border: 1px solid #e80000;
+}
+.red-box2 {
+	border: 2px solid #e80000;
+	/* border: 2px solid #474747; */
 }
 .attr-color1 {
-    color: #36e;
-    /* color:#618AA6; */
+	color: #36e;
+	/* color:#618AA6; */
 }
 .attr-color2 {
-    color: #ee7d25;
-    /* color:#e2bd44; */
-}
-
-.cube {
-	width: 100px;
-	height: 100px;
-    background-color: #525abd;
-    color: #eee;
-	/* background-color: #474747; */
-	margin: 5px;
-	font-size: 50px;
-	line-height: 100px;
-}
-label {
-    margin: 0 10px 0 5px;
-    color:#666;
-}
-input:checked + label {
-	/* background-color: yellowgreen; */
-    color: #ee7d25;
-    /* color: #e2bd23 */
-	font-weight: bold;
+	color: #ee7d25;
+	/* color:#e2bd44; */
 }
