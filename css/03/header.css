@@ -16,6 +16,14 @@ header .row {
 }
 #member-options li {
 	padding: 0 17px;
+	color: #f0f0f0;
+	cursor: pointer;
+}
+#member-options li:hover {
+	color: #c7ed79;
+}
+#member-options li + li {
+	border-left: 1px solid;
 }
 .menu-header {
 	background-color: #fff;
@@ -24,4 +32,9 @@ header .row {
 .menu-header a {
 	color: inherit;
 	padding: 0 17px;
+	font-size: 14px;
+	font-weight: 600;
+}
+.menu-header a:hover {
+	color: #86ae34;
 }

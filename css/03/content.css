@@ -204,6 +204,13 @@
 	/* height: 651px; */
 	padding: 186px 0 130px;
 }
+#section-clients h3 {
+	padding-bottom: 42px;
+}
+#section-clients p {
+	color: #fff;
+}
+
 #section-subscribe {
 	padding: 57px 0 65px;
 }
