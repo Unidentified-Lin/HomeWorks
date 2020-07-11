@@ -1,0 +1,113 @@
+#banner-item-01 {
+	background-image: url("/assets/05_assets/banner_01.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+#banner-item-02 {
+	background-image: url("/assets/05_assets/banner_02.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+#banner-item-03 {
+	background-image: url("/assets/05_assets/banner_03.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+#banner-item-04 {
+	background-image: url("/assets/05_assets/banner_04.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+#banner-item-05 {
+	background-image: url("/assets/05_assets/banner_05.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+#banner-item-06 {
+	background-image: url("/assets/05_assets/banner_06.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	max-width: 985px;
+	margin: auto;
+}
+#banner-item-07 {
+	background-image: url("/assets/05_assets/banner_07.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	max-width: 985px;
+	margin: auto;
+}
+#banner-item-08 {
+	background-image: url("/assets/05_assets/banner_08.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+#banner-item-09 {
+	background-image: url("/assets/05_assets/banner_09.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+.shadow {
+	background-color: #00000077;
+}
+.op-blue {
+	color: #fff;
+	background-color: rgba(61, 155, 233, 0.6);
+	padding: 10px 5px;
+	margin: 20px 0;
+}
+.banner {
+	color: #fff;
+}
+.banner-item {
+	width: inherit;
+	height: inherit;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.banner-item p {
+	padding: 10px;
+	margin: 20px;
+}
+.btn-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0 30px;
+}
+.btn-group > * {
+	margin: 20px;
+}
+@media screen and (min-width: 375px) {
+	.banner-item-img {
+		height: 550px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.banner-item-img {
+		height: 710px;
+	}
+}
+@media screen and (min-width: 992px) {
+}
