@@ -117,7 +117,7 @@ h2 {
 	align-items: center;
 	padding-bottom: 15px;
 }
-.line {
+.detail-box .detail-header::after {
 	content: "";
 	display: inline-block;
 	flex-grow: 1;
