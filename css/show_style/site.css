@@ -31,6 +31,14 @@ footer {
 	border: 2px solid #e80000;
 	/* border: 2px solid #474747; */
 }
+.blue-box1{
+    border: 1px solid #36e;
+}
+.purple-cube{
+    /* border: 1px solid #525abd; */
+    background-color: #525abd;
+    color: #eee;
+}
 .attr-color1 {
 	color: #36e;
 	/* color:#618AA6; */

@@ -61,8 +61,8 @@
 						<label for="flex-start">flex-start</label>
 					</div>
 					<div class="col-4 input-group">
-						<input type="radio" name="align-items" sValue="center" id="center" />
-						<label for="center">center</label>
+						<input type="radio" name="align-items" sValue="center" id="flex-center" />
+						<label for="flex-center">center</label>
 					</div>
 					<div class="col-4 input-group">
 						<input type="radio" name="align-items" sValue="flex-end" id="flex-end" />
@@ -123,6 +123,57 @@
 						<div class="cube">8</div>
 					</div>
 				</div>
+			</div>
+		</section>
+		<div class="title-blank">
+			<h1>Center/Middle</h1>
+			<h2>
+				<span class="red-box1">Red box</span> is a regular <span class="attr-color1">DIV</span> box, and
+				<span class="purple-cube">Purple cube</span> is <span class="attr-color1">display</span> :
+				<span class="attr-color2">inline-block</span>
+			</h2>
+		</div>
+		<section class="container">
+			<div class="row">
+				<div class="col-12 item wrap txt-center">
+					<h3 class="col-12">vertical-align</h3>
+					<p class="col-12">vertical-aling attribute only applies on inline items.</p>
+					<div class="col-12 box red-box2" target="center1">
+						<span class="blue-box1">
+							<div class="inline-cube reference">h:200px</div>
+							this is inline text for reference.
+							<div class="inline-cube" style="vertical-align: top;">top</div>
+							<div class="inline-cube" style="vertical-align: text-top;">text-top</div>
+							<div class="inline-cube" style="vertical-align: middle;">middle</div>
+							<div class="inline-cube" style="vertical-align: text-bottom;">text-bottom</div>
+							<div class="inline-cube" style="vertical-align: bottom;">bottom</div>
+						</span>
+					</div>
+				</div>
+				<div class="col-6 item wrap txt-center">
+                    <h3 class="col-12">text-align</h3>
+                    <div class="col-4 input-group">
+						<input type="radio" name="text-align" sValue="left" id="left" checked />
+						<label for="left">left</label>
+					</div>
+					<div class="col-4 input-group">
+						<input type="radio" name="text-align" sValue="center" id="ta-center" />
+						<label for="ta-center">center</label>
+					</div>
+					<div class="col-4 input-group">
+						<input type="radio" name="text-align" sValue="right" id="right" />
+						<label for="right">right</label>
+					</div>
+					<div class="col-12 box red-box2" target="text-align" style="text-align: left;">
+						<div class="inline-cube">Hello</div>
+					</div>
+                </div>
+                <!-- <div class="col-6 item wrap txt-center">
+                    <h3 class="col-12">line-height</h3>
+                    <div class="col-12 box red-box2" target="line-height">
+
+                    </div>
+                </div> -->
 			</div>
 		</section>
 		<footer>
