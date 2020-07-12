@@ -87,6 +87,7 @@ header nav {
 	right: 0;
 	left: 0;
 	margin: auto;
+	transition: 0.5s;
 }
 .hb span:first-child {
 	transform: translateY(-8px);
@@ -100,6 +101,16 @@ header nav {
 }
 #collapseBtn:checked ~ .hb span {
 	background-color: #000;
+}
+#collapseBtn:checked ~ .hb span:first-child,
+#collapseBtn:checked ~ .hb span:last-child {
+	opacity: 0;
+}
+#collapseBtn:checked ~ .hb span:nth-child(2) {
+	transform: rotate(45deg);
+}
+#collapseBtn:checked ~ .hb span:nth-child(3) {
+	transform: rotate(135deg);
 }
 @media screen and (min-width: 375px) {
 	#collapseBtn:checked ~ .menu-container {
