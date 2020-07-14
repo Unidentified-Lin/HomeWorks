@@ -1,0 +1,31 @@
+footer {
+  /* padding-top: 50px; */
+  background-color: #eee;
+  border-top: 5px solid #4e4e4e;
+}
+footer h2 {
+  font-size: 20px;
+  padding: 10px 0;
+}
+footer .container{
+    padding: 50px 30px;
+}
+footer .row {
+    justify-content: center;
+}
+footer ul{
+    padding: 10px 2.5em;
+    text-indent: -2.5em;
+}
+footer img.ctrl-h{
+    max-width: 32px;
+}
+footer a {
+  color: #34f;
+}
+.copyright {
+  background-color: #1e1e1e;
+  color: #eee;
+  text-align: center;
+  padding: 20px 0;
+}
