@@ -1,0 +1,26 @@
+body {
+	font-family: "Open Sans", sans-serif;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+}
+.col {
+	display: flex;
+	flex-direction: column;
+}
+.ff-Balsamiq {
+	font-family: "Balsamiq Sans", cursive;
+}
+.txt-32 {
+	font-size: 32px;
+}
+.txt-30 {
+	font-size: 30px;
+}
+.txt-25 {
+	font-size: 25px;
+}
+.txt-15 {
+	font-size: 15px;
+}

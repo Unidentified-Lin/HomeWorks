@@ -1,0 +1,160 @@
+header {
+	position: relative;
+}
+header nav {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.brand-title {
+	color: #fff;
+	text-align: right;
+	padding-left: 20px;
+	padding-right: 55px;
+	margin: 20px 0;
+}
+.brand-title p {
+	font-size: 11px;
+	display: none;
+}
+.brand {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.brand .logo {
+	width: 42px;
+}
+.brand .logo img {
+	width: 100%;
+}
+.brand h1 {
+	white-space: nowrap;
+	font-size: 19px;
+	padding: 0 0 0 10px;
+}
+.menu-container {
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	right: 0;
+	max-height: 357px;
+	text-align: center;
+	padding-top: 70px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	z-index: 1;
+	width: 0;
+	opacity: 0;
+	transition: 0.8s;
+}
+.menu-container .menu {
+	width: max-content;
+	margin: auto;
+}
+.menu-container a {
+	display: inline-block;
+	color: #1e1e1e;
+	font-size: 16px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #ccc;
+	padding: 0 15px;
+	margin: 0 20px;
+}
+
+#collapseBtn {
+	display: none;
+}
+.hb {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	text-align: center;
+	z-index: 2;
+}
+.hb span {
+	width: 40%;
+	height: 3px;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	transition: 0.5s;
+}
+.hb span:first-child {
+	transform: translateY(-8px);
+}
+.hb span:last-child {
+	transform: translateY(8px);
+}
+#collapseBtn:checked ~ .menu-container {
+	width: 65%;
+	opacity: 1;
+}
+#collapseBtn:checked ~ .hb span {
+	background-color: #000;
+}
+#collapseBtn:checked ~ .hb span:first-child,
+#collapseBtn:checked ~ .hb span:last-child {
+	opacity: 0;
+}
+#collapseBtn:checked ~ .hb span:nth-child(2) {
+	transform: rotate(45deg);
+}
+#collapseBtn:checked ~ .hb span:nth-child(3) {
+	transform: rotate(135deg);
+}
+@media screen and (min-width: 375px) {
+	#collapseBtn:checked ~ .menu-container {
+		width: 56%;
+	}
+}
+@media screen and (min-width: 768px) {
+	#collapseBtn:checked ~ .menu-container {
+		width: 27%;
+	}
+	.brand-title p {
+		display: block;
+	}
+	.brand .logo {
+		width: 54px;
+	}
+	.brand h1 {
+		font-size: 30px;
+	}
+}
+@media screen and (min-width: 992px) {
+	header nav {
+		justify-content: center;
+	}
+	.menu-container {
+		position: initial;
+		width: auto;
+		opacity: 1;
+		background-color: initial;
+		padding-top: 0;
+	}
+	.menu-container .menu {
+		flex-direction: row;
+	}
+	.menu-container .menu a {
+		color: #fff;
+		font-size: 13px;
+		border-bottom: initial;
+		margin: 0;
+	}
+	.menu-container .menu a:hover {
+		color: #57bbbf;
+	}
+	.hb {
+		display: none;
+	}
+}
