@@ -1,76 +1,75 @@
 .section {
-	text-align: center;
+  text-align: center;
 }
 .section .row {
-	padding: 50px 0;
+  padding: 50px 0;
 }
 .section .row.center {
-	align-items: center;
+  align-items: center;
 }
 .section .row:nth-child(even) {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 .section div[class^="col-"] {
-	padding: 0 35px;
+  padding: 0 35px;
 }
 .section h2 {
-	font-size: 40px;
-	margin: 40px 0;
+  font-size: 40px;
+  margin: 40px 0;
 }
 .section h3 {
-	font-size: 30px;
-	margin: 30px 0;
+  font-size: 30px;
+  margin: 30px 0;
 }
 .section h4 {
-	font-size: 20px;
-	margin: 30px 0;
+  font-size: 20px;
+  margin: 30px 0;
 }
 .section p {
-	font-size: 20px;
-	text-align: justify;
+  font-size: 20px;
+  text-align: justify;
 }
-.section p.center {
-	text-align: center;
-	padding: 15px 0;
-}
-#section_01 img {
-	width: 50%;
-}
-#section_02 div[class^="col-"] {
-	margin: 15px 0 25px;
-}
-#section_02 h4 {
-	color: red;
-}
-#section_02 img.ctrl-h {
-	width: auto;
-	max-width: 100%;
-	max-height: 80px;
-}
-#section_02 ul {
-	padding: 0 20px;
-}
-#section_02 li {
-	list-style: disc;
-	text-align: left;
-}
-#section_03 img.ctrl-h {
+img.ctrl-h {
 	width: auto;
 	max-width: 100%;
 	max-height: 100px;
 	margin: 15px 0;
+  }
+.section p.center {
+  text-align: center;
+  padding: 15px 0;
+}
+#section_01 img {
+  width: 50%;
+}
+#section_02 div[class^="col-"] {
+  margin: 15px 0 25px;
+}
+#section_02 h4 {
+  color: red;
+}
+#section_02 ul {
+  padding: 0 20px;
+}
+#section_02 li {
+  list-style: disc;
+  text-align: left;
+}
+#section_04 .row {
+  align-items: center;
+  text-align: center;
 }
 .section-blank-img {
-	background-image: url("/assets/05_assets/blank_img.jpg");
-	background-position: center;
-	background-repeat: inherit;
-	background-size: cover;
-	width: 100%;
+  background-image: url("/assets/05_assets/blank_img.jpg");
+  background-position: center;
+  background-repeat: inherit;
+  background-size: cover;
+  width: 100%;
 }
 .section-blank {
-	padding: 50px 0;
-	text-align: center;
-	color: #fff;
-	font-size: 22px;
-	background-color: rgba(4, 81, 132, 0.9);
+  padding: 50px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  background-color: rgba(4, 81, 132, 0.9);
 }
