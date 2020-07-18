@@ -1,151 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Show Style</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="/css/grid_sys.css" />
-		<link rel="stylesheet" href="/css/show_style/site.css" />
-		<link rel="stylesheet" href="/css/show_style/content.css" />
-	</head>
-	<body>
-		<div class="title-blank">
-			<h1>display : flex;</h1>
-			<h2>
-				<span class="red-box1">Red box</span> set <span class="attr-color1">display</span> :
-				<span class="attr-color2">flex</span> and set...
-			</h2>
-		</div>
-		<section class="container">
-			<div class="row">
-				<div class="col-6 item wrap txt-center">
-					<h3 class="col-12">justify-content</h3>
-					<div class="col-4 input-group">
-						<input type="radio" name="justify-content" sValue="space-between" id="space-between" checked />
-						<label for="space-between">space-between</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="justify-content" sValue="space-around" id="space-around" />
-						<label for="space-around">space-around</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="justify-content" sValue="space-evenly" id="space-evenly" />
-						<label for="space-evenly">space-evenly</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="justify-content" sValue="flex-start" id="jc-flex-start" />
-						<label for="jc-flex-start">flex-start</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="justify-content" sValue="center" id="jc-center" />
-						<label for="jc-center">center</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="justify-content" sValue="flex-end" id="jc-flex-end" />
-						<label for="jc-flex-end">flex-end</label>
-					</div>
-					<div class="col-12 wrap red-box2" target="justify-content">
-						<div class="cube">1</div>
-						<div class="cube">2</div>
-						<div class="cube">3</div>
-					</div>
-				</div>
-				<div class="col-6 item wrap txt-center">
-					<h3 class="col-12">align-items</h3>
-					<div class="col-4 input-group">
-						<input type="radio" name="align-items" sValue="flex-start" id="flex-start" checked />
-						<label for="flex-start">flex-start</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="align-items" sValue="center" id="center" />
-						<label for="center">center</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="align-items" sValue="flex-end" id="flex-end" />
-						<label for="flex-end">flex-end</label>
-					</div>
-					<div class="col-12 wrap red-box2" target="align-items">
-						<div class="cube" style="height: 120px;">1</div>
-						<div class="cube">2</div>
-						<div class="cube" style="height: 130px;">3</div>
-					</div>
-				</div>
-				<div class="col-6 item wrap txt-center">
-					<h3 class="col-12">flex-direction</h3>
-					<div class="input-group col-3">
-						<input type="radio" name="flex-direction" sValue="row" id="row" checked />
-						<label for="row">row</label>
-					</div>
-					<div class="input-group col-3">
-						<input type="radio" name="flex-direction" sValue="row-reverse" id="row-reverse" />
-						<label for="row-reverse">row-reverse</label>
-					</div>
-					<div class="input-group col-3">
-						<input type="radio" name="flex-direction" sValue="column" id="column" />
-						<label for="column">column</label>
-					</div>
-					<div class="input-group col-3">
-						<input type="radio" name="flex-direction" sValue="column-reverse" id="column-reverse" />
-						<label for="column-reverse">column-reverse</label>
-					</div>
-					<div class="col-12 wrap red-box2" target="flex-direction">
-						<div class="cube">1</div>
-						<div class="cube">2</div>
-						<div class="cube">3</div>
-					</div>
-				</div>
-				<div class="col-6 item wrap txt-center">
-					<h3 class="col-12">flex-wrap</h3>
-					<div class="col-4 input-group">
-						<input type="radio" name="flex-wrap" sValue="wrap" id="wrap" checked />
-						<label for="wrap">wrap</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="flex-wrap" sValue="wrap-reverse" id="wrap-reverse" />
-						<label for="wrap-reverse">wrap-reverse</label>
-					</div>
-					<div class="col-4 input-group">
-						<input type="radio" name="flex-wrap" sValue="nowrap" id="nowrap" />
-						<label for="nowrap">nowrap</label>
-					</div>
-					<div class="col-12 wrap red-box2" target="flex-wrap">
-						<div class="cube">1</div>
-						<div class="cube">2</div>
-						<div class="cube">3</div>
-						<div class="cube">4</div>
-						<div class="cube">5</div>
-						<div class="cube">6</div>
-						<div class="cube">7</div>
-						<div class="cube">8</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer>
-			Copyright © 2012 Unidentified Inc. All rights reserved
-		</footer>
-	</body>
-	<script>
-		window.onload = function () {
-			console.log("ready");
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-			var input = document.getElementsByTagName("input");
-			for (let index = 0; index < input.length; index++) {
-				const element = input[index];
-				document.addEventListener("click", radioClick);
-			}
-		};
-		function radioClick(e) {
-			var element = e.target;
-			if (element.type == "radio") {
-				var styleAttr = element.name;
-				var wrap = document.querySelector('[target="' + styleAttr + '"]');
-				wrap.setAttribute("style", styleAttr + ":" + element.getAttribute("svalue") + ";");
-			}
-		}
-	</script>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Show Style</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="/css/grid_sys.css" /> -->
+    <link rel="stylesheet" href="/css/show_style/site.css" />
+    <link rel="stylesheet" href="/css/show_style/content.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/00_assets/avatar.jpeg" class="d-inline-block rounded-circle mr-2" alt="" loading="lazy" />
+        Unidentified</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">HomeWorks</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              SideWorks
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/clock.html">Clock</a>
+              <a class="dropdown-item" href="/ShowStyle.html">ShowStyle</a>
+            </div>
+          </li>
+        </ul>
+        <a href="https://github.com/Unidentified-Lin/HomeWorks" class="icon">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>GitHub icon</title>
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <div class="title-blank">
+      <h1>display : flex;</h1>
+      <h2>
+        <span class="red-box1">Red box</span> set <span class="attr-color1">display</span> :
+        <span class="attr-color2">flex</span> and set...
+      </h2>
+    </div>
+    <section class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="row text-center item mx-1 my-3">
+            <h3 class="col-12">justify-content</h3>
+            <div class="col-4">
+              <input type="radio" name="justify-content" sValue="space-between" id="space-between" checked />
+              <label for="space-between">space-between</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="justify-content" sValue="space-around" id="space-around" />
+              <label for="space-around">space-around</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="justify-content" sValue="space-evenly" id="space-evenly" />
+              <label for="space-evenly">space-evenly</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="justify-content" sValue="flex-start" id="jc-flex-start" />
+              <label for="jc-flex-start">flex-start</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="justify-content" sValue="center" id="jc-center" />
+              <label for="jc-center">center</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="justify-content" sValue="flex-end" id="jc-flex-end" />
+              <label for="jc-flex-end">flex-end</label>
+            </div>
+            <div class="col-12 wrap red-box2" target="justify-content">
+              <div class="cube">1</div>
+              <div class="cube">2</div>
+              <div class="cube">3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row text-center item mx-1 my-3">
+            <h3 class="col-12">align-items</h3>
+            <div class="col-4">
+              <input type="radio" name="align-items" sValue="flex-start" id="flex-start" checked />
+              <label for="flex-start">flex-start</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="align-items" sValue="center" id="flex-center" />
+              <label for="flex-center">center</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="align-items" sValue="flex-end" id="flex-end" />
+              <label for="flex-end">flex-end</label>
+            </div>
+            <div class="col-12 wrap red-box2" target="align-items">
+              <div class="cube" style="height: 120px;">1</div>
+              <div class="cube">2</div>
+              <div class="cube" style="height: 130px;">3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row text-center item mx-1 my-3">
+            <h3 class="col-12">flex-direction</h3>
+            <div class="col-3">
+              <input type="radio" name="flex-direction" sValue="row" id="row" checked />
+              <label for="row">row</label>
+            </div>
+            <div class="col-3">
+              <input type="radio" name="flex-direction" sValue="row-reverse" id="row-reverse" />
+              <label for="row-reverse">row-reverse</label>
+            </div>
+            <div class="col-3">
+              <input type="radio" name="flex-direction" sValue="column" id="column" />
+              <label for="column">column</label>
+            </div>
+            <div class="col-3">
+              <input type="radio" name="flex-direction" sValue="column-reverse" id="column-reverse" />
+              <label for="column-reverse">column-reverse</label>
+            </div>
+            <div class="col-12 wrap red-box2" target="flex-direction">
+              <div class="cube">1</div>
+              <div class="cube">2</div>
+              <div class="cube">3</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row text-center item mx-1 my-3">
+            <h3 class="col-12">flex-wrap</h3>
+            <div class="col-4">
+              <input type="radio" name="flex-wrap" sValue="wrap" id="wrap" checked />
+              <label for="wrap">wrap</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="flex-wrap" sValue="wrap-reverse" id="wrap-reverse" />
+              <label for="wrap-reverse">wrap-reverse</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="flex-wrap" sValue="nowrap" id="nowrap" />
+              <label for="nowrap">nowrap</label>
+            </div>
+            <div class="col-12 wrap red-box2" target="flex-wrap">
+              <div class="cube">1</div>
+              <div class="cube">2</div>
+              <div class="cube">3</div>
+              <div class="cube">4</div>
+              <div class="cube">5</div>
+              <div class="cube">6</div>
+              <div class="cube">7</div>
+              <div class="cube">8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="title-blank">
+      <h1>Center/Middle</h1>
+      <h2>
+        <span class="red-box1">Red box</span> is a regular <span class="attr-color1">DIV</span> box, and
+        <span class="purple-cube">Purple cube</span> is <span class="attr-color1">display</span> :
+        <span class="attr-color2">inline-block</span>
+      </h2>
+    </div>
+    <section class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="row text-center item mx-1 my-3">
+            <h3 class="col-12">vertical-align</h3>
+            <p class="col-12">vertical-aling attribute only applies on inline items.</p>
+            <div class="col-12 box red-box2" target="center1">
+              <span class="blue-box1">
+                <div class="inline-cube reference">h:200px</div>
+                this is inline text for reference.
+                <div class="inline-cube" style="vertical-align: top;">top</div>
+                <div class="inline-cube" style="vertical-align: text-top;">text-top</div>
+                <div class="inline-cube" style="vertical-align: middle;">middle</div>
+                <div class="inline-cube" style="vertical-align: text-bottom;">text-bottom</div>
+                <div class="inline-cube" style="vertical-align: bottom;">bottom</div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row text-center item mx-1 my-3">
+            <h3 class="col-12">text-align</h3>
+            <div class="col-4">
+              <input type="radio" name="text-align" sValue="left" id="left" checked />
+              <label for="left">left</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="text-align" sValue="center" id="ta-center" />
+              <label for="ta-center">center</label>
+            </div>
+            <div class="col-4">
+              <input type="radio" name="text-align" sValue="right" id="right" />
+              <label for="right">right</label>
+            </div>
+            <div class="col-12 box red-box2" target="text-align" style="text-align: left;">
+              <div class="inline-cube">Hello</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-6 item wrap txt-center">
+			<h3 class="col-12">line-height</h3>
+			<div class="col-12 box red-box2" target="line-height">
+
+			</div>
+		</div> -->
+      </div>
+    </section>
+    <footer>
+      <div class="container py-5">
+        <div class="row text-center">
+          <div class="col-12"><img src="/assets/05_assets/logo.png" alt="" /> Build School</div>
+          <div class="col-12">Copyright © 2012 Unidentified Inc. All rights reserved</div>
+        </div>
+      </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script>
+    window.onload = function () {
+      console.log("ready");
+
+      var input = document.getElementsByTagName("input");
+      for (let index = 0; index < input.length; index++) {
+        const element = input[index];
+        document.addEventListener("click", radioClick);
+      }
+    };
+    function radioClick(e) {
+      var element = e.target;
+      if (element.type == "radio") {
+        var styleAttr = element.name;
+        var wrap = document.querySelector('[target="' + styleAttr + '"]');
+        wrap.setAttribute("style", styleAttr + ":" + element.getAttribute("svalue") + ";");
+      }
+    }
+  </script>
 </html>

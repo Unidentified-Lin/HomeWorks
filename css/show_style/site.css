@@ -1,3 +1,4 @@
+
 body {
 	font-family: "Noto Sans", sans-serif;
 	font-weight: 400;
@@ -20,8 +21,6 @@ footer {
 	background-color: #1e1e1e;
 	color: #eee;
 	text-align: center;
-	padding: 50px 0;
-	margin-top: 20px;
 }
 
 .red-box1 {
@@ -30,6 +29,14 @@ footer {
 .red-box2 {
 	border: 2px solid #e80000;
 	/* border: 2px solid #474747; */
+}
+.blue-box1{
+    border: 1px solid #36e;
+}
+.purple-cube{
+    /* border: 1px solid #525abd; */
+    background-color: #525abd;
+    color: #eee;
 }
 .attr-color1 {
 	color: #36e;
