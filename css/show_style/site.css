@@ -1,4 +1,3 @@
-
 body {
 	font-family: "Noto Sans", sans-serif;
 	font-weight: 400;
@@ -17,12 +16,6 @@ body {
 .title-blank h2 {
 	font-size: 40px;
 }
-footer {
-	background-color: #1e1e1e;
-	color: #eee;
-	text-align: center;
-}
-
 .red-box1 {
 	border: 1px solid #e80000;
 }
