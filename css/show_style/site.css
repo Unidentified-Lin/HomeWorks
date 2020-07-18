@@ -1,3 +1,4 @@
+
 body {
 	font-family: "Noto Sans", sans-serif;
 	font-weight: 400;
@@ -20,8 +21,6 @@ footer {
 	background-color: #1e1e1e;
 	color: #eee;
 	text-align: center;
-	padding: 50px 0;
-	margin-top: 20px;
 }
 
 .red-box1 {
