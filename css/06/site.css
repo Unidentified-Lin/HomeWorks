@@ -1,0 +1,18 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.fz-xl {
+  font-size: 40px;
+}
+.fz-lg {
+  font-size: 30px;
+}
+.fz-md {
+  font-size: 20px;
+}
+.fz-sm {
+  font-size: 13px;
+}
+.fz-xm {
+  font-size: 12px;
+}

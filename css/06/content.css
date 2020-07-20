@@ -1,0 +1,20 @@
+.blank-img {
+  background-image: url("/assets/05_assets/blank_img.jpg");
+  background-position: center;
+  background-repeat: inherit;
+  background-size: cover;
+  width: 100%;
+}
+.blank {
+  padding: 50px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  background-color: rgba(4, 81, 132, 0.9);
+}
+img.ctrl-h {
+  /* width: auto;
+  max-width: 100%; */
+  max-height: 100px;
+  /* margin: 15px 0; */
+}
