@@ -1,19 +1,24 @@
-.navbar-brand img {
-  width: 55px;
-}
 #bsNavbar {
-  position: absolute;
-  width: 100%;
   z-index: 100;
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
-#bsNavbarContent .navbar-nav .nav-link:hover {
-  color: #57bbbf;
+@media screen and (min-width: 992px) {
+  #bsNavbar {
+    justify-content: center;
+  }
 }
 #bsNavbar .nav-link {
   color: #fff;
   font-size: 13px;
+}
+.navbar-brand img {
+  width: 55px;
+}
+#bsNavbarContent {
+  flex-grow: 0;
+}
+#bsNavbarContent .navbar-nav .nav-link:hover {
+  color: #57bbbf;
 }
 .brand-name {
   display: inline-block;

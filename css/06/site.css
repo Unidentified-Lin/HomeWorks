@@ -1,6 +1,9 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
+.ff-Balsamiq {
+	font-family: "Balsamiq Sans", cursive;
+}
 .fz-xl {
   font-size: 40px;
 }
