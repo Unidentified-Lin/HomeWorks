@@ -1,5 +1,10 @@
 .carousel-caption {
-  top: 35%;
+  top: 25%;
+}
+@media screen and (min-width:992px){
+    .carousel-caption{
+        top: 35%;
+    }
 }
 .bg-shadow {
   position: absolute;
@@ -12,8 +17,8 @@
 .op-blue {
   color: #fff;
   background-color: rgba(61, 155, 233, 0.6);
-  padding: 10px 5px;
-  margin: 20px;
+  /* padding: 10px 5px;
+  margin: 20px; */
 }
 a.op-blue:hover {
   color: #fff;
@@ -36,4 +41,22 @@ a.op-blue:hover {
 }
 img.ctrl-h {
   max-height: 100px;
+}
+footer {
+  background-color: #eee;
+  border-top: 5px solid #4e4e4e;
+}
+footer img {
+  max-width: 32px;
+}
+footer ul {
+  padding: 10px 0 10px 2.5em;
+  text-indent: -2.5em;
+  list-style: none;
+}
+.copyright {
+  background-color: #1e1e1e;
+  color: #eee;
+  text-align: center;
+  padding: 20px 0;
 }
