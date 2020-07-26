@@ -80,11 +80,11 @@
 			.spec-summary {
 				background-color: #fafafa;
 			}
-			.total-price {
+			#total-price {
 				font-size: 40px;
 				color: #111;
 			}
-			.tax {
+			#tax {
 				font-size: 14px;
 				color: #888;
 			}
@@ -93,6 +93,17 @@
 			}
 			.like {
 				font-size: 30px;
+			}
+			.selected-title {
+				font-size: 24px;
+				color: #111;
+			}
+			.selected-title small {
+				font-size: 24px;
+				font-weight: bold;
+			}
+			.selected-title sup {
+				font-size: 0.6em;
 			}
 		</style>
 	</head>
@@ -142,185 +153,274 @@
 						<h2 class="mt-4">購買 iPad</h2>
 						<p>購買 iPad 可享免額外付費運送服務。</p>
 						<div class="spec-section py-3">
-							<div class="spec-title font-weight-bold">外觀</div>
-							<div class="spec-select row mb-3">
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="color"
-											value="ipad-gray"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-gray.png" alt="color-gray" />
-											<span>太空灰色</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="color"
-											value="ipad-silver"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-silver.png" alt="color-silver" />
-											<span>銀色</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="color"
-											value="ipad-gold"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-gold.png" alt="color-gold" />
-											<span>金色</span>
-										</div>
-									</div>
-								</div>
+							<div class="collapse multi-collapse-color">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-color"
+								>
+									<span id="selected-title-color" class="selected-title font-weight-bold">Color</span>
+									<span>更改</span>
+								</button>
 							</div>
-						</div>
-						<div class="spec-section py-3">
-							<div class="spec-title font-weight-bold">儲存裝置</div>
-							<div class="spec-select row mb-3">
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="storage"
-											value="32"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<div class="spec-storage font-weight-bold">32<small>GB</small><sup>1</sup></div>
-											<span>NT$10,900 起</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="storage"
-											value="128"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<div class="spec-storage font-weight-bold">128<small>GB</small><sup>1</sup></div>
-											<span>NT$13,900 起</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<a href="#">你需要多少儲存空間？</a>
-						</div>
-						<div class="spec-section py-3">
-							<div class="spec-title font-weight-bold">連線能力</div>
-							<div class="spec-select row mb-3">
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="wifi"
-											value="wifi"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<div class="spec-wifi font-weight-bold">Wi-Fi</div>
-											<span>NT$10,900 起</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-6 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="wifi"
-											value="mobile-network"
-										/>
-										<div
-											class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
-										>
-											<div class="spec-wifi font-weight-bold">Wi-Fi + 行動網路</div>
-											<span>NT$15,400 起</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<a href="#">你需要 Wi-Fi 或 Wi-Fi + 行動網路機型？</a>
-						</div>
-						<div class="spec-section py-3">
-							<div class="spec-title font-weight-bold">讓你的裝置更具個人風格。</div>
-							<div class="spec-select row mb-3">
-								<div class="col-12 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="laser"
-											value="laser"
-										/>
-										<div class="spec-item d-flex justify-content-between align-items-center border rounded p-2">
-											<div class="spec-laser font-weight-bold">
-												加上鐫刻
-												<span class="d-block font-weight-light"
-													>鐫刻你的姓名、縮寫，或是電話號碼。Apple 獨家提供。</span
-												>
+							<div class="collapse multi-collapse-color show">
+								<div class="spec-title font-weight-bold">外觀</div>
+								<div class="spec-select row mb-3">
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="color"
+												value="ipad-gray"
+												color="太空灰色"
+												data-toggle="collapse"
+												data-target=".multi-collapse-color"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-gray.png" alt="color-gray" />
+												<span>太空灰色</span>
 											</div>
-											<div class="spec-laser font-weight-light free">免費</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="color"
+												value="ipad-silver"
+												color="銀色"
+												data-toggle="collapse"
+												data-target=".multi-collapse-color"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<img
+													class="img-fluid img-icon"
+													src="/JS/2020-7-23/assets/color-silver.png"
+													alt="color-silver"
+												/>
+												<span>銀色</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="color"
+												value="ipad-gold"
+												color="金色"
+												data-toggle="collapse"
+												data-target=".multi-collapse-color"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-gold.png" alt="color-gold" />
+												<span>金色</span>
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-12 mt-3">
-									<div class="position-relative h-100">
-										<input
-											class="spec-item-radio position-absolute w-100 h-100"
-											type="radio"
-											name="laser"
-											value="none"
-										/>
-										<div class="spec-item d-flex justify-content-between align-items-center border rounded p-2">
-											<div class="spec-laser font-weight-bold">不加雷射鐫刻訊息</div>
+							</div>
+						</div>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-storage">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-storage"
+								>
+									<span class="selected-title font-weight-bold"
+										><span id="selected-title-storage">Storage</span><small>GB<sup>1</sup></small></span
+									>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-storage show">
+								<div class="spec-title font-weight-bold">儲存裝置</div>
+								<div class="spec-select row mb-3">
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="storage"
+												value="32"
+												price="0"
+												tax="0"
+												data-toggle="collapse"
+												data-target=".multi-collapse-storage"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-storage font-weight-bold">
+													32<small>GB<sup>1</sup></small>
+												</div>
+												<span>NT$10,900 起</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="storage"
+												value="128"
+												price="3000"
+												tax="143"
+												data-toggle="collapse"
+												data-target=".multi-collapse-storage"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-storage font-weight-bold">
+													128<small>GB<sup>1</sup></small>
+												</div>
+												<span>NT$13,900 起</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<a href="#">你需要多少儲存空間？</a>
+							</div>
+						</div>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-wifi">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-wifi"
+								>
+									<span id="selected-title-wifi" class="selected-title font-weight-bold">Wifi</span>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-wifi show">
+								<div class="spec-title font-weight-bold">連線能力</div>
+								<div class="spec-select row mb-3">
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="wifi"
+												value="Wi-Fi"
+												price="0"
+												tax="0"
+												data-toggle="collapse"
+												data-target=".multi-collapse-wifi"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-wifi font-weight-bold">Wi-Fi</div>
+												<span>NT$10,900 起</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="wifi"
+												value="Wi-Fi + 行動網路"
+												price="4500"
+												tax="214"
+												data-toggle="collapse"
+												data-target=".multi-collapse-wifi"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-wifi font-weight-bold">Wi-Fi + 行動網路</div>
+												<span>NT$15,400 起</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<a href="#">你需要 Wi-Fi 或 Wi-Fi + 行動網路機型？</a>
+							</div>
+						</div>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-laser">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-laser"
+								>
+									<span id="selected-title-laser" class="selected-title font-weight-bold">laser</span>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-laser show">
+								<div class="spec-title font-weight-bold">讓你的裝置更具個人風格。</div>
+								<div class="spec-select row mb-3">
+									<div class="col-12 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="laser"
+												value="加上鐫刻"
+												data-toggle="collapse"
+												data-target=".multi-collapse-laser"
+											/>
+											<div class="spec-item d-flex justify-content-between align-items-center border rounded p-2">
+												<div class="spec-laser font-weight-bold">
+													加上鐫刻
+													<span class="d-block font-weight-light"
+														>鐫刻你的姓名、縮寫，或是電話號碼。Apple 獨家提供。</span
+													>
+												</div>
+												<div class="spec-laser font-weight-light free">免費</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="laser"
+												value="不加雷射鐫刻訊息"
+												data-toggle="collapse"
+												data-target=".multi-collapse-laser"
+											/>
+											<div class="spec-item d-flex justify-content-between align-items-center border rounded p-2">
+												<div class="spec-laser font-weight-bold">不加雷射鐫刻訊息</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="spec-summary p-5">
-							<div class="total-price font-weight-bold">
-								NT$10,900
-							</div>
-							<div class="tax">
-								含營業稅和其他法定稅費：約 NT$544。*
+							<div id="total-price" class="font-weight-bold">NT$<span>10,900</span></div>
+							<div id="tax">
+								含營業稅和其他法定稅費：約 NT$<span>544</span>。*
 							</div>
 							<a href="#" class="info">
 								<span class="iconify icon" data-icon="la:info-circle-solid" data-inline="false"></span>
-								最低月付 NT$908，12 個月，0% 利率</a
+								最低月付 NT$<span id="installment">908</span>，12 個月，0% 利率</a
 							>
 							<div class="group-button d-flex align-items-center mt-5">
-								<button class="btn btn-primary flex-grow-1">繼續</button>
-								<a href="#" class="like ml-5"
+								<button class="btn btn-primary flex-grow-1" disabled>繼續</button>
+								<a href="#" class="like ml-3"
 									><span class="iconify" data-icon="bi:suit-heart" data-inline="false"></span
 								></a>
 							</div>
@@ -349,21 +449,59 @@
 		></script>
 		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 		<script>
+			let ipad_spec = {
+				color: "",
+				storage: "",
+				wifi: "",
+				price: {
+					basePrice: 10900,
+					storage: 0,
+					wifi: 0,
+				},
+				tax: {
+					baseTax: 544,
+					storage: 0,
+					wifi: 0,
+				},
+			};
 			let radios = document.querySelectorAll(".spec-item-radio");
-			console.log(radios);
 			radios.forEach((radio) => {
 				radio.addEventListener("change", function (event) {
-					// alert(`${event.constructor.name}事件類型的 ${event.type}事件`);
-					console.log(event.target.value);
 					let $target = event.target;
-					let type = $target.name;
-					if (type == "color") {
+					if ($target.name == "color") {
 						let img = document.getElementById("prod-img");
 						let path = `/JS/2020-7-23/assets/${$target.value}.png`;
 						img.setAttribute("src", path);
+						ipad_spec.color = $target.value;
+
+						let title = document.getElementById("selected-title-color");
+						title.innerText = $target.getAttribute("color");
+					}
+
+					if ($target.name != "color") {
+						let title = document.getElementById(`selected-title-${$target.name}`);
+						title.innerText = $target.value;
+
+						ipad_spec[$target.name] = $target.value;
+						ipad_spec.price[$target.name] = Number($target.getAttribute("price"));
+						ipad_spec.tax[$target.name] = Number($target.getAttribute("tax"));
+						getTotalPrice(ipad_spec);
 					}
 				});
 			});
+
+			function getTotalPrice(spec) {
+				let total = spec.price.basePrice + spec.price.storage + spec.price.wifi;
+				let totalPrice = document.querySelector("#total-price > span");
+				totalPrice.innerText = total.toLocaleString();
+
+				let tax = spec.tax.baseTax + spec.tax.storage + spec.tax.wifi;
+				let totalTax = document.querySelector("#tax > span");
+				totalTax.innerText = tax.toLocaleString();
+
+				let installment = document.getElementById("installment");
+				installment.innerText = Math.floor(total / 12).toLocaleString();
+			}
 		</script>
 	</body>
 </html>
