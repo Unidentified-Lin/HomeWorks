@@ -1,5 +1,5 @@
 .section-donate {
-	background-image: url("/assets/02_assets/asset 15.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 15.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -41,7 +41,7 @@
 	padding: 0 60px;
 }
 .section-count {
-	background-image: url("/assets/02_assets/asset\ 24.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 24.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -56,7 +56,7 @@
 	padding: 90px 0;
 }
 .section-end {
-	background-image: url("/assets/02_assets/asset\ 25.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 25.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -183,7 +183,7 @@
 	font-size: 14px;
 }
 #help-asset1 {
-	background-image: url("/assets/02_assets/asset 16.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 16.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -191,7 +191,7 @@
 	height: 451px;
 }
 #help-asset2 {
-	background-image: url("/assets/02_assets/asset 17.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 17.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -199,7 +199,7 @@
 	height: 451px;
 }
 #help-asset3 {
-	background-image: url("/assets/02_assets/asset 18.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 18.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -207,7 +207,7 @@
 	height: 451px;
 }
 #volunteer-asset3 {
-	background-image: url("/assets/02_assets/asset 19.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 19.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -218,7 +218,7 @@
 	margin-top: 90px;
 }
 #news-asset1 {
-	background-image: url("/assets/02_assets/asset 22.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 22.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -227,7 +227,7 @@
 	padding-top: 40px;
 }
 #news-asset2 {
-	background-image: url("/assets/02_assets/asset 23.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset 23.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -236,7 +236,7 @@
 	padding-top: 40px;
 }
 #ig-asset10 {
-	background-image: url("/assets/02_assets/asset\ 10.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 10.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -244,7 +244,7 @@
 	height: 306.09px;
 }
 #ig-asset11 {
-	background-image: url("/assets/02_assets/asset\ 11.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 11.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -252,7 +252,7 @@
 	height: 306.09px;
 }
 #ig-asset12 {
-	background-image: url("/assets/02_assets/asset\ 12.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 12.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -260,7 +260,7 @@
 	height: 306.09px;
 }
 #ig-asset13 {
-	background-image: url("/assets/02_assets/asset\ 13.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 13.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -298,7 +298,7 @@
 }
 .section-blank {
 	height: 697px;
-	background-image: url("/assets/02_assets/asset\ 21.jpeg");
+	background-image: url("/HTML/assets/02_assets/asset\ 21.jpeg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;

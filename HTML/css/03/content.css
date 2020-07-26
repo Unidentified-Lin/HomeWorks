@@ -1,5 +1,5 @@
 #section-add-to-cart {
-	background-image: url("/assets/03_assets/bg1.jpg");
+	background-image: url("/HTML/assets/03_assets/bg1.jpg");
 	background-position: left;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -127,7 +127,7 @@
 	color: #f0f0f0;
 }
 #section-shop {
-	background-image: url("/assets/03_assets/banners2.jpg");
+	background-image: url("/HTML/assets/03_assets/banners2.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -152,7 +152,7 @@
 	margin: 30px 0;
 }
 #section-blog {
-	background-image: url("/assets/03_assets/bg4.jpg");
+	background-image: url("/HTML/assets/03_assets/bg4.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -197,7 +197,7 @@
 	padding: 50px 0 40px;
 }
 #section-clients {
-	background-image: url("/assets/03_assets/bg5.jpg");
+	background-image: url("/HTML/assets/03_assets/bg5.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -234,7 +234,7 @@
 	flex: 1 0 auto;
 }
 footer {
-	background-image: url("/assets/03_assets/footer-widgets-bg.jpg");
+	background-image: url("/HTML/assets/03_assets/footer-widgets-bg.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

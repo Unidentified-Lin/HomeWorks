@@ -60,7 +60,7 @@ img.ctrl-h {
   text-align: center;
 }
 .section-blank-img {
-  background-image: url("/assets/05_assets/blank_img.jpg");
+  background-image: url("/HTML/assets/05_assets/blank_img.jpg");
   background-position: center;
   background-repeat: inherit;
   background-size: cover;
