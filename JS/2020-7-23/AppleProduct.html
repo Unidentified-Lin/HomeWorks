@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
+
+		<title>Apple</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			a {
+				font-size: 14px;
+			}
+			.prod-content {
+				font-size: 12px;
+			}
+			.prod-content img {
+				max-height: 600px;
+			}
+			.prod-content .icon {
+				font-size: 25px;
+			}
+			.spec-section + .spec-section {
+				border-top: 1px solid #ccc;
+			}
+			.img-icon {
+				width: 32px;
+				height: 32px;
+			}
+			.spec-item {
+				min-height: 6.23529rem;
+			}
+			.spec-item span {
+				font-size: 12px;
+				color: #333;
+			}
+			.spec-item-radio {
+				cursor: pointer;
+				opacity: 0;
+				z-index: 1;
+			}
+			.spec-item-radio:hover + .spec-item {
+				border-color: #888 !important;
+			}
+			.spec-item-radio:checked + .spec-item {
+				border: 2px solid #0070c9 !important;
+			}
+			.spec-storage {
+				font-size: 29px;
+			}
+			.spec-storage small {
+				font-size: 19px;
+			}
+			.spec-storage sup {
+				font-size: 12px;
+			}
+			.spec-wifi {
+				font-size: 17px;
+			}
+			.spec-laser {
+				font-size: 17px;
+			}
+			.spec-laser span {
+				font-size: 12px;
+				color: #333;
+			}
+			.spec-laser.free {
+				color: #333;
+			}
+			.spec-summary {
+				background-color: #fafafa;
+			}
+			#total-price {
+				font-size: 40px;
+				color: #111;
+			}
+			#tax {
+				font-size: 14px;
+				color: #888;
+			}
+			.info .icon {
+				font-size: 17px;
+			}
+			.like {
+				font-size: 30px;
+			}
+			.selected-title {
+				font-size: 24px;
+				color: #111;
+			}
+			.selected-title small {
+				font-size: 24px;
+				font-weight: bold;
+			}
+			.selected-title sup {
+				font-size: 0.6em;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#"></a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">iPad</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-5">
+					<div class="prod-content sticky-top text-center pt-5">
+						<img src="/JS/2020-7-23/assets/ipad_01.jpeg" id="prod-img" class="img-fluid" />
+						<div class="row mt-4">
+							<div class="col-6 d-flex flex-column align-items-center">
+								<span class="iconify icon" data-icon="bi:box-seam" data-inline="false"></span>
+								<span class="d-block mt-2">免額外付費的運送服務</span>
+							</div>
+							<div class="col-6 d-flex flex-column align-items-center">
+								<span class="iconify icon" data-icon="bi:box-seam" data-inline="false"></span>
+								<span class="d-block mt-2">免額外付費輕鬆退貨</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-5 px-4">
+					<div class="spec-content">
+						<h2 class="mt-4">購買 iPad</h2>
+						<p>購買 iPad 可享免額外付費運送服務。</p>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-color">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-color"
+								>
+									<span id="selected-title-color" class="selected-title font-weight-bold">Color</span>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-color show">
+								<div class="spec-title font-weight-bold">外觀</div>
+								<div class="spec-select row mb-3">
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="color"
+												value="ipad-gray"
+												color="太空灰色"
+												data-toggle="collapse"
+												data-target=".multi-collapse-color"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-gray.png" alt="color-gray" />
+												<span>太空灰色</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="color"
+												value="ipad-silver"
+												color="銀色"
+												data-toggle="collapse"
+												data-target=".multi-collapse-color"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<img
+													class="img-fluid img-icon"
+													src="/JS/2020-7-23/assets/color-silver.png"
+													alt="color-silver"
+												/>
+												<span>銀色</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="color"
+												value="ipad-gold"
+												color="金色"
+												data-toggle="collapse"
+												data-target=".multi-collapse-color"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<img class="img-fluid img-icon" src="/JS/2020-7-23/assets/color-gold.png" alt="color-gold" />
+												<span>金色</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-storage">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-storage"
+								>
+									<span class="selected-title font-weight-bold"
+										><span id="selected-title-storage">Storage</span><small>GB<sup>1</sup></small></span
+									>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-storage show">
+								<div class="spec-title font-weight-bold">儲存裝置</div>
+								<div class="spec-select row mb-3">
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="storage"
+												value="32"
+												price="0"
+												tax="0"
+												data-toggle="collapse"
+												data-target=".multi-collapse-storage"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-storage font-weight-bold">
+													32<small>GB<sup>1</sup></small>
+												</div>
+												<span>NT$10,900 起</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="storage"
+												value="128"
+												price="3000"
+												tax="143"
+												data-toggle="collapse"
+												data-target=".multi-collapse-storage"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-storage font-weight-bold">
+													128<small>GB<sup>1</sup></small>
+												</div>
+												<span>NT$13,900 起</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<a href="#">你需要多少儲存空間？</a>
+							</div>
+						</div>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-wifi">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-wifi"
+								>
+									<span id="selected-title-wifi" class="selected-title font-weight-bold">Wifi</span>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-wifi show">
+								<div class="spec-title font-weight-bold">連線能力</div>
+								<div class="spec-select row mb-3">
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="wifi"
+												value="Wi-Fi"
+												price="0"
+												tax="0"
+												data-toggle="collapse"
+												data-target=".multi-collapse-wifi"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-wifi font-weight-bold">Wi-Fi</div>
+												<span>NT$10,900 起</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="wifi"
+												value="Wi-Fi + 行動網路"
+												price="4500"
+												tax="214"
+												data-toggle="collapse"
+												data-target=".multi-collapse-wifi"
+											/>
+											<div
+												class="spec-item d-flex flex-column justify-content-center align-items-center border rounded p-2"
+											>
+												<div class="spec-wifi font-weight-bold">Wi-Fi + 行動網路</div>
+												<span>NT$15,400 起</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<a href="#">你需要 Wi-Fi 或 Wi-Fi + 行動網路機型？</a>
+							</div>
+						</div>
+						<div class="spec-section py-3">
+							<div class="collapse multi-collapse-laser">
+								<button
+									class="btn btn-link d-flex justify-content-between align-items-center text-decoration-none w-100"
+									type="button"
+									data-toggle="collapse"
+									data-target=".multi-collapse-laser"
+								>
+									<span id="selected-title-laser" class="selected-title font-weight-bold">laser</span>
+									<span>更改</span>
+								</button>
+							</div>
+							<div class="collapse multi-collapse-laser show">
+								<div class="spec-title font-weight-bold">讓你的裝置更具個人風格。</div>
+								<div class="spec-select row mb-3">
+									<div class="col-12 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="laser"
+												value="加上鐫刻"
+												data-toggle="collapse"
+												data-target=".multi-collapse-laser"
+											/>
+											<div class="spec-item d-flex justify-content-between align-items-center border rounded p-2">
+												<div class="spec-laser font-weight-bold">
+													加上鐫刻
+													<span class="d-block font-weight-light"
+														>鐫刻你的姓名、縮寫，或是電話號碼。Apple 獨家提供。</span
+													>
+												</div>
+												<div class="spec-laser font-weight-light free">免費</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 mt-3">
+										<div class="position-relative h-100">
+											<input
+												class="spec-item-radio position-absolute w-100 h-100"
+												type="radio"
+												name="laser"
+												value="不加雷射鐫刻訊息"
+												data-toggle="collapse"
+												data-target=".multi-collapse-laser"
+											/>
+											<div class="spec-item d-flex justify-content-between align-items-center border rounded p-2">
+												<div class="spec-laser font-weight-bold">不加雷射鐫刻訊息</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="spec-summary p-5">
+							<div id="total-price" class="font-weight-bold">NT$<span>10,900</span></div>
+							<div id="tax">
+								含營業稅和其他法定稅費：約 NT$<span>544</span>。*
+							</div>
+							<a href="#" class="info">
+								<span class="iconify icon" data-icon="la:info-circle-solid" data-inline="false"></span>
+								最低月付 NT$<span id="installment">908</span>，12 個月，0% 利率</a
+							>
+							<div class="group-button d-flex align-items-center mt-5">
+								<button class="btn btn-primary flex-grow-1" disabled>繼續</button>
+								<a href="#" class="like ml-3"
+									><span class="iconify" data-icon="bi:suit-heart" data-inline="false"></span
+								></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+		<script>
+			let ipad_spec = {
+				color: "",
+				storage: "",
+				wifi: "",
+				price: {
+					basePrice: 10900,
+					storage: 0,
+					wifi: 0,
+				},
+				tax: {
+					baseTax: 544,
+					storage: 0,
+					wifi: 0,
+				},
+			};
+			let radios = document.querySelectorAll(".spec-item-radio");
+			radios.forEach((radio) => {
+				radio.addEventListener("change", function (event) {
+					let $target = event.target;
+					if ($target.name == "color") {
+						let img = document.getElementById("prod-img");
+						let path = `/JS/2020-7-23/assets/${$target.value}.png`;
+						img.setAttribute("src", path);
+						ipad_spec.color = $target.value;
+
+						let title = document.getElementById("selected-title-color");
+						title.innerText = $target.getAttribute("color");
+					}
+
+					if ($target.name != "color") {
+						let title = document.getElementById(`selected-title-${$target.name}`);
+						title.innerText = $target.value;
+
+						ipad_spec[$target.name] = $target.value;
+						ipad_spec.price[$target.name] = Number($target.getAttribute("price"));
+						ipad_spec.tax[$target.name] = Number($target.getAttribute("tax"));
+						getTotalPrice(ipad_spec);
+					}
+				});
+			});
+
+			function getTotalPrice(spec) {
+				let total = spec.price.basePrice + spec.price.storage + spec.price.wifi;
+				let totalPrice = document.querySelector("#total-price > span");
+				totalPrice.innerText = total.toLocaleString();
+
+				let tax = spec.tax.baseTax + spec.tax.storage + spec.tax.wifi;
+				let totalTax = document.querySelector("#tax > span");
+				totalTax.innerText = tax.toLocaleString();
+
+				let installment = document.getElementById("installment");
+				installment.innerText = Math.floor(total / 12).toLocaleString();
+			}
+		</script>
+	</body>
+</html>
