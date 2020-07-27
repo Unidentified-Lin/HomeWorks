@@ -42,10 +42,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="/css_homework.html">CSS Homework</a>
+						<a class="nav-link" data-type="CSS" href="#">CSS Homework</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="/js_homework.html">JS Homework</a>
+					<li class="nav-item">
+						<a class="nav-link" data-type="JS" href="#">JS Homework</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a
@@ -145,8 +145,33 @@
 		></script>
 		<script type="module">
 			import { requestHomework } from "./site/js/workCards.js";
+
+			var navItems;
+			function setActive(item) {
+				navItems.forEach((navItem) => {
+					navItem.classList.remove("active");
+				});
+				item.parentElement.classList.add("active");
+			}
+			function linkEvent() {
+				setActive(this);
+				let type = this.getAttribute("data-type");
+				requestHomework(type);
+			}
+
 			window.onload = function () {
-				requestHomework("JS");
+				navItems = document.querySelectorAll(".nav-item:not(.dropdown-toggle)");
+
+				let urlParams = new URLSearchParams(window.location.search);
+				let type = urlParams.get("type") || "CSS";
+				let theNavLink = document.querySelector(`.nav-link[data-type="${type}"]`);
+				setActive(theNavLink);
+				requestHomework(type);
+
+				var navLinks = document.querySelectorAll(".nav-link:not(.dropdown-toggle)");
+				navLinks.forEach((navLink) => {
+					navLink.addEventListener("click", linkEvent);
+				});
 			};
 		</script>
 	</body>
