@@ -1,22 +1,182 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
 
-    <title>GuessNumber</title>
-  </head>
-  <body>
-      
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+		<title>GuessNumber</title>
+	</head>
+	<body>
+		<div class="container m-auto">
+			<div class="btn-group w-100 mb-3" role="group">
+				<button id="start" type="button" class="btn btn-outline-secondary">Start</button>
+				<button id="reset" type="button" class="btn btn-outline-secondary" disabled>Reset</button>
+				<button id="answer" type="button" class="btn btn-outline-secondary" disabled>Answer</button>
+			</div>
+			<div class="input-group mb-3">
+				<input id="guess-number" type="text" class="form-control" placeholder="Guess 4 numbers" />
+				<div class="input-group-append">
+					<button id="guess" class="btn btn-outline-secondary" type="button" disabled>Guess</button>
+				</div>
+			</div>
+			<ul id="guess-log" class="list-group mb-3"></ul>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			let start = document.getElementById("start");
+			let reset = document.getElementById("reset");
+			let answer = document.getElementById("answer");
+			let guess = document.getElementById("guess");
+			let guess_number = document.getElementById("guess-number");
+			let guess_log = document.getElementById("guess-log");
+
+			start.addEventListener("click", startGame);
+			reset.addEventListener("click", resetGame);
+			answer.addEventListener("click", getAnswer);
+			guess.addEventListener("click", guessNumber);
+
+			var gameNumber;
+			function startGame() {
+				clearLog();
+				guess.disabled = false;
+				reset.disabled = false;
+				answer.disabled = false;
+				gameNumber = getRandomDistinct(9, 4);
+			}
+			function resetGame() {
+				getAnswer();
+				startGame();
+			}
+			function getAnswer() {
+				alert(gameNumber.join(""));
+			}
+			function guessNumber() {
+				let msg = findMatch(guess_number.value);
+				createLog(msg);
+				guess_number.value = "";
+			}
+
+			function findMatch(number) {
+				let span = document.createElement("span");
+				let badge = document.createElement("span");
+				badge.classList.add("badge");
+				badge.classList.add("mr-2");
+				badge.innerText = "0A0B";
+
+				let match = {
+					A: 0,
+					B: 0,
+				};
+				let numArray = number.split("");
+				for (let i = 0; i < numArray.length; i++) {
+					if (numArray[i] == gameNumber[i]) {
+						match.A++;
+					} else {
+						if (gameNumber.some((x) => x == Number(numArray[i]))) {
+							match.B++;
+						}
+					}
+				}
+				badge.innerText = `${match.A}A${match.B}B`;
+				if (match.A == 4) {
+					badge.classList.add("badge-success");
+					guess.disabled = true;
+				} else {
+					badge.classList.add("badge-danger");
+				}
+
+				span.appendChild(badge);
+				span.append(number);
+				return span;
+			}
+
+			function createLog(msg) {
+				let li = document.createElement("li");
+				li.classList.add("list-group-item");
+				li.classList.add("d-flex");
+				li.classList.add("justify-content-between");
+				li.appendChild(msg);
+				li.appendChild(createTimeStamp());
+				guess_log.prepend(li);
+			}
+			function clearLog() {
+				guess_log.innerHTML = "";
+			}
+			function createTimeStamp() {
+				let span = document.createElement("span");
+				span.innerText = new Date().Format("yyyy-MM-dd HH:mm:ss");
+				return span;
+			}
+
+			Date.prototype.Format = function (fmt) {
+				let o = {
+					"M+": this.getMonth() + 1, //月份
+					"d+": this.getDate(), //日
+					"H+": this.getHours(), //小時
+					"m+": this.getMinutes(), //分
+					"s+": this.getSeconds(), //秒
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+					S: this.getMilliseconds(), //毫秒
+				};
+				if (new RegExp("(y+)").test(fmt)) {
+					fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				}
+				for (let k in o)
+					if (new RegExp("(" + k + ")").test(fmt)) {
+						fmt = fmt.replace(RegExp.$1, o[k].toString().padStart(2, "0"));
+					}
+				return fmt;
+			};
+
+			function getRandomRange(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			function getRandom(max) {
+				return getRandomRange(0, max);
+			}
+			function getRandomDistinctRange(min, max, n) {
+				if (n <= 0) {
+					return;
+				}
+				let picked = [];
+				while (picked.length < n) {
+					let random = getRandomRange(min, max);
+					if (picked.some((p) => p == random)) {
+						continue;
+					}
+					picked.push(random);
+				}
+				return picked;
+			}
+			function getRandomDistinct(max, n) {
+				return getRandomDistinctRange(0, max, n);
+			}
+		</script>
+	</body>
 </html>
