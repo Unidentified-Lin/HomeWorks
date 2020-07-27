@@ -26,7 +26,8 @@ function setText(obj, text) {
 }
 function isOnlyCodeTag(str) {
 	var doc = new DOMParser().parseFromString(str, "text/html");
-	return Array.from(doc.body.children).every((node) => node.localName === "code");
+	let validTag = ["code", "strong", "i", "b"];
+	return Array.from(doc.body.children).every((node) => validTag.includes(node.localName));
 }
 function setToggle(toggle, collapse, name) {
 	toggle.href = "#" + name;
@@ -34,6 +35,7 @@ function setToggle(toggle, collapse, name) {
 }
 function appendWorkCards(works) {
 	let accordion = document.getElementById("card-accordion");
+	accordion.innerHTML = "";
 
 	works.forEach((element) => {
 		let template = document.getElementById("card-template");
