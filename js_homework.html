@@ -76,83 +76,7 @@
 			</div>
 		</nav>
 		<div class="container mb-5 flex-grow-1">
-			<div class="row row-cols-1 row-cols-md-3 accordion" id="card-accordion">
-				<div class="col mt-4">
-					<div class="card shadow">
-						<a href="/JS/2020-7-22/CovidTable.html" target="_blank"
-							><img src="/site/assets/screen_covid_table.png" class="card-img-top"
-						/></a>
-						<div class="card-body">
-							<h5 class="card-title">Covid Table</h5>
-							<p class="card-text">
-								Set <code>Object</code> data into <code>table</code> dynamically with JavaScript.
-							</p>
-							<a href="/JS/2020-7-22/CovidTable.html" target="_blank" class="btn btn-primary">Show Page</a>
-							<div class="down">
-								<a href="#covid-table-collapse" data-toggle="collapse" class="d-block">
-									<svg
-										width="1em"
-										height="1em"
-										viewBox="0 0 16 16"
-										class="bi bi-chevron-compact-down"
-										fill="currentColor"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
-										/>
-									</svg>
-								</a>
-							</div>
-						</div>
-						<div id="covid-table-collapse" class="collapse" data-parent="#card-accordion">
-							<div class="card-footer text-center text-muted">
-								since 2020-7-22
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col mt-4">
-					<div class="card shadow">
-						<a href="/JS/2020-7-23/AppleProduct.html" target="_blank"
-							><img src="/site/assets/screen_apple_product.png" class="card-img-top"
-						/></a>
-						<div class="card-body">
-							<h5 class="card-title">Apple Product</h5>
-							<p class="card-text">
-								Draw the apple product spec select section with js function.
-							</p>
-							<a href="/JS/2020-7-23/AppleProduct.html" target="_blank" class="btn btn-primary">Show Page</a>
-							<div class="down">
-								<a href="#apple-product-collapse" data-toggle="collapse" class="d-block">
-									<svg
-										width="1em"
-										height="1em"
-										viewBox="0 0 16 16"
-										class="bi bi-chevron-compact-down"
-										fill="currentColor"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
-										/>
-									</svg>
-								</a>
-							</div>
-						</div>
-						<div id="apple-product-collapse" class="collapse" data-parent="#card-accordion">
-							<div class="card-footer text-center text-muted">
-								since 2020-7-23
-								<a href="https://www.apple.com/tw/shop/buy-ipad/ipad-10-2" target="_blank" class="btn btn-link"
-									>Referance Page</a
-								>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="row row-cols-1 row-cols-md-3 accordion" id="card-accordion"></div>
 		</div>
 		<footer>
 			<div class="container py-5">
@@ -162,6 +86,46 @@
 				</div>
 			</div>
 		</footer>
+
+		<template id="card-template">
+			<div class="col mt-4">
+				<div class="card shadow">
+					<a href="" target="_blank" class="card-link">
+						<img src="" class="card-img-top" />
+					</a>
+					<div class="card-body">
+						<h5 class="card-title">card-title</h5>
+						<p class="card-text">
+							Description.
+						</p>
+						<a href="" target="_blank" class="btn btn-primary card-link">Show Page</a>
+						<div class="down">
+							<a href="#work-collapse" data-toggle="collapse" class="d-block">
+								<svg
+									width="1em"
+									height="1em"
+									viewBox="0 0 16 16"
+									class="bi bi-chevron-compact-down"
+									fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
+									/>
+								</svg>
+							</a>
+						</div>
+					</div>
+					<div id="work-collapse" class="collapse" data-parent="#card-accordion">
+						<div class="card-footer text-center text-muted">
+							since <span class="since-date">2020-7-23</span>
+							<a href="" target="_blank" class="btn btn-link reference-link">Referance Page</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</template>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script
@@ -179,5 +143,88 @@
 			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 			crossorigin="anonymous"
 		></script>
+		<script>
+			var xhr = new XMLHttpRequest();
+			const url = "https://raw.githubusercontent.com/Unidentified-Lin/FileStorage/master/homework.json";
+			function requestHomework(type) {
+				xhr.onload = function () {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						let resp = this.responseText;
+						let works = JSON.parse(this.responseText)[type];
+						appendWorkCards(works);
+					} else {
+						document.getElementById("msg").innerHTML = "發生錯誤，HTTP response代碼：" + xhr.status;
+					}
+				};
+				xhr.open("GET", url);
+				xhr.send();
+			}
+			window.onload = function () {
+				requestHomework("JS");
+			};
+		</script>
+		<script>
+			function setLinks(objs, link) {
+				if (objs instanceof NodeList) {
+					objs.forEach((obj) => {
+						setLink(obj, link);
+					});
+				} else if (objs instanceof Node) {
+					setLink(objs, link);
+				}
+			}
+			function setLink(obj, link) {
+				if (link == "none") {
+					obj.style.display = "none";
+				} else {
+					obj.href = link;
+				}
+			}
+			function setSrc(img, path) {
+				img.src = path;
+			}
+			function setText(obj, text) {
+				if (isOnlyCodeTag(text)) {
+					obj.innerHTML = text;
+				} else {
+					obj.innerText = text;
+				}
+			}
+			function isOnlyCodeTag(str) {
+				var doc = new DOMParser().parseFromString(str, "text/html");
+				return Array.from(doc.body.children).every((node) => node.localName === "code");
+			}
+			function setToggle(toggle, collapse, name) {
+				toggle.href = "#" + name;
+				collapse.id = name;
+			}
+			function appendWorkCards(works) {
+				let accordion = document.getElementById("card-accordion");
+
+				works.forEach((element) => {
+					let template = document.getElementById("card-template");
+					let cloneCard = template.content.cloneNode(true);
+
+					let links = cloneCard.querySelectorAll(".card-link");
+					let img = cloneCard.querySelector("img");
+					let title = cloneCard.querySelector(".card-title");
+					let description = cloneCard.querySelector(".card-text");
+					let toggle = cloneCard.querySelector('[data-toggle="collapse"]');
+					let collapse = cloneCard.querySelector(".collapse");
+					let since_date = cloneCard.querySelector(".since-date");
+					let reference_link = cloneCard.querySelector(".reference-link");
+
+					setLinks(links, element.link);
+					setSrc(img, element.imgPath);
+					setText(title, element.title);
+					setText(description, element.description);
+					setToggle(toggle, collapse, element.collapse_name);
+					setText(since_date, element.since);
+					setLinks(reference_link, element.reference_link);
+
+					accordion.appendChild(cloneCard);
+				});
+			}
+		</script>
 	</body>
 </html>
