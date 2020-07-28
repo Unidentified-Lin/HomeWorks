@@ -13,13 +13,12 @@
       crossorigin="anonymous"
     />
 
-    <title>Clock</title>
+    <title>GuessNumber</title>
     <link rel="icon" href="/site/assets/avatar.png" type="image/x-icon">
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/site/css/clock/clock.css" />
     <link rel="stylesheet" href="/site/css/site.css" />
     <link rel="stylesheet" href="/site/css/commom.css" />
   </head>
@@ -46,10 +45,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/homework.html?type=CSS">CSS Homework</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="/homework.html?type=JS">JS Homework</a>
           </li>
-          <li class="nav-item dropdown active">
+          <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -77,12 +76,19 @@
         </a>
       </div>
     </nav>
-    <div class="time flex-grow-1">
-      <div class="clock">
-        <div class="hour"><div class="hr" id="hr"></div></div>
-        <div class="min"><div class="mn" id="mn"></div></div>
-        <div class="sec"><div class="sc" id="sc"></div></div>
-      </div>
+    <div class="container py-5 flex-grow-1">
+        <div class="btn-group w-100 mb-3" role="group">
+            <button id="start" type="button" class="btn btn-outline-secondary">Start</button>
+            <button id="reset" type="button" class="btn btn-outline-secondary" disabled>Reset</button>
+            <button id="answer" type="button" class="btn btn-outline-secondary" disabled>Answer</button>
+        </div>
+        <div class="input-group mb-3">
+            <input id="guess-number" type="text" class="form-control" placeholder="Guess 4 numbers" />
+            <div class="input-group-append">
+                <button id="guess" class="btn btn-outline-secondary" type="button" disabled>Guess</button>
+            </div>
+        </div>
+        <ul id="guess-log" class="list-group mb-3"></ul>
     </div>
     <footer>
       <div class="container py-5">
@@ -109,6 +115,6 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
-    <script src="/site/js/clock/clock.js"></script>
+    <script src="./js/guess_number.js"></script>
   </body>
 </html>
