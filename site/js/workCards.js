@@ -1,13 +1,16 @@
-function setLinks(objs, link) {
+function setLinks(objs, _link) {
 	if (objs instanceof NodeList) {
 		objs.forEach((obj) => {
-			setLink(obj, link);
+			setLink(obj, _link);
 		});
 	} else if (objs instanceof Node) {
-		setLink(objs, link);
+		setLink(objs, _link);
 	}
 }
-function setLink(obj, link) {
+function setLink(obj, _link) {
+	let link = _link.link;
+	let target = _link.target;
+	obj.target = target;
 	if (link == "none") {
 		obj.style.display = "none";
 	} else {
@@ -50,7 +53,7 @@ function appendWorkCards(works) {
 		let since_date = cloneCard.querySelector(".since-date");
 		let reference_link = cloneCard.querySelector(".reference-link");
 
-		setLinks(links, element.link);
+		setLinks(links, element.work_link);
 		setSrc(img, element.imgPath);
 		setText(title, element.title);
 		setText(description, element.description);
