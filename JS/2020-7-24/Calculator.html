@@ -1,21 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
 
-    <title>Calculator</title>
-  </head>
-  <body>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+		<title>Calculator</title>
+		<link rel="icon" href="/site/assets/avatar.png" type="image/x-icon" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/site/css/site.css" />
+		<link rel="stylesheet" href="/site/css/commom.css" />
+		<style>
+			#calDisplay {
+				font-size: 35px;
+			}
+			table,
+			td {
+				border: 5px solid transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="/index.html">
+				<img src="/site/assets/avatar.jpeg" class="d-inline-block rounded-circle mr-2" alt="" loading="lazy" />
+				Unidentified</a
+			>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/homework.html?type=CSS">CSS Homework</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/homework.html?type=JS">JS Homework</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							SideWorks
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/clock.html">Clock</a>
+							<a class="dropdown-item" href="/ShowStyle.html">ShowStyle</a>
+						</div>
+					</li>
+				</ul>
+				<a href="https://github.com/Unidentified-Lin/HomeWorks" class="icon" target="_blank">
+					<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/20svg">
+						<title>GitHub icon</title>
+						<path
+							d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+						/>
+					</svg>
+				</a>
+			</div>
+		</nav>
+		<div class="container py-5 flex-grow-1">
+			<div class="card">
+				<div class="card-body">
+					<div class="row no-gutters">
+						<div class="col-12 p-2">
+							<div id="display" class="border border-secondary rounded-lg p-2">
+								<p id="expDisplay" class="text-muted text-right"></p>
+								<input id="calDisplay" type="text" class="form-control text-right border-0" value="0" />
+							</div>
+						</div>
+						<!-- <div class="col">
+							<table class="w-100">
+								<tbody>
+									<tr>
+										<td><button type="button" class="btn btn-secondary w-100">Rad</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">Deg</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">x!</button></td>
+									</tr>
+									<tr>
+										<td><button type="button" class="btn btn-secondary w-100">Inv</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">sin</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">In</button></td>
+									</tr>
+									<tr>
+										<td><button type="button" class="btn btn-secondary w-100">π</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">cos</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">log</button></td>
+									</tr>
+									<tr>
+										<td><button type="button" class="btn btn-secondary w-100">e</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">tan</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">√</button></td>
+									</tr>
+									<tr>
+										<td><button type="button" class="btn btn-secondary w-100">Ans</button></td>
+										<td><button type="button" class="btn btn-secondary w-100">EXP</button></td>
+										<td>
+											<button type="button" class="btn btn-secondary w-100">x<sup>y</sup></button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> -->
+						<div class="col-12">
+							<div class="row no-gutters">
+								<div class="col-md-3 p-1">
+									<button type="button" class="btn btn-secondary w-100 func" id="random">Random</button>
+								</div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-secondary w-100 operand">%</button></div>
+								<div class="col-md-3 p-1">
+									<button type="button" class="btn btn-secondary w-100 func" id="clear">C</button>
+								</div>
+								<div class="col-md-3 p-1">
+									<button type="button" class="btn btn-secondary w-100 func" id="back">
+										<span class="iconify" data-icon="fa-solid:backspace" data-inline="false"></span>
+									</button>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">7</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">8</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">9</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-secondary w-100 operand">÷</button></div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">4</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">5</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">6</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-secondary w-100 operand">×</button></div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">1</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">2</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">3</button></div>
+								<div class="col-md-3 p-1">
+									<button type="button" class="btn btn-secondary w-100 operand">－</button>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">0</button></div>
+								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">.</button></div>
+								<div class="col-md-3 p-1">
+									<button type="button" class="btn btn-primary w-100 func" id="calc">=</button>
+								</div>
+								<div class="col-md-3 p-1">
+									<button type="button" class="btn btn-secondary w-100 operand">＋</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container py-5">
+				<div class="row text-center">
+					<div class="col-12"><img src="/site/assets/bs-logo.png" alt="" /> Build School</div>
+					<div class="col-12">Copyright © 2020 Unidentified Inc. All rights reserved</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+		<script>
+			var isCalculate = false;
+			var isCalRandom = false;
+			window.onload = function () {
+				let btns = document.querySelectorAll("button:not(.func)");
+				btns.forEach((btn) => {
+					btn.addEventListener("click", normalClick);
+				});
+
+				let calc = document.getElementById("calc");
+				calc.addEventListener("click", calculate);
+
+				let back = document.getElementById("back");
+				back.addEventListener("click", removeBack);
+				let clear = document.getElementById("clear");
+				clear.addEventListener("click", clearCalDisplay);
+				let random = document.getElementById("random");
+				random.addEventListener("click", getCalRandom);
+
+				var expDisplay = document.getElementById("expDisplay");
+				var calDisplay = document.getElementById("calDisplay");
+			};
+
+			function normalClick() {
+				if (isCalculate) {
+					calDisplay.value = "0";
+					isCalculate = false;
+				}
+				calDisplay.value += this.innerText;
+				calDisplay.value = checkCalDisplay(calDisplay.value);
+			}
+			function removeBack() {
+				if (isCalculate) {
+					calDisplay.value = "0";
+					isCalculate = false;
+				} else {
+					let val = calDisplay.value;
+					calDisplay.value = val.substr(0, val.length - 1);
+				}
+			}
+
+			function calculate() {
+				if (isCalRandom) {
+					if (!expDisplay.innerText.includes("Random")) {
+						expDisplay.innerText = calDisplay.value;
+					}
+					calDisplay.value = getRandom(expDisplay.innerText.substr(7));
+				} else {
+					let val = calDisplay.value;
+					expDisplay.innerText = val + "=";
+					val = val.replace("＋", "+");
+					val = val.replace("－", "-");
+					val = val.replace("×", "*");
+					val = val.replace("÷", "/");
+					val = val.replace("%", "*0.01");
+					calDisplay.value = strip(eval(val));
+				}
+				isCalculate = true;
+			}
+
+			function clearCalDisplay() {
+				expDisplay.innerText = "";
+				calDisplay.value = "0";
+				isCalculate = false;
+				isCalRandom = false;
+			}
+
+			function checkCalDisplay(value) {
+				//trim leading 0
+				value = value.replace(/^0+(?=\d)/, "");
+				//replace operand (or duplicate %)
+				let preDupReg = /[×,÷]+－[%,＋,－,×,÷]+/;
+				if (preDupReg.test(value)) {
+					let matchValue = value.match(preDupReg)[0].substr(0, 2);
+					value = value.replace(preDupReg, matchValue);
+				}
+				let dupReg = /([×,÷]+[%,＋,×,÷]|[＋,－,.]+[%,＋,－,×,÷]|%{2,}|\.{2,})$/;
+				if (dupReg.test(value)) {
+					let matchValue = value.match(dupReg)[0];
+					let replactValue = matchValue.substr(matchValue.length - 1, 1);
+					value = value.replace(dupReg, replactValue);
+				}
+				//ex: 12×.3 => 12×0.3
+				let operandDotReg = /[＋,－,×,÷]\.\d+/;
+				if (operandDotReg.test(value)) {
+					let matchValue = value.match(operandDotReg)[0].replace(".", "0.");
+					value = value.replace(operandDotReg, matchValue);
+				}
+				//random
+				if (isCalRandom) {
+					let randomReg = /[^\d]+$/;
+					if (randomReg.test(value)) {
+						let matchValue = value.match(randomReg)[0];
+						value = value.substr(0, value.length - matchValue.length);
+					}
+				}
+				return value;
+			}
+
+			function strip(num, precision = 12) {
+				return +parseFloat(num.toPrecision(precision));
+			}
+
+			function getCalRandom() {
+				isCalRandom = true;
+				calDisplay.value = "Random:";
+			}
+
+			function getRandomRange(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			function getRandom(max) {
+				return getRandomRange(0, max);
+			}
+		</script>
+	</body>
 </html>
