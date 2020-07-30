@@ -25,9 +25,8 @@
 			#calDisplay {
 				font-size: 35px;
 			}
-			table,
-			td {
-				border: 5px solid transparent;
+			button {
+				min-height: 60px;
 			}
 		</style>
 	</head>
@@ -86,91 +85,101 @@
 			</div>
 		</nav>
 		<div class="container py-5 flex-grow-1">
-			<div class="card">
-				<div class="card-body">
-					<div class="row no-gutters">
-						<div class="col-12 p-2">
-							<div id="display" class="border border-secondary rounded-lg p-2">
-								<p id="expDisplay" class="text-muted text-right"></p>
-								<input id="calDisplay" type="text" class="form-control text-right border-0" value="0" />
-							</div>
-						</div>
-						<!-- <div class="col">
-							<table class="w-100">
-								<tbody>
-									<tr>
-										<td><button type="button" class="btn btn-secondary w-100">Rad</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">Deg</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">x!</button></td>
-									</tr>
-									<tr>
-										<td><button type="button" class="btn btn-secondary w-100">Inv</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">sin</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">In</button></td>
-									</tr>
-									<tr>
-										<td><button type="button" class="btn btn-secondary w-100">π</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">cos</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">log</button></td>
-									</tr>
-									<tr>
-										<td><button type="button" class="btn btn-secondary w-100">e</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">tan</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">√</button></td>
-									</tr>
-									<tr>
-										<td><button type="button" class="btn btn-secondary w-100">Ans</button></td>
-										<td><button type="button" class="btn btn-secondary w-100">EXP</button></td>
-										<td>
-											<button type="button" class="btn btn-secondary w-100">x<sup>y</sup></button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div> -->
-						<div class="col-12">
+			<div class="row">
+				<div class="col-8 m-auto">
+					<div class="card">
+						<div class="card-body">
 							<div class="row no-gutters">
-								<div class="col-md-3 p-1">
-									<button type="button" class="btn btn-secondary w-100 func" id="random">Random</button>
+								<div class="col-12 p-2">
+									<div id="display" class="border border-secondary rounded-lg p-2">
+										<p id="expDisplay" class="text-muted text-right"></p>
+										<input id="calDisplay" type="text" class="form-control text-right border-0" value="0" />
+									</div>
 								</div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-secondary w-100 operand">%</button></div>
-								<div class="col-md-3 p-1">
-									<button type="button" class="btn btn-secondary w-100 func" id="clear">C</button>
-								</div>
-								<div class="col-md-3 p-1">
-									<button type="button" class="btn btn-secondary w-100 func" id="back">
-										<span class="iconify" data-icon="fa-solid:backspace" data-inline="false"></span>
-									</button>
-								</div>
-							</div>
-							<div class="row no-gutters">
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">7</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">8</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">9</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-secondary w-100 operand">÷</button></div>
-							</div>
-							<div class="row no-gutters">
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">4</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">5</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">6</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-secondary w-100 operand">×</button></div>
-							</div>
-							<div class="row no-gutters">
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">1</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">2</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">3</button></div>
-								<div class="col-md-3 p-1">
-									<button type="button" class="btn btn-secondary w-100 operand">－</button>
-								</div>
-							</div>
-							<div class="row no-gutters">
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">0</button></div>
-								<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">.</button></div>
-								<div class="col-md-3 p-1">
-									<button type="button" class="btn btn-primary w-100 func" id="calc">=</button>
-								</div>
-								<div class="col-md-3 p-1">
-									<button type="button" class="btn btn-secondary w-100 operand">＋</button>
+								<!-- <div class="col">
+          							<table class="w-100">
+          								<tbody>
+          									<tr>
+          										<td><button type="button" class="btn btn-secondary w-100">Rad</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">Deg</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">x!</button></td>
+          									</tr>
+          									<tr>
+          										<td><button type="button" class="btn btn-secondary w-100">Inv</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">sin</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">In</button></td>
+          									</tr>
+          									<tr>
+          										<td><button type="button" class="btn btn-secondary w-100">π</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">cos</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">log</button></td>
+          									</tr>
+          									<tr>
+          										<td><button type="button" class="btn btn-secondary w-100">e</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">tan</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">√</button></td>
+          									</tr>
+          									<tr>
+          										<td><button type="button" class="btn btn-secondary w-100">Ans</button></td>
+          										<td><button type="button" class="btn btn-secondary w-100">EXP</button></td>
+          										<td>
+          											<button type="button" class="btn btn-secondary w-100">x<sup>y</sup></button>
+          										</td>
+          									</tr>
+          								</tbody>
+          							</table>
+          						</div> -->
+								<div class="col-12">
+									<div class="row no-gutters">
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 func" id="random">Random</button>
+										</div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 operand">%</button>
+										</div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 func" id="clear">C</button>
+										</div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 func" id="back">
+												<span class="iconify" data-icon="fa-solid:backspace" data-inline="false"></span>
+											</button>
+										</div>
+									</div>
+									<div class="row no-gutters">
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">7</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">8</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">9</button></div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 operand">÷</button>
+										</div>
+									</div>
+									<div class="row no-gutters">
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">4</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">5</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">6</button></div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 operand">×</button>
+										</div>
+									</div>
+									<div class="row no-gutters">
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">1</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">2</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">3</button></div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 operand">－</button>
+										</div>
+									</div>
+									<div class="row no-gutters">
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">0</button></div>
+										<div class="col-md-3 p-1"><button type="button" class="btn btn-light w-100">.</button></div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-primary w-100 func" id="calc">=</button>
+										</div>
+										<div class="col-md-3 p-1">
+											<button type="button" class="btn btn-secondary w-100 operand">＋</button>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -225,6 +234,10 @@
 
 				var expDisplay = document.getElementById("expDisplay");
 				var calDisplay = document.getElementById("calDisplay");
+				calDisplay.addEventListener("input", function () {
+					//event only from keyboard.
+					calDisplay.value = checkCalDisplay(calDisplay.value);
+				});
 			};
 
 			function normalClick() {
@@ -272,6 +285,9 @@
 			}
 
 			function checkCalDisplay(value) {
+				//remove invalid char
+				let validReg = /[^\d,%,＋,×,÷,.]/;
+				value = value.replace(validReg, "");
 				//trim leading 0
 				value = value.replace(/^0+(?=\d)/, "");
 				//replace operand (or duplicate %)
