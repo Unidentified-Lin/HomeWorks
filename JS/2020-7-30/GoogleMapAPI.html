@@ -157,11 +157,11 @@
 						map.setCenter(myLatLng);
 					}
 					function showError() {
-						console.log("無法取得你的地理位置。");
+						console.error("Unable to locate your location.");
 					}
 					navigator.geolocation.getCurrentPosition(showPosition, showError);
 				} else {
-					console.log("你的裝置不支援定位功能。");
+					console.error("Geolocation not supported.");
 				}
 			}
 			function getGeocodeLatLng(geocoder, address) {
