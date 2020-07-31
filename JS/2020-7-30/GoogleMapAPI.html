@@ -2,34 +2,96 @@
 <html>
 	<head>
 		<title>Mask Map</title>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3-kFPPfrudPskxlcu4sHsykFAjMrJFg&callback=initMap&libraries=&v=weekly&region=TW"
-			defer
-		></script>
-		<style>
-			/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-			#map {
-				height: 100%;
-			}
-
-			/* Optional: Makes the sample page fill the window. */
-			html,
-			body {
-				height: 100%;
-				margin: 0;
-				padding: 0;
-			}
-		</style>
+		<link rel="stylesheet" href="./css/site.css" />
 	</head>
 	<body>
 		<div id="map"></div>
 		<!-- <script src="./uni_fetch.js"></script> -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script src="./js/markerclustererplus-5.0.4.min.js"></script>
+		<!-- <script src="https://unpkg.com/@google/markerclustererplus@5.0.4/dist/markerclustererplus.min.js"></script> -->
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3-kFPPfrudPskxlcu4sHsykFAjMrJFg&callback=initMap&libraries=&v=weekly&region=TW"
+			defer
+		></script>
 		<script>
 			const maskUrl = "https://maskmap.azurewebsites.net/api/mask/getmaskstock";
-			let basePath = "./assets/mask-";
+			let basePath = "./assets/mask-quantity-";
+			let clusterIconStyle = [
+				{
+					width: 30,
+					height: 30,
+					className: "custom-clustericon-1",
+				},
+				{
+					width: 40,
+					height: 40,
+					className: "custom-clustericon-2",
+				},
+				{
+					width: 50,
+					height: 50,
+					className: "custom-clustericon-3",
+				},
+				{
+					width: 60,
+					height: 60,
+					className: "custom-clustericon-4",
+				},
+			];
+			var googleMap;
+			function initMap() {
+				const geocoder = new google.maps.Geocoder();
+
+				googleMap = new google.maps.Map(document.getElementById("map"), { zoom: 12 });
+				setUserLocation(googleMap, true);
+				// const address = "台北市大安區忠孝東路三段Build School樓之1";
+				// setAddressCenter(geocoder, googleMap, address);
+			}
+
 			window.onload = function () {
+				// loadJSON();
+				loadJSON_Cluster();
+			};
+
+			function loadJSON_Cluster() {
+				let infowindow = new google.maps.InfoWindow();
+				googleMap.data.loadGeoJson(maskUrl, null, function (features) {
+					let markers = features.map((feature) => {
+						let name = feature.getProperty("name");
+						let masksLeft = feature.getProperty("masksLeft");
+						let childMasksLeft = feature.getProperty("childMasksLeft");
+						let iconPath = basePath + maskLevel(masksLeft, childMasksLeft);
+
+						let marker = new google.maps.Marker({
+							position: feature.getGeometry().get(0),
+							title: `成人：${masksLeft} 小孩：${childMasksLeft}`,
+							icon: iconPath,
+							custom_name: name,
+							custom_masksLeft: masksLeft,
+							custom_childMasksLeft: childMasksLeft,
+						});
+
+						marker.addListener("click", function () {
+							let name = marker.custom_name;
+							let masksLeft = marker.custom_masksLeft;
+							let childMasksLeft = marker.custom_childMasksLeft;
+							infowindow.setContent(genInfoContent(name, masksLeft, childMasksLeft));
+							infowindow.open(googleMap, marker);
+						});
+						return marker;
+					});
+
+					let markerClusterOptions = {
+						gridSize: 80,
+						styles: clusterIconStyle,
+						clusterClass: "custom-clustericon",
+					};
+					let markerCluster = new MarkerClusterer(googleMap, markers, markerClusterOptions);
+					googleMap.data.setMap(null);
+				});
+			}
+			function loadJSON() {
 				googleMap.data.loadGeoJson(maskUrl);
 				googleMap.data.setStyle(function (feature) {
 					let name = feature.getProperty("name");
@@ -50,21 +112,25 @@
 					let childMasksLeft = feature.getProperty("childMasksLeft");
 					infowindow.setContent(genInfoContent(name, masksLeft, childMasksLeft));
 					infowindow.setPosition(event.latLng);
-					infowindow.setOptions({ pixelOffset: new google.maps.Size(0, -34) });
 					infowindow.open(googleMap);
 				});
-			};
+			}
 			function maskLevel(masks, childMasks) {
-				// let total = masks + childMasks;
-				let total = masks;
+				let name = "";
 
-				if (total == 0) {
-					return "red.png";
-				} else if (total <= 60) {
-					return "yellow.png";
+				if (masks == 0) {
+					name += "0";
 				} else {
-					return "green.png";
+					name += Math.min(3, parseInt(masks / 100) + 1).toString();
 				}
+				if (childMasks == 0) {
+					name += "0";
+				} else {
+					name += Math.min(3, parseInt(childMasks / 100) + 1).toString();
+				}
+
+				name += ".svg";
+				return name;
 			}
 			function genInfoContent(name, masks, childMasks) {
 				return (
@@ -74,17 +140,29 @@
 					"</div>"
 				);
 			}
-
-			var googleMap;
-			function initMap() {
-				const geocoder = new google.maps.Geocoder();
-
-				googleMap = new google.maps.Map(document.getElementById("map"), { zoom: 18 });
-				const address = "台北市大安區忠孝東路三段Build School樓之1";
-				setAddressCenter(geocoder, googleMap, address);
-			}
 		</script>
 		<script>
+			function setUserLocation(map, setMarker = false) {
+				if (navigator.geolocation) {
+					function showPosition(position) {
+						var myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+						if (setMarker) {
+							var marker = new google.maps.Marker({
+								position: myLatLng,
+								map: map,
+								icon: "./assets/head-side-mask.svg",
+							});
+						}
+						map.setCenter(myLatLng);
+					}
+					function showError() {
+						console.log("無法取得你的地理位置。");
+					}
+					navigator.geolocation.getCurrentPosition(showPosition, showError);
+				} else {
+					console.log("你的裝置不支援定位功能。");
+				}
+			}
 			function getGeocodeLatLng(geocoder, address) {
 				return new Promise(function (resolve, reject) {
 					geocoder.geocode({ address: address }, (results, status) => {
