@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" />
 		<title>Mask Map</title>
-		<link rel="icon" href="./assets/favicon.ico" type="image/x-icon"/>
+		<link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="./css/site.css" />
 	</head>
 	<body>
@@ -44,10 +44,10 @@
 			var googleMap;
 			function initMap() {
 				const geocoder = new google.maps.Geocoder();
+				const address = "台北市大安區忠孝東路三段Build School樓之1";
 
-				googleMap = new google.maps.Map(document.getElementById("map"), { zoom: 12 });
-				setUserLocation(googleMap, true);
-				// const address = "台北市大安區忠孝東路三段Build School樓之1";
+				googleMap = new google.maps.Map(document.getElementById("map"), { zoom: 13 });
+				setUserLocation(geocoder, googleMap, address, true);
 				// setAddressCenter(geocoder, googleMap, address);
 			}
 
@@ -144,25 +144,36 @@
 			}
 		</script>
 		<script>
-			function setUserLocation(map, setMarker = false) {
+			function setUserLocation(geocoder, map, address, setMarker = false) {
 				if (navigator.geolocation) {
+					let icon = "./assets/head-side-mask.svg";
 					function showPosition(position) {
 						var myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
 						if (setMarker) {
 							var marker = new google.maps.Marker({
 								position: myLatLng,
 								map: map,
-								icon: "./assets/head-side-mask.svg",
+								icon: icon,
 							});
 						}
 						map.setCenter(myLatLng);
 					}
 					function showError() {
 						console.error("Unable to locate your location.");
+						if (setMarker) {
+							pinAddressMark(geocoder, map, address, icon);
+						} else {
+							setAddressCenter(geocoder, map, address);
+						}
 					}
 					navigator.geolocation.getCurrentPosition(showPosition, showError);
 				} else {
 					console.error("Geolocation not supported.");
+					if (setMarker) {
+						pinAddressMark(geocoder, map, address, icon);
+					} else {
+						setAddressCenter(geocoder, map, address);
+					}
 				}
 			}
 			function getGeocodeLatLng(geocoder, address) {
@@ -187,13 +198,14 @@
 					}
 				);
 			}
-			function pinAddressMark(geocoder, resultsMap, address) {
+			function pinAddressMark(geocoder, resultsMap, address, icon) {
 				getGeocodeLatLng(geocoder, address).then(
 					function (location) {
 						resultsMap.setCenter(location);
 						new google.maps.Marker({
 							map: resultsMap,
 							position: location,
+							icon: icon,
 						});
 					},
 					function (status) {
