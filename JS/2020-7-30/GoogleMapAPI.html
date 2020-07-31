@@ -2,11 +2,7 @@
 <html>
 	<head>
 		<title>Mask Map</title>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3-kFPPfrudPskxlcu4sHsykFAjMrJFg&callback=initMap&libraries=&v=weekly&region=TW"
-			defer
-		></script>
+
 		<style>
 			/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -21,15 +17,143 @@
 				margin: 0;
 				padding: 0;
 			}
+			.custom-clustericon {
+				background: var(--cluster-color);
+				color: #fff;
+				border-radius: 100%;
+				font-weight: bold;
+				font-size: 15px;
+				display: flex;
+				align-items: center;
+			}
+
+			.custom-clustericon::before,
+			.custom-clustericon::after {
+				content: "";
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+
+				transform: translate(-50%, -50%);
+				top: 50%;
+				left: 50%;
+				background: var(--cluster-color);
+				opacity: 0.2;
+				border-radius: 100%;
+			}
+
+			.custom-clustericon::before {
+				padding: 7px;
+			}
+
+			.custom-clustericon::after {
+				padding: 14px;
+			}
+
+			.custom-clustericon-1 {
+				--cluster-color: #00a2d3;
+			}
+
+			.custom-clustericon-2 {
+				--cluster-color: #ff9b00;
+			}
+
+			.custom-clustericon-3 {
+				--cluster-color: #ff6969;
+			}
+			.custom-clustericon-4 {
+				--cluster-color: #ff3939;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="map"></div>
 		<!-- <script src="./uni_fetch.js"></script> -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script src="./js/markerclustererplus.min.js"></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3-kFPPfrudPskxlcu4sHsykFAjMrJFg&callback=initMap&libraries=&v=weekly&region=TW"
+			defer
+		></script>
 		<script>
 			const maskUrl = "https://maskmap.azurewebsites.net/api/mask/getmaskstock";
 			let basePath = "./assets/mask-";
+			var googleMap;
+			function initMap() {
+				const geocoder = new google.maps.Geocoder();
+
+				googleMap = new google.maps.Map(document.getElementById("map"), { zoom: 12 });
+				const address = "台北市大安區忠孝東路三段Build School樓之1";
+				setAddressCenter(geocoder, googleMap, address);
+			}
+
 			window.onload = function () {
+				// loadJSON1();
+				loadJSON_Cluster();
+			};
+
+			function loadJSON_Cluster() {
+				let infowindow = new google.maps.InfoWindow();
+				googleMap.data.loadGeoJson(maskUrl, null, function (features) {
+					let markers = features.map((feature) => {
+						let name = feature.getProperty("name");
+						let masksLeft = feature.getProperty("masksLeft");
+						let childMasksLeft = feature.getProperty("childMasksLeft");
+						let iconPath = basePath + maskLevel(masksLeft, childMasksLeft);
+
+						let marker = new google.maps.Marker({
+							position: feature.getGeometry().get(0),
+							title: `成人：${masksLeft} 小孩：${childMasksLeft}`,
+							custom_name: name,
+							custom_masksLeft: masksLeft,
+							custom_childMasksLeft: childMasksLeft,
+						});
+
+						marker.addListener("click", function () {
+							let name = marker.custom_name;
+							let masksLeft = marker.custom_masksLeft;
+							let childMasksLeft = marker.custom_childMasksLeft;
+							infowindow.setContent(genInfoContent(name, masksLeft, childMasksLeft));
+							infowindow.open(googleMap, marker);
+						});
+						return marker;
+					});
+
+					let clusterIconStyle = [
+						{
+							width: 30,
+							height: 30,
+							className: "custom-clustericon-1",
+						},
+						{
+							width: 40,
+							height: 40,
+							className: "custom-clustericon-2",
+						},
+						{
+							width: 50,
+							height: 50,
+							className: "custom-clustericon-3",
+						},
+						{
+							width: 60,
+							height: 60,
+							className: "custom-clustericon-4",
+						},
+					];
+					let markerClusterOptions = {
+						gridSize: 80,
+						// imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+						styles: clusterIconStyle,
+						clusterClass: "custom-clustericon",
+					};
+					let markerCluster = new MarkerClusterer(googleMap, markers, markerClusterOptions);
+
+					googleMap.data.setMap(null);
+				});
+			}
+			function loadJSON1() {
 				googleMap.data.loadGeoJson(maskUrl);
 				googleMap.data.setStyle(function (feature) {
 					let name = feature.getProperty("name");
@@ -53,7 +177,7 @@
 					infowindow.setOptions({ pixelOffset: new google.maps.Size(0, -34) });
 					infowindow.open(googleMap);
 				});
-			};
+			}
 			function maskLevel(masks, childMasks) {
 				// let total = masks + childMasks;
 				let total = masks;
@@ -73,15 +197,6 @@
 					`<p>成人口罩：${masks} ｜ 小孩口罩：${childMasks}</p>` +
 					"</div>"
 				);
-			}
-
-			var googleMap;
-			function initMap() {
-				const geocoder = new google.maps.Geocoder();
-
-				googleMap = new google.maps.Map(document.getElementById("map"), { zoom: 18 });
-				const address = "台北市大安區忠孝東路三段Build School樓之1";
-				setAddressCenter(geocoder, googleMap, address);
 			}
 		</script>
 		<script>
