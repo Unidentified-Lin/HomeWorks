@@ -12,7 +12,7 @@
 			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 			crossorigin="anonymous"
 		/>
-		<title>Homework</title>
+		<title>JS Practice</title>
 		<link rel="icon" href="/site/assets/avatar.png" type="image/x-icon" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
@@ -78,16 +78,17 @@
 			</div>
 		</nav>
 		<div class="container mb-5 flex-grow-1">
-			<div class="mume markdown-preview">
-				<h1 class="mume-header" id="js-practice-section">JS Practice Section</h1>
+			<div id="markdown-section" for="html-export">
+				<div class="mume markdown-preview">
+					<h1 class="mume-header" id="js-practice-section">JS Practice Section</h1>
 
-				<h2 class="mume-header" id="multi-loop">Multi Loop</h2>
+					<h2 class="mume-header" id="multi-loop">Multi Loop</h2>
 
-				<pre
-					data-role="codeBlock"
-					data-info="javascript"
-					class="language-javascript"
-				><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<pre
+						data-role="codeBlock"
+						data-info="javascript"
+						class="language-javascript"
+					><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>j<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i <span class="token operator">*</span> j<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -107,14 +108,14 @@
 2x1 = 2
 2x2 = 4
 */</span>
-</pre>
-				<h2 class="mume-header" id="name-ascii">Name ASCII</h2>
+					</pre>
+					<h2 class="mume-header" id="name-ascii">Name ASCII</h2>
 
-				<pre
-					data-role="codeBlock"
-					data-info="javascript"
-					class="language-javascript"
-				><span class="token keyword">function</span> <span class="token function">fullCharCode</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<pre
+						data-role="codeBlock"
+						data-info="javascript"
+						class="language-javascript"
+					><span class="token keyword">function</span> <span class="token function">fullCharCode</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> v <span class="token operator">===</span> <span class="token string">&quot;string&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Empty String...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -139,7 +140,8 @@
 <span class="token function">fullCharCode</span><span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Error input...</span>
 <span class="token function">fullCharCode</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Empty String...</span>
 <span class="token function">fullCharCode</span><span class="token punctuation">(</span><span class="token string">&quot;123&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//[ 49, 50, 51 ]</span>
-</pre>
+					</pre>
+				</div>
 			</div>
 		</div>
 		<footer>
