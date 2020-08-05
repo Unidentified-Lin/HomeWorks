@@ -29,6 +29,25 @@ window.onload = function () {
 
 function setSch() {
 	let schDatas = JSON.parse(localStorage.getItem(saveKey));
+	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
+	caleCell1.forEach((cell) => {
+		let cellDate = cell.getAttribute("date-for");
+		setCellSch(cell, schDatas[cellDate]);
+	});
+}
+function setCellSch(cell, array) {
+	if (!array) {
+		return;
+	}
+
+	array.forEach((schObj) => {
+		let sch = newSch(schObj.schTitle);
+		sch.addEventListener("click", function (e) {
+			console.log("sch click!");
+			e.stopPropagation();
+		});
+		cell.appendChild(sch);
+	});
 }
 
 function newSch(text) {
@@ -87,6 +106,7 @@ function setMonth(shift) {
 	yearMonth.innerText = newMoment.format("yyyy MMMM");
 	genCale(newMoment, caleCell1);
 	genCale(newMoment, caleCell2);
+	setSch();
 }
 
 function genCale(dateObj, cells) {
@@ -137,7 +157,7 @@ function appendNextMonth(config) {
 }
 
 function setCaleCell(cell, yyyyMM, dt, classes) {
-	cell.setAttribute("date-for", `${yyyyMM}-${dt}`);
+	cell.setAttribute("date-for", `${yyyyMM}-${dt.toString().padStart(2, "0")}`);
 	cell.innerHTML = "";
 	let dateSpan = document.createElement("span");
 	classes.forEach((className) => {
