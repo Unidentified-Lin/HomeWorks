@@ -16,7 +16,12 @@ window.onload = function () {
 	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
 	caleCell1.forEach((cell) => {
 		cell.addEventListener("click", function () {
-			setModalDate(this);
+			let modalData = {
+				id: "new",
+				date: this.getAttribute("date-for"),
+				title: "",
+			};
+			setModalData(modalData);
 			$("#schModal").modal("show");
 		});
 	});
@@ -27,8 +32,12 @@ window.onload = function () {
 
 //---------set schedule----------
 
-function setSch() {
+function setSchs() {
+    removeElementsByClass('sch');
 	let schDatas = JSON.parse(localStorage.getItem(saveKey));
+	if (!schDatas) {
+		return;
+	}
 	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
 	caleCell1.forEach((cell) => {
 		let cellDate = cell.getAttribute("date-for");
@@ -43,7 +52,14 @@ function setCellSch(cell, array) {
 	array.forEach((schObj) => {
 		let sch = newSch(schObj.schTitle);
 		sch.addEventListener("click", function (e) {
-			console.log("sch click!");
+			let modalData = {
+				id: schObj.schID,
+				date: this.parentNode.getAttribute("date-for"),
+				title: schObj.schTitle,
+			};
+			setModalData(modalData);
+			$("#schModal").modal("show");
+
 			e.stopPropagation();
 		});
 		cell.appendChild(sch);
@@ -56,18 +72,22 @@ function newSch(text) {
 	sch.innerText = text;
 	return sch;
 }
+
 //---------modal----------
 
 function modalSave() {
 	let modalDate = document.getElementById("modalSchDate");
 	let modalTitle = document.getElementById("modalSchTitle");
+	let schFor = modalDate.getAttribute("data-for");
 	let obj = {
+		schID: schFor,
 		schDate: modalDate.innerText,
 		schTitle: modalTitle.value,
 	};
 	saveLocalStorage(obj);
 	modalClear();
-	$("#schModal").modal("hide");
+    $("#schModal").modal("hide");
+    setSchs();
 }
 
 function modalClear() {
@@ -75,22 +95,43 @@ function modalClear() {
 	document.getElementById("modalSchTitle").value = "";
 }
 
-function setModalDate(target) {
-	let theDate = target.childNodes[0].innerText;
+function setModalData(obj) {
 	let modalDate = document.getElementById("modalSchDate");
-	let yearMonth = document.getElementById("yearMonth");
-	let clickDate = moment(yearMonth.innerText + " " + theDate).format("yyyy-MM-DD");
-	modalDate.innerText = clickDate;
+	let modalTitle = document.getElementById("modalSchTitle");
+
+	modalDate.setAttribute("data-for", obj.id);
+	modalDate.innerText = obj.date;
+	modalTitle.value = obj.title;
 }
 
 //---------local storage----------
 
 function saveLocalStorage(obj) {
 	let savedString = localStorage.getItem(saveKey);
-
+	// debugger;
 	let savedJSON = JSON.parse(savedString) || {};
 	let schArray = savedJSON[obj.schDate] || [];
-	schArray.push({ schTitle: obj.schTitle });
+
+	if (obj.schID == "new") {
+		obj.schID = schArray.length;
+	}
+
+	let isFind = schArray.some((o) => {
+		if (obj.schID == o.schID) {
+			o.schTitle = obj.schTitle;
+			return true;
+		}
+		return false;
+	});
+
+	if (!isFind) {
+		let schObj = {
+			schID: obj.schID,
+			schTitle: obj.schTitle,
+		};
+		schArray.push(schObj);
+	}
+
 	savedJSON[obj.schDate] = schArray;
 
 	localStorage.setItem(saveKey, JSON.stringify(savedJSON));
@@ -106,7 +147,7 @@ function setMonth(shift) {
 	yearMonth.innerText = newMoment.format("yyyy MMMM");
 	genCale(newMoment, caleCell1);
 	genCale(newMoment, caleCell2);
-	setSch();
+	setSchs();
 }
 
 function genCale(dateObj, cells) {
@@ -166,4 +207,11 @@ function setCaleCell(cell, yyyyMM, dt, classes) {
 	dateSpan.innerText = dt;
 
 	cell.appendChild(dateSpan);
+}
+
+function removeElementsByClass(className){
+    var elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
 }
