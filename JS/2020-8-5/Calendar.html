@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
+
+		<title>Calendar</title>
+		<style>
+			.today {
+				background-color: #aecbfa;
+				border-radius: 50%;
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+			}
+			.sch {
+				background-color: blue;
+				color: white;
+				border-radius: 5px;
+				margin: 2px;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row vh-100">
+				<div class="col-12 col-md-3">
+					<div class="input-group my-3">
+						<div class="input-group-prepend">
+							<button id="preMonth" class="btn btn-light" type="button">
+								<span class="iconify" data-icon="uil:angle-left-b" data-inline="false"></span>
+							</button>
+						</div>
+						<span id="yearMonth" class="input-group-text flex-grow-1 justify-content-center">First and last name</span>
+						<div class="input-group-append">
+							<button id="nextMonth" class="btn btn-light" type="button">
+								<span class="iconify" data-icon="uil:angle-right-b" data-inline="false"></span>
+							</button>
+						</div>
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="text-muted text-center">日</th>
+								<th class="text-muted text-center">一</th>
+								<th class="text-muted text-center">二</th>
+								<th class="text-muted text-center">三</th>
+								<th class="text-muted text-center">四</th>
+								<th class="text-muted text-center">五</th>
+								<th class="text-muted text-center">六</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-12 col-md-9 d-flex flex-column">
+					<div class="row no-gutters border-left text-muted">
+						<div class="col text-center border-right">週日</div>
+						<div class="col text-center border-right">週一</div>
+						<div class="col text-center border-right">週二</div>
+						<div class="col text-center border-right">週三</div>
+						<div class="col text-center border-right">週四</div>
+						<div class="col text-center border-right">週五</div>
+						<div class="col text-center border-right">週六</div>
+					</div>
+					<div id="cale-content" class="d-flex flex-column flex-grow-1 no-gutters">
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right p-1 cale-cell"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			Launch demo modal
+		</button>
+
+		<!-- Modal -->
+		<div
+			class="modal fade"
+			id="schModal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="schModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<!-- <h5 class="modal-title" id="schModalLabel">Modal title</h5> -->
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<span id="modalSchDate"></span>
+						<input id="modalSchTitle" type="text" class="form-control" placeholder="新增標題" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="modalSave">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+		<script src="./assets/calendar.js"></script>
+	</body>
+</html>
