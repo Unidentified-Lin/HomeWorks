@@ -28,8 +28,7 @@ window.onload = function () {
 //---------set schedule----------
 
 function setSch() {
-    let schDatas = JSON.parse(localStorage.getItem(saveKey));
-    
+	let schDatas = JSON.parse(localStorage.getItem(saveKey));
 }
 
 function newSch(text) {
@@ -81,51 +80,70 @@ function saveLocalStorage(obj) {
 //---------calendar----------
 
 function setMonth(shift) {
-	// let newMoment = moment().add(shift, "M");
+	let newMoment = moment().add(shift, "M");
 	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
 	let caleCell2 = document.querySelectorAll("table td.cale-cell");
 	let yearMonth = document.getElementById("yearMonth");
-	yearMonth.innerText = moment().add(shift, "M").format("yyyy MMMM");
-	genCale(moment().add(shift, "M"), caleCell1);
-	genCale(moment().add(shift, "M"), caleCell2);
+	yearMonth.innerText = newMoment.format("yyyy MMMM");
+	genCale(newMoment, caleCell1);
+	genCale(newMoment, caleCell2);
 }
 
 function genCale(dateObj, cells) {
+	const yMformat = "yyyy-MM";
 	let config = {
 		cells: cells,
 		currMonthLastDate: dateObj.daysInMonth(),
 		day1OfWeek: dateObj.date(1).day(),
-		lastMonthLastDate: dateObj.subtract(1, "M").daysInMonth(),
-    };
-    console.log(config);
-	appendPreMonth(config.cells, config.lastMonthLastDate, config.day1OfWeek);
-	appendCurrMonth(config.cells, config.day1OfWeek, config.currMonthLastDate);
-	appendNextMonth(config.cells, config.day1OfWeek + config.currMonthLastDate);
+		lastMonthLastDate: moment(dateObj).subtract(1, "M").daysInMonth(),
+		pre_yyyyMM: moment(dateObj).subtract(1, "M").format(yMformat),
+		yyyyMM: dateObj.format(yMformat),
+		next_yyyyMM: moment(dateObj).add(1, "M").format(yMformat),
+	};
+	appendPreMonth(config);
+	appendCurrMonth(config);
+	appendNextMonth(config);
 }
 
-function appendPreMonth(caleCell, monthLastDate, fillCount) {
-	if (fillCount == 0) {
+function appendPreMonth(config) {
+	if (config.day1OfWeek == 0) {
 		return;
 	}
-	for (let i = 0, dt = monthLastDate; i < fillCount; i++, dt++) {
-        const cell = caleCell[i];
-		cell.innerHTML = `<span class="text-muted">${dt}</span>`;
+	for (let i = 0, dt = config.lastMonthLastDate; i < config.day1OfWeek; i++, dt++) {
+		const cell = config.cells[i];
+		let addClasses = ["text-muted"];
+		setCaleCell(cell, config.pre_yyyyMM, dt, addClasses);
 	}
 }
 
-function appendCurrMonth(caleCell, day1OfWeek, monthLastDate) {
+function appendCurrMonth(config) {
 	let todayDate = moment().date();
-	for (let i = day1OfWeek, dt = 1; dt <= monthLastDate; i++, dt++) {
-		const cell = caleCell[i];
-		cell.innerHTML = `<span>${dt}</span>`;
+	for (let i = config.day1OfWeek, dt = 1; dt <= config.currMonthLastDate; i++, dt++) {
+		const cell = config.cells[i];
+		let addClasses = [];
 		if (mon == 0 && todayDate == dt) {
-			cell.childNodes[0].classList.add("today");
+			addClasses.push("today");
 		}
+		setCaleCell(cell, config.yyyyMM, dt, addClasses);
 	}
 }
-function appendNextMonth(caleCell, begPosition) {
-	for (let i = begPosition, dt = 1; i < caleCell.length; i++, dt++) {
-		const cell = caleCell[i];
-		cell.innerHTML = `<span class="text-muted">${dt}</span>`;
+function appendNextMonth(config) {
+	let begPosition = config.day1OfWeek + config.currMonthLastDate;
+	for (let i = begPosition, dt = 1; i < config.cells.length; i++, dt++) {
+		const cell = config.cells[i];
+		let addClasses = ["text-muted"];
+		setCaleCell(cell, config.next_yyyyMM, dt, addClasses);
 	}
+}
+
+function setCaleCell(cell, yyyyMM, dt, classes) {
+	cell.setAttribute("date-for", `${yyyyMM}-${dt}`);
+	cell.innerHTML = "";
+	let dateSpan = document.createElement("span");
+	classes.forEach((className) => {
+		dateSpan.classList.add(className);
+	});
+	dateSpan.innerText = dt;
+
+	cell.appendChild(dateSpan);
 }
