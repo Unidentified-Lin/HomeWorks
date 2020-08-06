@@ -1,20 +1,23 @@
 var mon = 0;
 const saveKey = "schJSON";
+const caleCellsSelector = "#cale-content .cale-cell";
+const miniCaleCellsSelector = "table td.cale-cell";
+
 window.onload = function () {
-	setMonth(mon);
+	setMonthCale(mon);
 
 	let preMonthBtn = document.getElementById("preMonth");
 	let nextMonthBtn = document.getElementById("nextMonth");
 	preMonthBtn.addEventListener("click", function (e) {
 		mon -= 1;
-		setMonth(mon);
+		setMonthCale(mon);
 	});
 	nextMonthBtn.addEventListener("click", function (e) {
 		mon += 1;
-		setMonth(mon);
+		setMonthCale(mon);
 	});
-	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
-	caleCell1.forEach((cell) => {
+	let caleCell = document.querySelectorAll(caleCellsSelector);
+	caleCell.forEach((cell) => {
 		cell.addEventListener("click", function () {
 			let modalData = {
 				id: "new",
@@ -32,14 +35,14 @@ window.onload = function () {
 
 //---------set schedule----------
 
-function setSchs() {
-    removeElementsByClass('sch');
+function setSchsTag() {
+	removeElementsByClass("sch");
 	let schDatas = JSON.parse(localStorage.getItem(saveKey));
 	if (!schDatas) {
 		return;
 	}
-	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
-	caleCell1.forEach((cell) => {
+	let caleCell = document.querySelectorAll(caleCellsSelector);
+	caleCell.forEach((cell) => {
 		let cellDate = cell.getAttribute("date-for");
 		setCellSch(cell, schDatas[cellDate]);
 	});
@@ -86,8 +89,8 @@ function modalSave() {
 	};
 	saveLocalStorage(obj);
 	modalClear();
-    $("#schModal").modal("hide");
-    setSchs();
+	$("#schModal").modal("hide");
+	setSchsTag();
 }
 
 function modalClear() {
@@ -108,7 +111,6 @@ function setModalData(obj) {
 
 function saveLocalStorage(obj) {
 	let savedString = localStorage.getItem(saveKey);
-	// debugger;
 	let savedJSON = JSON.parse(savedString) || {};
 	let schArray = savedJSON[obj.schDate] || [];
 
@@ -139,79 +141,46 @@ function saveLocalStorage(obj) {
 
 //---------calendar----------
 
-function setMonth(shift) {
+function setMonthCale(shift) {
 	let newMoment = moment().add(shift, "M");
-	let caleCell1 = document.querySelectorAll("#cale-content .cale-cell");
-	let caleCell2 = document.querySelectorAll("table td.cale-cell");
+	let caleCell = document.querySelectorAll(caleCellsSelector);
+	let miniCaleCell = document.querySelectorAll(miniCaleCellsSelector);
 	let yearMonth = document.getElementById("yearMonth");
 	yearMonth.innerText = newMoment.format("yyyy MMMM");
-	genCale(newMoment, caleCell1);
-	genCale(newMoment, caleCell2);
-	setSchs();
+	genCale(moment(newMoment), caleCell);
+	genCale(moment(newMoment), miniCaleCell);
+	setSchsTag();
 }
 
 function genCale(dateObj, cells) {
-	const yMformat = "yyyy-MM";
-	let config = {
-		cells: cells,
-		currMonthLastDate: dateObj.daysInMonth(),
-		day1OfWeek: dateObj.date(1).day(),
-		lastMonthLastDate: moment(dateObj).subtract(1, "M").daysInMonth(),
-		pre_yyyyMM: moment(dateObj).subtract(1, "M").format(yMformat),
-		yyyyMM: dateObj.format(yMformat),
-		next_yyyyMM: moment(dateObj).add(1, "M").format(yMformat),
-	};
-	appendPreMonth(config);
-	appendCurrMonth(config);
-	appendNextMonth(config);
-}
-
-function appendPreMonth(config) {
-	if (config.day1OfWeek == 0) {
-		return;
-	}
-	for (let i = 0, dt = config.lastMonthLastDate; i < config.day1OfWeek; i++, dt++) {
-		const cell = config.cells[i];
-		let addClasses = ["text-muted"];
-		setCaleCell(cell, config.pre_yyyyMM, dt, addClasses);
+	let today = moment();
+	let day1OfWeek = dateObj.date(1).day();
+	let theMonth = dateObj.get("month");
+	let theCaleDate = dateObj.subtract(day1OfWeek, "days");
+	for (let i = 0; i < cells.length; i++) {
+		const cell = cells[i];
+		setCaleCell(cell, theCaleDate, theMonth, today);
 	}
 }
-
-function appendCurrMonth(config) {
-	let todayDate = moment().date();
-	for (let i = config.day1OfWeek, dt = 1; dt <= config.currMonthLastDate; i++, dt++) {
-		const cell = config.cells[i];
-		let addClasses = [];
-		if (mon == 0 && todayDate == dt) {
-			addClasses.push("today");
-		}
-		setCaleCell(cell, config.yyyyMM, dt, addClasses);
-	}
-}
-function appendNextMonth(config) {
-	let begPosition = config.day1OfWeek + config.currMonthLastDate;
-	for (let i = begPosition, dt = 1; i < config.cells.length; i++, dt++) {
-		const cell = config.cells[i];
-		let addClasses = ["text-muted"];
-		setCaleCell(cell, config.next_yyyyMM, dt, addClasses);
-	}
-}
-
-function setCaleCell(cell, yyyyMM, dt, classes) {
-	cell.setAttribute("date-for", `${yyyyMM}-${dt.toString().padStart(2, "0")}`);
+function setCaleCell(cell, theCaleDate, theMonth, today) {
+	cell.setAttribute("date-for", theCaleDate.format("yyyy-MM-DD"));
 	cell.innerHTML = "";
 	let dateSpan = document.createElement("span");
-	classes.forEach((className) => {
-		dateSpan.classList.add(className);
-	});
-	dateSpan.innerText = dt;
+	if (theMonth != theCaleDate.get("month")) {
+		dateSpan.classList.add("text-muted");
+	}
+	if (today.isSame(theCaleDate, "day")) {
+		dateSpan.classList.add("today");
+	}
+	dateSpan.innerText = theCaleDate.get("date");
 
 	cell.appendChild(dateSpan);
+	theCaleDate.add(1, "days");
 }
 
-function removeElementsByClass(className){
-    var elements = document.getElementsByClassName(className);
-    while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
-    }
+function removeElementsByClass(className) {
+	var elements = document.getElementsByClassName(className);
+	while (elements.length > 0) {
+		elements[0].parentNode.removeChild(elements[0]);
+	}
 }
