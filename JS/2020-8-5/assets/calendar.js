@@ -4,34 +4,40 @@ const caleCellsSelector = "#cale-content .cale-cell";
 const miniCaleCellsSelector = "table td.cale-cell";
 
 window.onload = function () {
+	//inital set calendar.
 	setMonthCale(mon);
 
+	//set shift calendar event
 	let preMonthBtn = document.getElementById("preMonth");
 	let nextMonthBtn = document.getElementById("nextMonth");
-	preMonthBtn.addEventListener("click", function (e) {
-		mon -= 1;
-		setMonthCale(mon);
-	});
-	nextMonthBtn.addEventListener("click", function (e) {
-		mon += 1;
-		setMonthCale(mon);
-	});
-	let caleCell = document.querySelectorAll(caleCellsSelector);
-	caleCell.forEach((cell) => {
-		cell.addEventListener("click", function () {
-			let modalData = {
-				id: "new",
-				date: this.getAttribute("date-for"),
-				title: "",
-			};
-			setModalData(modalData);
-			$("#schModal").modal("show");
-		});
-	});
+	preMonthBtn.addEventListener("click", moveMonthBack);
+	nextMonthBtn.addEventListener("click", moveMonthNext);
 
+	//set calendar adding schedule tag even.
+	let caleCell = document.querySelectorAll(caleCellsSelector);
+	caleCell.forEach((c) => c.addEventListener("click", modalOpenNew));
+
+	//modal save event
 	let saveBtn = document.getElementById("modalSave");
 	saveBtn.addEventListener("click", modalSave);
 };
+
+//---------move month----------
+
+function moveMonthBack() {
+	mon -= 1;
+	setMonthCale(mon);
+}
+function moveMonthNext() {
+	mon += 1;
+	setMonthCale(mon);
+}
+function setMiniCellEvent() {
+	let miniCaleCellPre = document.querySelectorAll("table td.cale-cell span.text-muted.date-pre");
+	let miniCaleCellNext = document.querySelectorAll("table td.cale-cell span.text-muted.date-next");
+	miniCaleCellPre.forEach((c) => c.addEventListener("click", moveMonthBack));
+	miniCaleCellNext.forEach((c) => c.addEventListener("click", moveMonthNext));
+}
 
 //---------set schedule----------
 
@@ -77,6 +83,16 @@ function newSch(text) {
 }
 
 //---------modal----------
+
+function modalOpenNew() {
+	let modalData = {
+		id: "new",
+		date: this.getAttribute("date-for"),
+		title: "",
+	};
+	setModalData(modalData);
+	$("#schModal").modal("show");
+}
 
 function modalSave() {
 	let modalDate = document.getElementById("modalSchDate");
@@ -150,6 +166,7 @@ function setMonthCale(shift) {
 	genCale(moment(newMoment), caleCell);
 	genCale(moment(newMoment), miniCaleCell);
 	setSchsTag();
+	setMiniCellEvent();
 }
 
 function genCale(dateObj, cells) {
@@ -168,6 +185,11 @@ function setCaleCell(cell, theCaleDate, theMonth, today) {
 	let dateSpan = document.createElement("span");
 	if (theMonth != theCaleDate.get("month")) {
 		dateSpan.classList.add("text-muted");
+		if (theMonth > theCaleDate.get("month")) {
+			dateSpan.classList.add("date-pre");
+		} else {
+			dateSpan.classList.add("date-next");
+		}
 	}
 	if (today.isSame(theCaleDate, "day")) {
 		dateSpan.classList.add("today");
