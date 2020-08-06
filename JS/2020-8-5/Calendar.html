@@ -15,20 +15,30 @@
 
 		<title>Calendar</title>
 		<style>
-			.today {
-				background-color: #aecbfa;
-				border-radius: 50%;
+			.cale-cell > span {
 				display: inline-block;
 				width: 24px;
 				height: 24px;
+				border-radius: 50%;
+				cursor: default;
+			}
+			.cale-cell > span.today {
+				color: #185abc;
+				background-color: #d2e3fc;
+			}
+			.cale-cell > span.today:hover {
+				background-color: #aecbfa;
+			}
+			td.cale-cell > span:hover {
+				background-color: #f1f3f4;
 			}
 			.sch {
 				background-color: blue;
 				color: white;
 				border-radius: 5px;
 				margin: 2px;
-                font-size: 14px;
-                cursor: pointer;
+				font-size: 14px;
+				cursor: pointer;
 			}
 		</style>
 	</head>
