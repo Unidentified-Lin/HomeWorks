@@ -6,7 +6,7 @@ const miniCaleCellsSelector = "td.cale-cell";
 window.onload = function () {
 	//inital set calendar.
 	setMonthCale(mon);
-	setCardData();
+	setEditData();
 
 	//set shift calendar event
 	let preMonthBtn = document.getElementById("preMonth");
@@ -22,13 +22,9 @@ window.onload = function () {
 	let caleCell = document.querySelectorAll(caleCellsSelector);
 	caleCell.forEach((c) => c.addEventListener("click", setModalNew));
 
-	//modal save event
-	let modalSaveBtn = document.getElementById("modalSave");
-	modalSaveBtn.addEventListener("click", modalSave);
-
-	//card save event
-	let cardSaveBtn = document.getElementById("cardSave");
-	cardSaveBtn.addEventListener("click", cardSave);
+	//edits save events
+	let saveBtns = document.querySelectorAll(".saveBtn");
+	saveBtns.forEach((btn) => btn.addEventListener("click", editSave));
 };
 
 //---------move month----------
@@ -81,8 +77,7 @@ function setCellSch(cell, array) {
 	array.forEach((schObj) => {
 		let sch = newSch(schObj.schTitle);
 		sch.addEventListener("click", function (e) {
-			// schClickModalEvent(schObj, this.parentNode.getAttribute("date-for"));
-			schClickCardEvent(schObj, this.parentNode.getAttribute("date-for"));
+			schClickEvent(schObj, this.parentNode.getAttribute("date-for"));
 			e.stopPropagation();
 		});
 		cell.appendChild(sch);
@@ -96,30 +91,20 @@ function newSch(text) {
 	return sch;
 }
 
-function schClickCardEvent(schObj, date) {
+function schClickEvent(schObj, date) {
 	let editContentDate = {
 		id: schObj.schID,
 		date: date,
 		title: schObj.schTitle,
 		memo: schObj.schMemo,
 	};
-	setCardData(editContentDate);
-}
-function schClickModalEvent(schObj, date) {
-	let modalData = {
-		id: schObj.schID,
-		date: date,
-		title: schObj.schTitle,
-		memo: schObj.schMemo,
-	};
-	setModalData(modalData);
-	$("#schModal").modal("show");
+	setEditData(editContentDate);
 }
 
 //---------card----------
 function setCardNew() {
 	setMiniCaleCellActive(this);
-	setCardData({ date: this.parentNode.getAttribute("date-for") });
+	setEditData({ date: this.parentNode.getAttribute("date-for") });
 }
 
 function setMiniCaleCellActive(miniCaleCell) {
@@ -128,65 +113,49 @@ function setMiniCaleCellActive(miniCaleCell) {
 	miniCaleCell.classList.add("mini-active");
 }
 
-function setCardData({ id = "new", date = moment().format("yyyy-MM-DD"), title = "", memo = "" } = {}) {
-	let cardTitle = document.getElementById("editCardTitle");
-	let cardDate = document.getElementById("editCardDate");
-	let cardMemo = document.getElementById("cardMemo");
-
-	cardDate.setAttribute("data-for", id);
-	cardTitle.value = title;
-	cardDate.innerText = date;
-	cardMemo.value = memo;
-}
-function cardSave() {
-	let cardDate = document.getElementById("editCardDate");
-	let cardTitle = document.getElementById("editCardTitle");
-	let cardMemo = document.getElementById("cardMemo");
-	let schFor = cardDate.getAttribute("data-for");
-	let obj = {
-		schID: schFor,
-		schDate: cardDate.innerText,
-		schTitle: cardTitle.value,
-		schMemo: cardMemo.value,
-	};
-	saveLocalStorage(obj);
-	setCardData();
-	setSchsTag();
-}
-
 //---------modal----------
 
 function setModalNew() {
-	setModalData({ date: this.getAttribute("date-for") });
+	setEditData({ date: this.getAttribute("date-for") });
 	$("#schModal").modal("show");
 }
 
-function modalSave() {
-	let modalDate = document.getElementById("modalSchDate");
-	let modalTitle = document.getElementById("modalSchTitle");
-	let modalMemo = document.getElementById("modalMemo");
-	let schFor = modalDate.getAttribute("data-for");
+//---------edit common----------
+
+function editSave() {
+	let target = this.getAttribute("data-target");
+	if (!target) {
+		return;
+	}
+
+	let editDate = document.getElementById(`${target}SchDate`);
+	let editTitle = document.getElementById(`${target}SchTitle`);
+	let editMemo = document.getElementById(`${target}SchMemo`);
+	let schFor = editDate.getAttribute("data-for");
+	if (editTitle.value == "") {
+		return;
+	}
 	let obj = {
 		schID: schFor,
-		schDate: modalDate.innerText,
-		schTitle: modalTitle.value,
-		schMemo: modalMemo.value,
+		schDate: editDate.innerText,
+		schTitle: editTitle.value,
+		schMemo: editMemo.value,
 	};
 	saveLocalStorage(obj);
-	setModalData();
-	$("#schModal").modal("hide");
+	setEditData();
 	setSchsTag();
+	$("#schModal").modal("hide");
 }
-
-function setModalData({ id = "new", date = moment().format("yyyy-MM-DD"), title = "", memo = "" } = {}) {
-	let modalDate = document.getElementById("modalSchDate");
-	let modalTitle = document.getElementById("modalSchTitle");
-	let modalMemo = document.getElementById("modalMemo");
-
-	modalDate.setAttribute("data-for", id);
-	modalTitle.value = title;
-	modalDate.innerText = date;
-	modalMemo.value = memo;
+function setEditData({ id = "new", date = moment().format("yyyy-MM-DD"), title = "", memo = "" } = {}) {
+	["card", "modal"].forEach((target) => {
+		let editDate = document.getElementById(`${target}SchDate`);
+		let editTitle = document.getElementById(`${target}SchTitle`);
+		let editMemo = document.getElementById(`${target}SchMemo`);
+		editDate.setAttribute("data-for", id);
+		editTitle.value = title;
+		editDate.innerText = date;
+		editMemo.value = memo;
+	});
 }
 
 //---------local storage----------

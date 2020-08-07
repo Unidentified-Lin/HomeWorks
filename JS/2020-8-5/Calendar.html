@@ -33,7 +33,7 @@
 				background-color: #f1f3f4;
 			}
 			.cale-cell > span.mini-active:not(.today) {
-				background-color: #D4EFDF;
+				background-color: #d4efdf;
 			}
 			.sch {
 				background-color: blue;
@@ -136,13 +136,11 @@
 							</tr>
 						</tbody>
 					</table>
-					<div id="editCard" class="card">
+					<div class="card">
 						<div class="card-body">
-							<div id="edit-title">
-								<input id="editCardTitle" type="text" class="form-control card-title" placeholder="New event title" />
-								<div id="editCardDate" class="card-subtitle mb-2 text-muted" data-for="new">yyyy-MM-DD</div>
-							</div>
-							<textarea class="form-control" id="cardMemo" placeholder="Schedule memo"></textarea>
+							<input id="cardSchTitle" type="text" class="form-control card-title" placeholder="New event title" />
+							<div id="cardSchDate" class="card-subtitle mb-2 text-muted" data-for="new">yyyy-MM-DD</div>
+							<textarea class="form-control" id="cardSchMemo" placeholder="Schedule memo"></textarea>
 							<!-- <p class="card-text">
 								Some quick example text to build on the card title and make up the bulk of the card's content.
 							</p> -->
@@ -156,7 +154,7 @@
 								>
 									<div class="group">
 										<a href="#" class="card-link">Cancel</a>
-										<button id="cardSave" class="btn btn-link">Save</button>
+										<button class="btn btn-link saveBtn" data-target="card">Save</button>
 									</div>
 									<span class="iconify" data-icon="uil:angle-up" data-inline="false"></span>
 								</div>
@@ -262,11 +260,11 @@
 					<div class="modal-body">
 						<input id="modalSchTitle" type="text" class="form-control mb-2" placeholder="New event title" />
 						<span id="modalSchDate" class="mb-2" data-for="new"></span>
-						<textarea id="modalMemo" class="form-control" placeholder="Schedule memo"></textarea>
+						<textarea id="modalSchMemo" class="form-control" placeholder="Schedule memo"></textarea>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" id="modalSave">Save</button>
+						<button type="button" class="btn btn-primary saveBtn" data-target="modal">Save</button>
 					</div>
 				</div>
 			</div>
