@@ -1,57 +1,77 @@
 var mon = 0;
 const saveKey = "schJSON";
 const caleCellsSelector = "#cale-content .cale-cell";
-const miniCaleCellsSelector = "table td.cale-cell";
+const miniCaleCellsSelector = "td.cale-cell";
 
 window.onload = function () {
 	//inital set calendar.
 	setMonthCale(mon);
+	setCardData();
 
 	//set shift calendar event
 	let preMonthBtn = document.getElementById("preMonth");
 	let nextMonthBtn = document.getElementById("nextMonth");
-	preMonthBtn.addEventListener("click", moveMonthBack);
-	nextMonthBtn.addEventListener("click", moveMonthNext);
+	preMonthBtn.addEventListener("click", function () {
+		moveMonth(false);
+	});
+	nextMonthBtn.addEventListener("click", function () {
+		moveMonth(true);
+	});
 
 	//set calendar adding schedule tag even.
 	let caleCell = document.querySelectorAll(caleCellsSelector);
-	caleCell.forEach((c) => c.addEventListener("click", modalOpenNew));
+	caleCell.forEach((c) => c.addEventListener("click", setModalNew));
 
 	//modal save event
-	let saveBtn = document.getElementById("modalSave");
-	saveBtn.addEventListener("click", modalSave);
+	let modalSaveBtn = document.getElementById("modalSave");
+	modalSaveBtn.addEventListener("click", modalSave);
+
+	//card save event
+	let cardSaveBtn = document.getElementById("cardSave");
+	cardSaveBtn.addEventListener("click", cardSave);
 };
 
 //---------move month----------
 
-function moveMonthBack() {
-	mon -= 1;
+function moveMonth(isNext, date) {
+	mon = isNext ? mon + 1 : mon - 1;
 	setMonthCale(mon);
+	if (date) {
+		let target = document.querySelector(`td.cale-cell[date-for="${date}"] span`);
+		target.click();
+	}
 }
-function moveMonthNext() {
-	mon += 1;
-	setMonthCale(mon);
-}
+
 function setMiniCellEvent() {
-	let miniCaleCellPre = document.querySelectorAll("table td.cale-cell span.text-muted.date-pre");
-	let miniCaleCellNext = document.querySelectorAll("table td.cale-cell span.text-muted.date-next");
-	miniCaleCellPre.forEach((c) => c.addEventListener("click", moveMonthBack));
-	miniCaleCellNext.forEach((c) => c.addEventListener("click", moveMonthNext));
+	let miniCaleCellPre = document.querySelectorAll("td.cale-cell span.text-muted.date-pre");
+	let miniCaleCellNext = document.querySelectorAll("td.cale-cell span.text-muted.date-next");
+	let miniCaleCellCurr = document.querySelectorAll("td.cale-cell span.date-curr");
+	miniCaleCellPre.forEach((c) =>
+		c.addEventListener("click", function () {
+			let date = this.parentNode.getAttribute("date-for");
+			moveMonth(false, date);
+		})
+	);
+	miniCaleCellNext.forEach((c) =>
+		c.addEventListener("click", function () {
+			let date = this.parentNode.getAttribute("date-for");
+			moveMonth(true, date);
+		})
+	);
+	miniCaleCellCurr.forEach((c) => c.addEventListener("click", setCardNew));
 }
 
 //---------set schedule----------
 
 function setSchsTag() {
 	removeElementsByClass("sch");
-	let schDatas = JSON.parse(localStorage.getItem(saveKey));
-	if (!schDatas) {
+	let dataString = localStorage.getItem(saveKey);
+	if (!dataString) {
 		return;
 	}
+	let schDatas = JSON.parse(dataString);
 	let caleCell = document.querySelectorAll(caleCellsSelector);
-	caleCell.forEach((cell) => {
-		let cellDate = cell.getAttribute("date-for");
-		setCellSch(cell, schDatas[cellDate]);
-	});
+	caleCell.forEach((cell) => setCellSch(cell, schDatas[cell.getAttribute("date-for")]));
 }
 function setCellSch(cell, array) {
 	if (!array) {
@@ -61,14 +81,8 @@ function setCellSch(cell, array) {
 	array.forEach((schObj) => {
 		let sch = newSch(schObj.schTitle);
 		sch.addEventListener("click", function (e) {
-			let modalData = {
-				id: schObj.schID,
-				date: this.parentNode.getAttribute("date-for"),
-				title: schObj.schTitle,
-			};
-			setModalData(modalData);
-			$("#schModal").modal("show");
-
+			// schClickModalEvent(schObj, this.parentNode.getAttribute("date-for"));
+			schClickCardEvent(schObj, this.parentNode.getAttribute("date-for"));
 			e.stopPropagation();
 		});
 		cell.appendChild(sch);
@@ -82,80 +96,117 @@ function newSch(text) {
 	return sch;
 }
 
-//---------modal----------
-
-function modalOpenNew() {
+function schClickCardEvent(schObj, date) {
+	let editContentDate = {
+		id: schObj.schID,
+		date: date,
+		title: schObj.schTitle,
+		memo: schObj.schMemo,
+	};
+	setCardData(editContentDate);
+}
+function schClickModalEvent(schObj, date) {
 	let modalData = {
-		id: "new",
-		date: this.getAttribute("date-for"),
-		title: "",
+		id: schObj.schID,
+		date: date,
+		title: schObj.schTitle,
+		memo: schObj.schMemo,
 	};
 	setModalData(modalData);
+	$("#schModal").modal("show");
+}
+
+//---------card----------
+function setCardNew() {
+	setMiniCaleCellActive(this);
+	setCardData({ date: this.parentNode.getAttribute("date-for") });
+}
+
+function setMiniCaleCellActive(miniCaleCell) {
+	let miniActives = document.querySelectorAll(".mini-active");
+	miniActives.forEach((a) => a.classList.remove("mini-active"));
+	miniCaleCell.classList.add("mini-active");
+}
+
+function setCardData({ id = "new", date = moment().format("yyyy-MM-DD"), title = "", memo = "" } = {}) {
+	let cardTitle = document.getElementById("editCardTitle");
+	let cardDate = document.getElementById("editCardDate");
+	let cardMemo = document.getElementById("cardMemo");
+
+	cardDate.setAttribute("data-for", id);
+	cardTitle.value = title;
+	cardDate.innerText = date;
+	cardMemo.value = memo;
+}
+function cardSave() {
+	let cardDate = document.getElementById("editCardDate");
+	let cardTitle = document.getElementById("editCardTitle");
+	let cardMemo = document.getElementById("cardMemo");
+	let schFor = cardDate.getAttribute("data-for");
+	let obj = {
+		schID: schFor,
+		schDate: cardDate.innerText,
+		schTitle: cardTitle.value,
+		schMemo: cardMemo.value,
+	};
+	saveLocalStorage(obj);
+	setCardData();
+	setSchsTag();
+}
+
+//---------modal----------
+
+function setModalNew() {
+	setModalData({ date: this.getAttribute("date-for") });
 	$("#schModal").modal("show");
 }
 
 function modalSave() {
 	let modalDate = document.getElementById("modalSchDate");
 	let modalTitle = document.getElementById("modalSchTitle");
+	let modalMemo = document.getElementById("modalMemo");
 	let schFor = modalDate.getAttribute("data-for");
 	let obj = {
 		schID: schFor,
 		schDate: modalDate.innerText,
 		schTitle: modalTitle.value,
+		schMemo: modalMemo.value,
 	};
 	saveLocalStorage(obj);
-	modalClear();
+	setModalData();
 	$("#schModal").modal("hide");
 	setSchsTag();
 }
 
-function modalClear() {
-	document.getElementById("modalSchDate").innerText = "";
-	document.getElementById("modalSchTitle").value = "";
-}
-
-function setModalData(obj) {
+function setModalData({ id = "new", date = moment().format("yyyy-MM-DD"), title = "", memo = "" } = {}) {
 	let modalDate = document.getElementById("modalSchDate");
 	let modalTitle = document.getElementById("modalSchTitle");
+	let modalMemo = document.getElementById("modalMemo");
 
-	modalDate.setAttribute("data-for", obj.id);
-	modalDate.innerText = obj.date;
-	modalTitle.value = obj.title;
+	modalDate.setAttribute("data-for", id);
+	modalTitle.value = title;
+	modalDate.innerText = date;
+	modalMemo.value = memo;
 }
 
 //---------local storage----------
 
-function saveLocalStorage(obj) {
+function saveLocalStorage({ schDate, ...rest }) {
 	let savedString = localStorage.getItem(saveKey);
 	let savedJSON = JSON.parse(savedString) || {};
-	let schArray = savedJSON[obj.schDate] || [];
+	let schArray = savedJSON[schDate] || [];
 
-	if (obj.schID == "new") {
-		obj.schID = schArray.length;
+	if (rest.schID == "new") {
+		rest.schID = schArray.length;
 	}
 
-	let isFind = schArray.some((o) => {
-		if (obj.schID == o.schID) {
-			o.schTitle = obj.schTitle;
-			return true;
-		}
-		return false;
-	});
-
-	if (!isFind) {
-		let schObj = {
-			schID: obj.schID,
-			schTitle: obj.schTitle,
-		};
-		schArray.push(schObj);
-	}
-
-	savedJSON[obj.schDate] = schArray;
+	schArray[rest.schID] = { ...rest };
+	savedJSON[schDate] = schArray;
 
 	localStorage.setItem(saveKey, JSON.stringify(savedJSON));
 }
 
-//---------calendar----------
+//---------gen calendar----------
 
 function setMonthCale(shift) {
 	let newMoment = moment().add(shift, "M");
@@ -190,6 +241,8 @@ function setCaleCell(cell, theCaleDate, theMonth, today) {
 		} else {
 			dateSpan.classList.add("date-next");
 		}
+	} else {
+		dateSpan.classList.add("date-curr");
 	}
 	if (today.isSame(theCaleDate, "day")) {
 		dateSpan.classList.add("today");
@@ -199,6 +252,8 @@ function setCaleCell(cell, theCaleDate, theMonth, today) {
 	cell.appendChild(dateSpan);
 	theCaleDate.add(1, "days");
 }
+
+//---------common----------
 
 function removeElementsByClass(className) {
 	var elements = document.getElementsByClassName(className);

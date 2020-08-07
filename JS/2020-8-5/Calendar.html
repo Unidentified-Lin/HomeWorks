@@ -32,6 +32,9 @@
 			td.cale-cell > span:hover {
 				background-color: #f1f3f4;
 			}
+			.cale-cell > span.mini-active:not(.today) {
+				background-color: #D4EFDF;
+			}
 			.sch {
 				background-color: blue;
 				color: white;
@@ -39,6 +42,11 @@
 				margin: 2px;
 				font-size: 14px;
 				cursor: pointer;
+			}
+			.expend-line {
+				height: 2px;
+				width: 100%;
+				background-color: #eee;
 			}
 		</style>
 	</head>
@@ -128,6 +136,41 @@
 							</tr>
 						</tbody>
 					</table>
+					<div id="editCard" class="card">
+						<div class="card-body">
+							<div id="edit-title">
+								<input id="editCardTitle" type="text" class="form-control card-title" placeholder="New event title" />
+								<div id="editCardDate" class="card-subtitle mb-2 text-muted" data-for="new">yyyy-MM-DD</div>
+							</div>
+							<textarea class="form-control" id="cardMemo" placeholder="Schedule memo"></textarea>
+							<!-- <p class="card-text">
+								Some quick example text to build on the card title and make up the bulk of the card's content.
+							</p> -->
+							<div id="editAccordion" class="accordion text-center">
+								<div class="expend-line"></div>
+								<div
+									class="editControl collapse text-center mt-3"
+									data-parent="#editAccordion"
+									data-toggle="collapse"
+									data-target=".editControl"
+								>
+									<div class="group">
+										<a href="#" class="card-link">Cancel</a>
+										<button id="cardSave" class="btn btn-link">Save</button>
+									</div>
+									<span class="iconify" data-icon="uil:angle-up" data-inline="false"></span>
+								</div>
+								<div
+									class="editControl collapse show"
+									data-parent="#editAccordion"
+									data-toggle="collapse"
+									data-target=".editControl"
+								>
+									<span class="iconify" data-icon="uil:angle-down" data-inline="false"></span>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="col-12 col-md-9 d-flex flex-column">
 					<div class="row no-gutters border-left text-muted">
@@ -217,8 +260,9 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<span id="modalSchDate" data-for="new"></span>
-						<input id="modalSchTitle" type="text" class="form-control" placeholder="新增標題" />
+						<input id="modalSchTitle" type="text" class="form-control mb-2" placeholder="New event title" />
+						<span id="modalSchDate" class="mb-2" data-for="new"></span>
+						<textarea id="modalMemo" class="form-control" placeholder="Schedule memo"></textarea>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
