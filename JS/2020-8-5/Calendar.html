@@ -15,38 +15,91 @@
 
 		<title>Calendar</title>
 		<style>
+			:root {
+				--primary-color: #aecbfa;
+				--secondary-color: #d2e3fc;
+				--hover-color: #f1f3f4;
+				--active-color: #d4efdf;
+				--primary-text-color: #185abc;
+				--blue-tag-color: #3498db;
+				--green-tag-color: #2ecc71;
+				--yellow-tag-color: #f1c40f;
+				--orange-tag-color: #e67e22;
+				--purple-tag-color: #9b59b6;
+				--red-tag-color: #e74c3c;
+			}
 			.cale-cell > span {
 				display: inline-block;
-				width: 24px;
-				height: 24px;
+				width: 1.5rem;
+				height: 1.5rem;
 				border-radius: 50%;
 				cursor: default;
 			}
 			.cale-cell > span.today {
-				color: #185abc;
-				background-color: #d2e3fc;
+				color: var(--primary-text-color);
+				background-color: var(--secondary-color);
 			}
 			.cale-cell > span.today:hover {
-				background-color: #aecbfa;
+				background-color: var(--primary-color);
 			}
 			td.cale-cell > span:hover {
-				background-color: #f1f3f4;
+				background-color: var(--hover-color);
 			}
 			.cale-cell > span.mini-active:not(.today) {
-				background-color: #d4efdf;
+				background-color: var(--active-color);
 			}
 			.sch {
-				background-color: blue;
+				background-color: var(--blue-tag-color);
 				color: white;
 				border-radius: 5px;
-				margin: 2px;
-				font-size: 14px;
+				margin: 0.25rem;
+				font-size: 1rem;
 				cursor: pointer;
 			}
 			.expend-line {
 				height: 2px;
 				width: 100%;
 				background-color: #eee;
+			}
+			.tag-section {
+				display: flex;
+				justify-content: space-around;
+				margin-bottom: 0.5rem;
+			}
+			.tag-input {
+				display: none;
+			}
+			.tag {
+				width: 1.5rem;
+				height: 1.5rem;
+				border-radius: 50%;
+				opacity: 0.4;
+				transition: 0.8s;
+			}
+			.tag-input:checked + .tag {
+				border: 1px solid var(--primary-text-color);
+				opacity: 1;
+			}
+			.tag:hover {
+				opacity: 0.8;
+			}
+			.tag-blue {
+				background-color: var(--blue-tag-color);
+			}
+			.tag-green {
+				background-color: var(--green-tag-color);
+			}
+			.tag-yellow {
+				background-color: var(--yellow-tag-color);
+			}
+			.tag-orange {
+				background-color: var(--orange-tag-color);
+			}
+			.tag-purple {
+				background-color: var(--purple-tag-color);
+			}
+			.tag-red {
+				background-color: var(--red-tag-color);
 			}
 		</style>
 	</head>
@@ -136,14 +189,25 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="card">
+					<div id="cardSchEditContent" class="card">
 						<div class="card-body">
 							<input id="cardSchTitle" type="text" class="form-control card-title" placeholder="New event title" />
 							<div id="cardSchDate" class="card-subtitle mb-2 text-muted" data-for="new">yyyy-MM-DD</div>
+							<div class="tag-section">
+								<input class="tag-input" type="radio" value="blue" name="cardSchTag" id="cardSchTagBlue" />
+								<label class="tag tag-blue" for="cardSchTagBlue"></label>
+								<input class="tag-input" type="radio" value="green" name="cardSchTag" id="cardSchTagGreen" />
+								<label class="tag tag-green" for="cardSchTagGreen"></label>
+								<input class="tag-input" type="radio" value="yellow" name="cardSchTag" id="cardSchTagYellow" />
+								<label class="tag tag-yellow" for="cardSchTagYellow"></label>
+								<input class="tag-input" type="radio" value="orange" name="cardSchTag" id="cardSchTagOrange" />
+								<label class="tag tag-orange" for="cardSchTagOrange"></label>
+								<input class="tag-input" type="radio" value="purple" name="cardSchTag" id="cardSchTagPurple" />
+								<label class="tag tag-purple" for="cardSchTagPurple"></label>
+								<input class="tag-input" type="radio" value="red" name="cardSchTag" id="cardSchTagRed" />
+								<label class="tag tag-red" for="cardSchTagRed"></label>
+							</div>
 							<textarea class="form-control" id="cardSchMemo" placeholder="Schedule memo"></textarea>
-							<!-- <p class="card-text">
-								Some quick example text to build on the card title and make up the bulk of the card's content.
-							</p> -->
 							<div id="editAccordion" class="accordion text-center">
 								<div class="expend-line"></div>
 								<div
@@ -153,7 +217,7 @@
 									data-target=".editControl"
 								>
 									<div class="group">
-										<a href="#" class="card-link">Cancel</a>
+										<button class="btn btn-link" data-target="card">Cancel</button>
 										<button class="btn btn-link saveBtn" data-target="card">Save</button>
 									</div>
 									<span class="iconify" data-icon="uil:angle-up" data-inline="false"></span>
@@ -260,6 +324,20 @@
 					<div class="modal-body">
 						<input id="modalSchTitle" type="text" class="form-control mb-2" placeholder="New event title" />
 						<span id="modalSchDate" class="mb-2" data-for="new"></span>
+						<div class="tag-section">
+							<input class="tag-input" type="radio" value="blue" name="modalSchTag" id="modalSchTagBlue" />
+							<label class="tag tag-blue" for="modalSchTagBlue"></label>
+							<input class="tag-input" type="radio" value="green" name="modalSchTag" id="modalSchTagGreen" />
+							<label class="tag tag-green" for="modalSchTagGreen"></label>
+							<input class="tag-input" type="radio" value="yellow" name="modalSchTag" id="modalSchTagYellow" />
+							<label class="tag tag-yellow" for="modalSchTagYellow"></label>
+							<input class="tag-input" type="radio" value="orange" name="modalSchTag" id="modalSchTagOrange" />
+							<label class="tag tag-orange" for="modalSchTagOrange"></label>
+							<input class="tag-input" type="radio" value="purple" name="modalSchTag" id="modalSchTagPurple" />
+							<label class="tag tag-purple" for="modalSchTagPurple"></label>
+							<input class="tag-input" type="radio" value="red" name="modalSchTag" id="modalSchTagRed" />
+							<label class="tag tag-red" for="modalSchTagRed"></label>
+						</div>
 						<textarea id="modalSchMemo" class="form-control" placeholder="Schedule memo"></textarea>
 					</div>
 					<div class="modal-footer">

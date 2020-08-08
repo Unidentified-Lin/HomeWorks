@@ -25,6 +25,15 @@ window.onload = function () {
 	//edits save events
 	let saveBtns = document.querySelectorAll(".saveBtn");
 	saveBtns.forEach((btn) => btn.addEventListener("click", editSave));
+
+	//edit border color change
+	let tagsRadio = document.querySelectorAll("#cardSchEditContent .tag-input");
+	tagsRadio.forEach((t) =>
+		t.addEventListener("click", function () {
+			let card = document.getElementById("cardSchEditContent");
+			card.style.borderColor = `var(--${this.value}-tag-color)`;
+		})
+	);
 };
 
 //---------move month----------
@@ -75,7 +84,7 @@ function setCellSch(cell, array) {
 	}
 
 	array.forEach((schObj) => {
-		let sch = newSch(schObj.schTitle);
+		let sch = newSch(schObj);
 		sch.addEventListener("click", function (e) {
 			schClickEvent(schObj, this.parentNode.getAttribute("date-for"));
 			e.stopPropagation();
@@ -84,10 +93,11 @@ function setCellSch(cell, array) {
 	});
 }
 
-function newSch(text) {
+function newSch({ schTitle, schTag = "blue" } = {}) {
 	let sch = document.createElement("div");
 	sch.classList.add("sch");
-	sch.innerText = text;
+	sch.classList.add(`tag-${schTag}`);
+	sch.innerText = schTitle;
 	return sch;
 }
 
@@ -131,6 +141,7 @@ function editSave() {
 	let editDate = document.getElementById(`${target}SchDate`);
 	let editTitle = document.getElementById(`${target}SchTitle`);
 	let editMemo = document.getElementById(`${target}SchMemo`);
+	let editTag = document.querySelector(`.tag-input[name='${target}SchTag']:checked`);
 	let schFor = editDate.getAttribute("data-for");
 	if (editTitle.value == "") {
 		return;
@@ -138,6 +149,7 @@ function editSave() {
 	let obj = {
 		schID: schFor,
 		schDate: editDate.innerText,
+		schTag: editTag ? editTag.value : "",
 		schTitle: editTitle.value,
 		schMemo: editMemo.value,
 	};
@@ -169,7 +181,7 @@ function saveLocalStorage({ schDate, ...rest }) {
 		rest.schID = schArray.length;
 	}
 
-	schArray[rest.schID] = { ...rest };
+	schArray[rest.schID] = { schDate: schDate, ...rest };
 	savedJSON[schDate] = schArray;
 
 	localStorage.setItem(saveKey, JSON.stringify(savedJSON));
