@@ -1,0 +1,30 @@
+.tag-section {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 0.5rem;
+}
+.tag-input {
+	display: none;
+	&:checked {
+		+ .tag {
+			border: 1px solid $primary-text-color;
+			opacity: 1;
+		}
+	}
+}
+.tag {
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	opacity: 0.4;
+	transition: 0.8s;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+@each $color, $value in $tag-colors {
+	.tag-#{$color} {
+		background-color: $value;
+	}
+}

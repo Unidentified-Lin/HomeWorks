@@ -1,0 +1,31 @@
+td.cale-cell span:hover {
+	background-color: $hover-color;
+}
+.cale-cell > {
+	span {
+		display: inline-block;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		cursor: default;
+		&.today {
+			color: $primary-text-color;
+			background-color: $secondary-color;
+			&:hover {
+				background-color: $primary-color;
+			}
+		}
+		&.mini-active:not(.today) {
+			background-color: $active-color;
+		}
+	}
+}
+
+.sch {
+	background-color: $blue-tag-color;
+	color: white;
+	border-radius: 5px;
+	margin: 0.25rem;
+	font-size: 1rem;
+	cursor: pointer;
+}
