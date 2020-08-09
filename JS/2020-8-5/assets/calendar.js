@@ -7,6 +7,7 @@ window.onload = function () {
 	//inital set calendar.
 	setMonthCale(mon);
 	setEditData();
+	genTags();
 
 	//set shift calendar event
 	let preMonthBtn = document.getElementById("preMonth");
@@ -232,6 +233,33 @@ function setCaleCell(cell, theCaleDate, theMonth, today) {
 
 	cell.appendChild(dateSpan);
 	theCaleDate.add(1, "days");
+}
+
+//---------gen tags----------
+
+function genTags() {
+	let tagSections = document.querySelectorAll(".tag-section");
+	let colors = ["blue", "green", "yellow", "orange", "purple", "red"];
+	tagSections.forEach((x) => {
+		colors.forEach((c) => x.appendChild(genTag(c)));
+	});
+}
+function genTag(color) {
+	let label = document.createElement("label");
+
+	let input = document.createElement("input");
+	input.classList.add("tag-input");
+	input.type = "radio";
+	input.value = color;
+	input.name = "cardSchTag";
+
+	let div = document.createElement("div");
+	div.classList.add("tag");
+	div.classList.add(`tag-${color}`);
+
+	label.appendChild(input);
+	label.appendChild(div);
+	return label;
 }
 
 //---------common----------
