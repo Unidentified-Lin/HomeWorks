@@ -5,6 +5,7 @@ $toggleBorr: $toggleHeight / 2;
 .toggle {
 	height: $toggleWidth / 2;
 	border-radius: $toggleBorr;
+	margin: 0;
 	display: inline-flex;
 	cursor: pointer;
 	.toggle-input {
@@ -36,7 +37,7 @@ $toggleBorr: $toggleHeight / 2;
 		height: $toggleHeight;
 		border-radius: $toggleBorr;
 		background-color: #ddd;
-		margin: 0 0.5rem;
+		margin-left: 0.5rem;
 		transition: background 0.2s;
 		&::after {
 			content: "";

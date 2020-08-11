@@ -6,8 +6,9 @@ const miniCaleCellsSelector = "td.cale-cell";
 window.onload = function () {
 	//inital set calendar.
 	setMonthCale(mon);
-	setEditData();
 	genTags();
+	initTimeScroll();
+	setEditData();
 
 	//set shift calendar event
 	let preMonthBtn = document.getElementById("preMonth");
@@ -21,7 +22,12 @@ window.onload = function () {
 
 	//set calendar adding schedule tag even.
 	let caleCell = document.querySelectorAll(caleCellsSelector);
-	caleCell.forEach((c) => c.addEventListener("click", setModalNew));
+	caleCell.forEach((c) =>
+		c.addEventListener("click", function () {
+			let date = this.getAttribute("date-for");
+			setCardNew(date, true);
+		})
+	);
 
 	//edits save events
 	let saveBtns = document.querySelectorAll(".saveBtn");
@@ -31,11 +37,183 @@ window.onload = function () {
 	let tagsRadio = document.querySelectorAll("#cardSchEditContent .tag-input");
 	tagsRadio.forEach((t) =>
 		t.addEventListener("click", function () {
-			let card = document.getElementById("cardSchEditContent");
-			card.style.borderColor = `var(--${this.value}-tag-color)`;
+			setCardBorderColor(this.value);
+		})
+	);
+
+	//day toggle event
+	let cardDayToggle = document.getElementById("cardDayToggle");
+	cardDayToggle.addEventListener("change", function () {
+		toggleHHmm(this.checked);
+	});
+
+	let timeEdits = document.querySelectorAll(".time-edit");
+	timeEdits.forEach((timeEdit) =>
+		timeEdit.addEventListener("click", function () {
+			toggleTimeScroll(this.id);
 		})
 	);
 };
+
+function setCardBorderColor(color = "default") {
+	let card = document.getElementById("cardSchEditContent");
+	if (color == "default") {
+		card.style.removeProperty("border-color");
+	} else {
+		card.style.borderColor = `var(--${color}-tag-color)`;
+	}
+}
+
+//---------set time scroll----------
+const yearRange = 51;
+function initTimeScroll() {
+	genScrollTime(
+		"year",
+		[...Array(yearRange).keys()].map((i) =>
+			moment()
+				.add("year", i - (yearRange - 1) / 2)
+				.get("year")
+		)
+	);
+	genScrollTime(
+		"month",
+		[...Array(12).keys()].map((i) => i + 1)
+	);
+	genScrollTime(
+		"date",
+		[...Array(31).keys()].map((i) => i + 1)
+	);
+	genScrollTime("hour", [...Array(24).keys()]);
+	genScrollTime("min", [...Array(60).keys()]);
+
+	initSlick();
+	regiSlickEvent();
+}
+function initSlick() {
+	$(".time-scroll>[class^='scroll-']").slick({
+		arrows: false,
+		centerMode: true,
+		centerPadding: "10px",
+		slidesToShow: 3,
+		focusOnSelect: true,
+		vertical: true,
+		verticalSwiping: true,
+		swipeToSlide: true,
+		waitForAnimate: false,
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: "10px",
+					slidesToShow: 3,
+				},
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: "5px",
+					slidesToShow: 1,
+				},
+			},
+		],
+	});
+}
+function regiSlickEvent() {
+	$("[class^='scroll-']").on("afterChange", function (slick, currentSlide) {
+		// let currentSlideValue = this.querySelector(".slick-center").innerText;
+		let editTargetId = this.getAttribute("data-for");
+		let editTarget = document.getElementById(editTargetId);
+		let scrollDateValues = document.querySelectorAll(`[data-for="${editTargetId}"] .slick-current.slick-center`);
+		switch (scrollDateValues.length) {
+			case 2:
+				let HH = scrollDateValues[0].innerText;
+				let mm = scrollDateValues[1].innerText;
+				editTarget.innerText = `${HH}:${mm}`;
+
+				break;
+			case 3:
+				let year = scrollDateValues[0].innerText;
+				let month = scrollDateValues[1].innerText;
+				let date = scrollDateValues[2].innerText;
+				editTarget.innerText = `${year}-${month}-${date}`;
+				break;
+
+			default:
+				break;
+		}
+	});
+}
+function genScrollTime(type, array) {
+	let typeScrolls = document.querySelectorAll(`.scroll-${type}`);
+	typeScrolls.forEach((typeScroll) => {
+		array.forEach((item) => {
+			let div = document.createElement("div");
+			div.classList.add("time-pick");
+			div.innerText = item.toString().padStart(2, "0");
+			typeScroll.appendChild(div);
+		});
+	});
+}
+function toggleHHmm(isHide) {
+	let HHmms = document.querySelectorAll(".HHmm");
+	HHmms.forEach((HHmm) => {
+		// HHmm.classList.toggle('show');
+		isHide ? HHmm.classList.remove("show") : HHmm.classList.add("show");
+		// HHmm.style.display = isHide ? "none" : "block";
+	});
+	setScrollPosition();
+}
+function toggleTimeScroll(target) {
+	let scroll = document.querySelector(`.time-scroll[data-for="${target}"]`);
+	scroll.classList.toggle("show");
+	setScrollPosition();
+}
+function setScrollTime(target, dateValue, timeValue) {
+	setScrollDate(target, dateValue);
+	setScrollHHmm(target, timeValue);
+}
+function setScrollDate(target, dateValue = moment().format("yyyy-MM-DD")) {
+	let reg = /^(19|2\d)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
+	if (reg.test(dateValue)) {
+		let vals = dateValue.split("-");
+		setScroll(target, "year", vals[0]);
+		setScroll(target, "month", vals[1]);
+		setScroll(target, "date", vals[2]);
+	}
+}
+function setScrollHHmm(target, timeValue = moment().format("HH:mm")) {
+	let reg = /^((0|1)\d|2[0-3]):([0-5]\d)$/;
+	if (reg.test(timeValue)) {
+		let vals = timeValue.split(":");
+		setScroll(target, "hour", vals[0]);
+		setScroll(target, "min", vals[1]);
+	}
+}
+function setScroll(target, type, value) {
+	let val = Number(value);
+	switch (type) {
+		case "year":
+			val = val - moment().get("year") + (yearRange - 1) / 2;
+			(yearRange - 1) / 2;
+			break;
+		case "month":
+		case "date":
+			val = val - 1;
+			break;
+		default:
+			break;
+	}
+	$(`.time-scroll[data-for="${target}"] .scroll-${type}`).slick("slickGoTo", val);
+}
+function setScrollPosition() {
+	//needs to set postion twice
+	$(".time-scroll>[class^='scroll-']").slick("setPosition");
+	$(".time-scroll>[class^='scroll-']").slick("setPosition");
+}
 
 //---------move month----------
 
@@ -64,7 +242,12 @@ function setMiniCellEvent() {
 			moveMonth(true, date);
 		})
 	);
-	miniCaleCellCurr.forEach((c) => c.addEventListener("click", setCardNew));
+	miniCaleCellCurr.forEach((c) =>
+		c.addEventListener("click", function () {
+			let date = this.parentNode.getAttribute("date-for");
+			setCardNew(date, true);
+		})
+	);
 }
 
 //---------set schedule----------
@@ -87,7 +270,7 @@ function setCellSch(cell, array) {
 	array.forEach((schObj) => {
 		let sch = newSch(schObj);
 		sch.addEventListener("click", function (e) {
-			schClickEvent(schObj, this.parentNode.getAttribute("date-for"));
+			setEditData(schObj);
 			e.stopPropagation();
 		});
 		cell.appendChild(sch);
@@ -102,20 +285,19 @@ function newSch({ schTitle, schTag = "blue" } = {}) {
 	return sch;
 }
 
-function schClickEvent(schObj, date) {
-	let editContentDate = {
-		id: schObj.schID,
-		date: date,
-		title: schObj.schTitle,
-		memo: schObj.schMemo,
-	};
-	setEditData(editContentDate);
-}
-
 //---------card----------
-function setCardNew() {
-	setMiniCaleCellActive(this);
-	setEditData({ date: this.parentNode.getAttribute("date-for") });
+function setCardNew(date, isActiveMiniCale) {
+	if (isActiveMiniCale) {
+		let miniCaleCell = document.querySelector(`td.cale-cell[date-for="${date}"] span.date-curr`);
+		if (!miniCaleCell) {
+			//prevent click other month's date from Main Calender
+			return;
+		}
+		setMiniCaleCellActive(miniCaleCell);
+	}
+	setCardBorderColor();
+	let timeString = `${date} ${moment().format("HH:mm")}`;
+	setEditData({ date: moment(timeString) });
 }
 
 function setMiniCaleCellActive(miniCaleCell) {
@@ -127,7 +309,8 @@ function setMiniCaleCellActive(miniCaleCell) {
 //---------modal----------
 
 function setModalNew() {
-	setEditData({ date: this.getAttribute("date-for") });
+	let timeString = `${this.getAttribute("date-for")} ${moment().format("HH:mm")}`;
+	setEditData({ date: moment(timeString) });
 	$("#schModal").modal("show");
 }
 
@@ -139,17 +322,24 @@ function editSave() {
 		return;
 	}
 
-	let editDate = document.getElementById(`${target}SchDate`);
+	let editTag = document.querySelector(`.tag-input[name='${target}SchTag']:checked`);
+	let editDateFrom = document.getElementById(`${target}SchDateFrom`);
+	let editHHmmFrom = document.getElementById(`${target}SchHHmmFrom`);
+	let editDateTo = document.getElementById(`${target}SchDateTo`);
+	let editHHmmTo = document.getElementById(`${target}SchHHmmTo`);
 	let editTitle = document.getElementById(`${target}SchTitle`);
 	let editMemo = document.getElementById(`${target}SchMemo`);
-	let editTag = document.querySelector(`.tag-input[name='${target}SchTag']:checked`);
-	let schFor = editDate.getAttribute("data-for");
 	if (editTitle.value == "") {
 		return;
 	}
+	let editDayToggle = document.getElementById(`${target}DayToggle`);
 	let obj = {
-		schID: schFor,
-		schDate: editDate.innerText,
+		schID: editDateFrom.getAttribute("data-for"),
+		schWholeDay: editDayToggle.checked,
+		schDateFrom: editDateFrom.innerText,
+		schHHmmFrom: editDayToggle.checked ? "00:00" : editHHmmFrom.innerText,
+		schDateTo: editDateTo.innerText,
+		schHHmmTo: editDayToggle.checked ? "23:59" : editHHmmTo.innerText,
 		schTag: editTag ? editTag.value : "",
 		schTitle: editTitle.value,
 		schMemo: editMemo.value,
@@ -159,31 +349,68 @@ function editSave() {
 	setSchsTag();
 	$("#schModal").modal("hide");
 }
-function setEditData({ id = "new", date = moment().format("yyyy-MM-DD"), title = "", memo = "" } = {}) {
-	["card", "modal"].forEach((target) => {
-		let editDate = document.getElementById(`${target}SchDate`);
+function setEditData({
+	schID = "new",
+	date = moment(),
+	schWholeDay = true,
+	schTitle = "",
+	schMemo = "",
+	...rest
+} = {}) {
+	let formatDate = moment(date).format("yyyy-MM-DD");
+	let formatHHmmFrom =
+		date.get("minutes") > 30
+			? date.add("hour", 1).set("minute", 0).format("HH:mm")
+			: date.set("minute", 30).format("HH:mm");
+	let formatHHmmTo = date.add("hour", 1).format("HH:mm");
+
+	// ["card", "modal"].forEach((target) => {
+	["card"].forEach((target) => {
+		let editDayToggle = document.getElementById(`${target}DayToggle`);
+		let editTag = document.querySelector(`.tag-input[name='${target}SchTag'][value='${rest.schTag}']`);
+		let editDateFrom = document.getElementById(`${target}SchDateFrom`);
+		let editHHmmFrom = document.getElementById(`${target}SchHHmmFrom`);
+		let editDateTo = document.getElementById(`${target}SchDateTo`);
+		let editHHmmTo = document.getElementById(`${target}SchHHmmTo`);
 		let editTitle = document.getElementById(`${target}SchTitle`);
 		let editMemo = document.getElementById(`${target}SchMemo`);
-		editDate.setAttribute("data-for", id);
-		editTitle.value = title;
-		editDate.innerText = date;
-		editMemo.value = memo;
+		if (editTag) {
+			editTag.checked = true;
+			editTag.click();
+		} else {
+			//clear selected tag
+			let tags = document.querySelectorAll(".tag-input");
+			tags.forEach((tag) => (tag.checked = false));
+		}
+		if (editDayToggle.checked != schWholeDay) {
+			editDayToggle.click();
+		}
+		editDateFrom.setAttribute("data-for", schID);
+		editDateTo.setAttribute("data-for", schID);
+		editTitle.value = schTitle;
+		editDateFrom.innerText = rest.schDateFrom || formatDate;
+		editHHmmFrom.innerText = rest.schHHmmFrom || formatHHmmFrom;
+		editDateTo.innerText = rest.schDateTo || formatDate;
+		editHHmmTo.innerText = rest.schHHmmTo || formatHHmmTo;
+		editMemo.value = schMemo;
+		setScrollTime(`${target}SchTimeEditFrom`, editDateFrom.innerText, editHHmmFrom.innerText);
+		setScrollTime(`${target}SchTimeEditTo`, editDateTo.innerText, editHHmmTo.innerText);
 	});
 }
 
 //---------local storage----------
 
-function saveLocalStorage({ schDate, ...rest }) {
+function saveLocalStorage({ schDateFrom, ...rest }) {
 	let savedString = localStorage.getItem(saveKey);
 	let savedJSON = JSON.parse(savedString) || {};
-	let schArray = savedJSON[schDate] || [];
+	let schArray = savedJSON[schDateFrom] || [];
 
 	if (rest.schID == "new") {
 		rest.schID = schArray.length;
 	}
 
-	schArray[rest.schID] = { schDate: schDate, ...rest };
-	savedJSON[schDate] = schArray;
+	schArray[rest.schID] = { schDateFrom: schDateFrom, ...rest };
+	savedJSON[schDateFrom] = schArray;
 
 	localStorage.setItem(saveKey, JSON.stringify(savedJSON));
 }

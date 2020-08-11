@@ -103,6 +103,7 @@ td.cale-cell span:hover {
 .toggle {
   height: 1rem;
   border-radius: 0.5rem;
+  margin: 0;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -136,7 +137,7 @@ td.cale-cell span:hover {
   height: 1rem;
   border-radius: 0.5rem;
   background-color: #ddd;
-  margin: 0 0.5rem;
+  margin-left: 0.5rem;
   -webkit-transition: background 0.2s;
   transition: background 0.2s;
 }
@@ -162,5 +163,79 @@ td.cale-cell span:hover {
   height: 2px;
   width: 100%;
   background-color: #eee;
+}
+
+.time-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+}
+
+.time-scroll {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.8rem 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #185abc;
+}
+
+.time-scroll.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.time-scroll .scroll-year {
+  width: 25%;
+}
+
+.time-scroll .scroll-month {
+  width: 15%;
+}
+
+.time-scroll .scroll-date {
+  width: 15%;
+  margin-right: auto;
+}
+
+.time-scroll .scroll-hour {
+  width: 15%;
+}
+
+.time-scroll .scroll-min {
+  width: 15%;
+}
+
+.time-pick {
+  color: #185abc;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.time-pick:focus {
+  outline: none;
+}
+
+.time-pick.slick-center {
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.HHmm {
+  display: none;
+}
+
+.HHmm.show {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

@@ -19,6 +19,13 @@ $tag-colors: (
 	"purple": $purple-tag-color,
 	"red": $red-tag-color,
 );
+$time-types: (
+	"year": 20 / 5,
+	"month": 20 / 3,
+	"date": 20 / 3,
+	"hour": 20 / 3,
+	"min": 20 / 3,
+);
 
 :root {
 	--primary-color: #{$primary-color};

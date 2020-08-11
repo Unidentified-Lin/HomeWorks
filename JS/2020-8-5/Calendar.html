@@ -12,6 +12,10 @@
 			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 			crossorigin="anonymous"
 		/>
+		<!-- slick CSS -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
 		<link rel="stylesheet" href="./styles/style.css" />
 		<title>Calendar</title>
 	</head>
@@ -32,7 +36,7 @@
 							</button>
 						</div>
 					</div>
-					<table class="table">
+					<table class="table table-sm">
 						<thead>
 							<tr>
 								<th class="text-muted text-center">日</th>
@@ -105,14 +109,50 @@
 						<div class="card-body">
 							<input id="cardSchTitle" type="text" class="form-control card-title" placeholder="New event title" />
 							<div class="tag-section"></div>
-							<div class="d-flex justify-content-between">
-								<div id="cardSchDate" class="card-subtitle mb-2 text-muted" data-for="new">yyyy-MM-DD</div>
-								<label class="toggle" for="dayToggle">
-									<input type="checkbox" class="toggle-input" id="dayToggle" checked></input>
-									<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
-									<div class="toggle-fill"></div>
-								</label>
+							<div class="">
+								<div class="row no-gutters px-1">
+									<div id="cardSchTimeEditFrom" class="col-9 time-edit">
+										<div id="cardSchDateFrom" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+										<div id="cardSchHHmmFrom" class="HHmm text-muted py-1">HH:mm</div>
+									</div>
+									<div class="col d-flex align-items-center justify-content-end">
+										<label class="toggle" for="cardDayToggle">
+											<input type="checkbox" class="toggle-input" id="cardDayToggle" checked></input>
+											<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
+											<div class="toggle-fill"></div>
+										</label>
+									</div>
+								</div>
+								<div class="time-scroll" data-for="cardSchTimeEditFrom">
+									<div class="scroll-year" data-for="cardSchDateFrom"></div>
+									-
+									<div class="scroll-month" data-for="cardSchDateFrom"></div>
+									-
+									<div class="scroll-date" data-for="cardSchDateFrom"></div>
+
+									<div class="scroll-hour HHmm" data-for="cardSchHHmmFrom"></div>
+									<span class="HHmm">:</span>
+									<div class="scroll-min HHmm" data-for="cardSchHHmmFrom"></div>
+								</div>
+								<div  class="row no-gutters px-1">
+									<div id="cardSchTimeEditTo" class="col-9 time-edit">
+										<div id="cardSchDateTo" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+										<div id="cardSchHHmmTo" class="HHmm text-muted py-1">HH:mm</div>
+									</div>
+								</div>
+								<div class="time-scroll" data-for="cardSchTimeEditTo">
+									<div class="scroll-year" data-for="cardSchDateTo"></div>
+									-
+									<div class="scroll-month" data-for="cardSchDateTo"></div>
+									-
+									<div class="scroll-date" data-for="cardSchDateTo"></div>
+									
+									<div class="scroll-hour HHmm" data-for="cardSchHHmmTo"></div>
+									<span class="HHmm">:</span>
+									<div class="scroll-min HHmm" data-for="cardSchHHmmTo"></div>
+								</div>
 							</div>
+							
 							<textarea class="form-control" id="cardSchMemo" placeholder="Schedule memo"></textarea>
 							<div id="editAccordion" class="accordion text-center">
 								<div class="expend-line"></div>
@@ -230,7 +270,8 @@
 					<div class="modal-body">
 						<input id="modalSchTitle" type="text" class="form-control mb-2" placeholder="New event title" />
 						<div class="tag-section"></div>
-						<span id="modalSchDate" class="mb-2" data-for="new"></span>
+						<span id="modalSchDateFrom" class="mb-2" data-for="new"></span>
+						<span id="modalSchDateTo" class="mb-2" data-for="new"></span>
 						<textarea id="modalSchMemo" class="form-control" placeholder="Schedule memo"></textarea>
 					</div>
 					<div class="modal-footer">
@@ -260,6 +301,7 @@
 		></script>
 		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="./assets/calendar.js"></script>
 	</body>
 </html>
