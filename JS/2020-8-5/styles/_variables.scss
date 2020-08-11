@@ -2,6 +2,7 @@ $primary-color: #aecbfa;
 $secondary-color: #d2e3fc;
 $hover-color: #f1f3f4;
 $active-color: #d4efdf;
+$default-color: rgba(0, 0, 0, 0.125);
 $primary-text-color: #185abc;
 $muted-text-color: #6c757d;
 $blue-tag-color: #3498db;
@@ -12,6 +13,7 @@ $purple-tag-color: #9b59b6;
 $red-tag-color: #e74c3c;
 
 $tag-colors: (
+	"default": $default-color,
 	"blue": $blue-tag-color,
 	"green": $green-tag-color,
 	"yellow": $yellow-tag-color,

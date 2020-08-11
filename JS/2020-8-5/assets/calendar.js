@@ -277,10 +277,11 @@ function setCellSch(cell, array) {
 	});
 }
 
-function newSch({ schTitle, schTag = "blue" } = {}) {
+function newSch({ schTitle, schTag, schWholeDay } = {}) {
 	let sch = document.createElement("div");
 	sch.classList.add("sch");
-	sch.classList.add(`tag-${schTag}`);
+	let tag = schWholeDay ? "tag" : "tag-outline";
+	sch.classList.add(`${tag}-${schTag}`);
 	sch.innerText = schTitle;
 	return sch;
 }
@@ -340,7 +341,7 @@ function editSave() {
 		schHHmmFrom: editDayToggle.checked ? "00:00" : editHHmmFrom.innerText,
 		schDateTo: editDateTo.innerText,
 		schHHmmTo: editDayToggle.checked ? "23:59" : editHHmmTo.innerText,
-		schTag: editTag ? editTag.value : "",
+		schTag: editTag ? editTag.value : "default",
 		schTitle: editTitle.value,
 		schMemo: editMemo.value,
 	};

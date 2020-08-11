@@ -26,4 +26,9 @@
 	.tag-#{$color} {
 		background-color: $value;
 	}
+	.tag-outline-#{$color} {
+		border: 2px solid $value;
+		background-color: #fff;
+		color: $value;
+	}
 }

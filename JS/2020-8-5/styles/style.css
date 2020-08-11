@@ -38,7 +38,7 @@ td.cale-cell span:hover {
 }
 
 .sch {
-  background-color: #3498db;
+  background-color: rgba(0, 0, 0, 0.125);
   color: white;
   border-radius: 5px;
   margin: 0.25rem;
@@ -76,28 +76,74 @@ td.cale-cell span:hover {
   opacity: 0.8;
 }
 
+.tag-default {
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.tag-outline-default {
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.125);
+}
+
 .tag-blue {
   background-color: #3498db;
+}
+
+.tag-outline-blue {
+  border: 2px solid #3498db;
+  background-color: #fff;
+  color: #3498db;
 }
 
 .tag-green {
   background-color: #2ecc71;
 }
 
+.tag-outline-green {
+  border: 2px solid #2ecc71;
+  background-color: #fff;
+  color: #2ecc71;
+}
+
 .tag-yellow {
   background-color: #f1c40f;
+}
+
+.tag-outline-yellow {
+  border: 2px solid #f1c40f;
+  background-color: #fff;
+  color: #f1c40f;
 }
 
 .tag-orange {
   background-color: #e67e22;
 }
 
+.tag-outline-orange {
+  border: 2px solid #e67e22;
+  background-color: #fff;
+  color: #e67e22;
+}
+
 .tag-purple {
   background-color: #9b59b6;
 }
 
+.tag-outline-purple {
+  border: 2px solid #9b59b6;
+  background-color: #fff;
+  color: #9b59b6;
+}
+
 .tag-red {
   background-color: #e74c3c;
+}
+
+.tag-outline-red {
+  border: 2px solid #e74c3c;
+  background-color: #fff;
+  color: #e74c3c;
 }
 
 .toggle {
