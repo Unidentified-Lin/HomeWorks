@@ -22,29 +22,27 @@ td.cale-cell span:hover {
 	}
 }
 
-@mixin sch($cursor) {
+.sch {
+	@include sch(pointer);
 	background-color: $default-color;
 	color: white;
 	border-radius: 5px;
 	border: 2px solid $default2-color;
 	margin: 0.25rem;
 	font-size: 0.8rem;
-	cursor: $cursor;
-}
-.sch {
-	@include sch(pointer);
+	cursor: pointer;
+	&.sch-blank {
+		cursor: default;
+		opacity: 0;
+		&::after {
+			content: "blank";
+		}
+	}
 	@for $i from 2 through 7 {
 		&.sch-#{$i} {
 			position: relative;
 			width: calc(#{100% * $i} + #{$i - 1px} - 0.5rem);
 			z-index: 1;
 		}
-	}
-}
-.sch-blank {
-	@include sch(default);
-	opacity: 0;
-	&::after {
-		content: "blank";
 	}
 }

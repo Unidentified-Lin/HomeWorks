@@ -1,11 +1,13 @@
-var mon = 0;
+import { uuid } from "./uuid.js";
+
+var monthShift = 0;
 const saveKey = "schJSON";
 const caleCellsSelector = "#cale-content .cale-cell";
 const miniCaleCellsSelector = "td.cale-cell";
 
 window.onload = function () {
 	//inital set calendar.
-	setMonthCale(mon);
+	setMonthCale(monthShift);
 	genTags();
 	initTimeScroll();
 	setEditData();
@@ -77,7 +79,7 @@ function initTimeScroll() {
 		"year",
 		[...Array(yearRange).keys()].map((i) =>
 			moment()
-				.add("year", i - (yearRange - 1) / 2)
+				.add(i - (yearRange - 1) / 2, "years")
 				.get("year")
 		)
 	);
@@ -222,8 +224,8 @@ function setScrollPosition() {
 //---------move month----------
 
 function moveMonth(isNext, date) {
-	mon = isNext ? mon + 1 : mon - 1;
-	setMonthCale(mon);
+	monthShift = isNext ? monthShift + 1 : monthShift - 1;
+	setMonthCale(monthShift);
 	if (date) {
 		let target = document.querySelector(`td.cale-cell[date-for="${date}"] span`);
 		target.click();
@@ -258,35 +260,82 @@ function setMiniCellEvent() {
 
 function setSchsTag() {
 	removeElementsByClass("sch");
-	let dataString = localStorage.getItem(saveKey);
-	if (!dataString) {
+	let savedString = localStorage.getItem(saveKey);
+	if (!savedString) {
 		return;
 	}
-	let schDatas = JSON.parse(dataString);
+	let savedJSON = JSON.parse(savedString) || {};
+	let currMonthJSON = {};
 	let caleCell = document.querySelectorAll(caleCellsSelector);
-	caleCell.forEach((cell) => setCellSch(cell, schDatas[cell.getAttribute("date-for")]));
+	//extract current calendar/month dateObj
+	caleCell.forEach((cell, index) => {
+		let dateKey = cell.getAttribute("date-for");
+		if (savedJSON.hasOwnProperty(dateKey)) {
+			currMonthJSON[dateKey] = savedJSON[dateKey];
+		}
+	});
+	setSchBar(currMonthJSON, Object.keys(currMonthJSON)[0]);
 }
-function setCellSch(cell, array) {
-	if (!array) {
+
+function setSchBar(currMonthJSON, dateKey) {
+	if (!dateKey || Object.keys(currMonthJSON).length == 0 || !currMonthJSON.hasOwnProperty(dateKey)) {
 		return;
 	}
+	//set single sch bar with blank sch
+	let dateObjArray = currMonthJSON[dateKey];
+	let dateObj = dateObjArray.shift();
+	if (dateObjArray.length == 0) {
+		delete currMonthJSON[dateKey];
+	}
+	let schDateFrom = dateObj.schDateFrom;
+	let schDateTo = dateObj.schDateTo;
+	let theMoment = moment(schDateFrom);
+	let toMoment = moment(schDateTo);
+	let leftBarLength = toMoment.diff(theMoment, "days") + 1;
+	do {
+		let theMomentFormat = theMoment.format("yyyy-MM-DD");
+		let theCaleCell = document.querySelector(`${caleCellsSelector}[date-for="${theMomentFormat}"]`);
+		if (schDateFrom == theMomentFormat || theMoment.day() == 0) {
+			let currBarLength = Math.min(7 - theMoment.day(), leftBarLength);
+			leftBarLength = leftBarLength - currBarLength;
+			let sch = newSch(dateObj, currBarLength);
+			sch.addEventListener("click", function (e) {
+				setEditData(dateObj);
+				e.stopPropagation();
+			});
+			theCaleCell.appendChild(sch);
+		} else {
+			theCaleCell.appendChild(newBlankSch());
+		}
+		theMoment.add(1, "days");
+	} while (theMoment.diff(toMoment) <= 0);
 
-	array.forEach((schObj) => {
-		let sch = newSch(schObj);
-		sch.addEventListener("click", function (e) {
-			setEditData(schObj);
-			e.stopPropagation();
-		});
-		cell.appendChild(sch);
-	});
+	let nextDate = toMoment.add(1, "days");
+	//find next date
+	for (let dateKey in currMonthJSON) {
+		if (moment(dateKey).diff(nextDate) >= 0) {
+			setSchBar(currMonthJSON, dateKey);
+		}
+	}
+	//or start over again
+	setSchBar(currMonthJSON, Object.keys(currMonthJSON)[0]);
 }
 
-function newSch({ schTitle, schTag, schWholeDay } = {}) {
+function newSch({ schTitle, schTag, schWholeDay } = {}, barLength = 1) {
 	let sch = document.createElement("div");
 	sch.classList.add("sch");
+	if (barLength > 1) {
+		sch.classList.add(`sch-${barLength}`);
+	}
 	let tag = schWholeDay ? "tag" : "tag-outline";
 	sch.classList.add(`${tag}-${schTag}`);
 	sch.innerText = schTitle;
+	return sch;
+}
+function newBlankSch() {
+	let sch = document.createElement("div");
+	sch.classList.add("sch");
+	sch.classList.add("sch-blank");
 	return sch;
 }
 
@@ -364,11 +413,10 @@ function setEditData({
 	let formatDate = moment(date).format("yyyy-MM-DD");
 	let formatHHmmFrom =
 		date.get("minutes") > 30
-			? date.add("hour", 1).set("minute", 0).format("HH:mm")
+			? date.add(1, "hours").set("minute", 0).format("HH:mm")
 			: date.set("minute", 30).format("HH:mm");
-	let formatHHmmTo = date.add("hour", 1).format("HH:mm");
+	let formatHHmmTo = date.add(1, "hours").format("HH:mm");
 
-	// ["card"].forEach((target) => {
 	["card", "modal"].forEach((target) => {
 		let editDayToggle = document.getElementById(`${target}DayToggle`);
 		let editTag = document.querySelector(`.tag-input[name='${target}SchTag'][value='${rest.schTag}']`);
@@ -403,28 +451,70 @@ function setEditData({
 	});
 }
 
-function editDelete() {}
-//---------local storage----------
-
-function saveLocalStorage({ schDateFrom, ...rest }) {
-	let savedString = localStorage.getItem(saveKey);
-	let savedJSON = JSON.parse(savedString) || {};
-	let schArray = savedJSON[schDateFrom] || [];
-
-	if (rest.schID == "new") {
-		rest.schID = schArray.length;
+function editDelete() {
+	let target = this.getAttribute("data-target");
+	if (!target) {
+		return;
 	}
 
-	schArray[rest.schID] = { schDateFrom: schDateFrom, ...rest };
-	savedJSON[schDateFrom] = schArray;
+	let editDateFrom = document.getElementById(`${target}SchDateFrom`);
+	let schID = editDateFrom.getAttribute("data-for");
+	removeLocalStorage(schID);
+	setEditData();
+	setSchsTag();
+	$("#schModal").modal("hide");
+}
+//---------local storage----------
+
+function saveLocalStorage({ schID, schDateFrom, schDateTo, ...rest }) {
+	let savedString = localStorage.getItem(saveKey);
+	let savedJSON = JSON.parse(savedString) || {};
+
+	let dateObjArray = savedJSON[schDateFrom] || [];
+
+	if (schID == "new") {
+		schID = uuid();
+		dateObjArray.push({ schID: schID, schDateFrom: schDateFrom, schDateTo: schDateTo, ...rest });
+	} else {
+		//Alter
+		let index = dateObjArray.findIndex((o) => o.schID == schID);
+		if (index >= 0) {
+			dateObjArray[index] = { schID: schID, schDateFrom: schDateFrom, schDateTo: schDateTo, ...rest };
+		} else {
+			removeLocalStorage(schID, savedJSON);
+			dateObjArray.push({ schID: schID, schDateFrom: schDateFrom, schDateTo: schDateTo, ...rest });
+		}
+	}
+
+	savedJSON[schDateFrom] = dateObjArray;
 
 	localStorage.setItem(saveKey, JSON.stringify(savedJSON));
 }
 
+function removeLocalStorage(schID, savedJSON = localStorage.getItem(saveKey)) {
+	let needToSave = typeof savedJSON == "string";
+	if (needToSave) {
+		savedJSON = JSON.parse(savedJSON);
+	}
+	for (let dateKey in savedJSON) {
+		let theDateObjArray = savedJSON[dateKey];
+		let theIndex = theDateObjArray.findIndex((o) => o.schID == schID);
+		if (theIndex >= 0) {
+			theDateObjArray.splice(theIndex, 1); //remove dateObj from array;
+			if (theDateObjArray.length == 0) {
+				delete savedJSON[dateKey];
+			}
+			break;
+		}
+	}
+	if (needToSave) {
+		localStorage.setItem(saveKey, JSON.stringify(savedJSON));
+	}
+}
 //---------gen calendar----------
 
 function setMonthCale(shift) {
-	let newMoment = moment().add(shift, "M");
+	let newMoment = moment().add(shift, "months");
 	let caleCell = document.querySelectorAll(caleCellsSelector);
 	let miniCaleCell = document.querySelectorAll(miniCaleCellsSelector);
 	let yearMonth = document.getElementById("yearMonth");
