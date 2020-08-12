@@ -1,0 +1,52 @@
+@import "./variables";
+@import "./calendar";
+@import "./tags";
+@import "./toggle";
+
+.expend-line {
+	height: 2px;
+	width: 100%;
+	background-color: #eee;
+}
+
+.time-edit {
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+}
+.time-scroll {
+	display: none;
+	align-items: center;
+	margin: 0.8rem 0;
+	user-select: none;
+	color: $primary-text-color;
+	&.show {
+		display: flex;
+	}
+	@each $type, $value in $time-types {
+		.scroll-#{$type} {
+			width: 100% / $value;
+			@if $type== "date" {
+				margin-right: auto;
+			}
+		}
+	}
+}
+.time-pick {
+	color: $primary-text-color;
+	opacity: 0.5;
+	text-align: center;
+	&:focus {
+		outline: none;
+	}
+}
+.time-pick.slick-center {
+	opacity: 1;
+	transform: scale(1.1);
+}
+.HHmm {
+	display: none;
+	&.show {
+		display: block;
+	}
+}

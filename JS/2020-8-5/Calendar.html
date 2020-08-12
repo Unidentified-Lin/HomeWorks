@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
+		<!-- slick CSS -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+		<link rel="stylesheet" href="./styles/style.css" />
+		<title>Calendar</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row vh-100">
+				<div class="col-12 col-md-3">
+					<div class="input-group my-3">
+						<div class="input-group-prepend">
+							<button id="preMonth" class="btn btn-light" type="button">
+								<span class="iconify" data-icon="uil:angle-left-b" data-inline="false"></span>
+							</button>
+						</div>
+						<span id="yearMonth" class="input-group-text flex-grow-1 justify-content-center">First and last name</span>
+						<div class="input-group-append">
+							<button id="nextMonth" class="btn btn-light" type="button">
+								<span class="iconify" data-icon="uil:angle-right-b" data-inline="false"></span>
+							</button>
+						</div>
+					</div>
+					<table class="table table-sm">
+						<thead>
+							<tr>
+								<th class="text-muted text-center">日</th>
+								<th class="text-muted text-center">一</th>
+								<th class="text-muted text-center">二</th>
+								<th class="text-muted text-center">三</th>
+								<th class="text-muted text-center">四</th>
+								<th class="text-muted text-center">五</th>
+								<th class="text-muted text-center">六</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+							<tr>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+								<td class="cale-cell text-center"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="cardSchEditContent" class="card">
+						<div class="card-body">
+							<input id="cardSchTitle" type="text" class="form-control card-title" placeholder="New event title" />
+							<div class="tag-section" for="card"></div>
+							<div class="row no-gutters px-1">
+								<div id="cardSchTimeEditFrom" class="col-9 time-edit">
+									<div id="cardSchDateFrom" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+									<div id="cardSchHHmmFrom" class="HHmm text-muted py-1">HH:mm</div>
+								</div>
+								<div class="col d-flex align-items-center justify-content-end">
+									<label class="toggle" for="cardDayToggle">
+										<input type="checkbox" class="toggle-input" id="cardDayToggle" checked />
+										<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
+										<div class="toggle-fill"></div>
+									</label>
+								</div>
+							</div>
+							<div class="time-scroll" data-for="cardSchTimeEditFrom">
+								<div class="scroll-year" data-for="cardSchDateFrom"></div>
+								-
+								<div class="scroll-month" data-for="cardSchDateFrom"></div>
+								-
+								<div class="scroll-date" data-for="cardSchDateFrom"></div>
+
+								<div class="scroll-hour HHmm" data-for="cardSchHHmmFrom"></div>
+								<span class="HHmm">:</span>
+								<div class="scroll-min HHmm" data-for="cardSchHHmmFrom"></div>
+							</div>
+							<div class="row no-gutters px-1">
+								<div id="cardSchTimeEditTo" class="col-9 time-edit">
+									<div id="cardSchDateTo" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+									<div id="cardSchHHmmTo" class="HHmm text-muted py-1">HH:mm</div>
+								</div>
+							</div>
+							<div class="time-scroll" data-for="cardSchTimeEditTo">
+								<div class="scroll-year" data-for="cardSchDateTo"></div>
+								-
+								<div class="scroll-month" data-for="cardSchDateTo"></div>
+								-
+								<div class="scroll-date" data-for="cardSchDateTo"></div>
+
+								<div class="scroll-hour HHmm" data-for="cardSchHHmmTo"></div>
+								<span class="HHmm">:</span>
+								<div class="scroll-min HHmm" data-for="cardSchHHmmTo"></div>
+							</div>
+							<textarea class="form-control" id="cardSchMemo" placeholder="Schedule memo"></textarea>
+							<div id="editAccordion" class="accordion text-center">
+								<div class="expend-line"></div>
+								<div class="group">
+									<button class="btn btn-link" data-target="card">Cancel</button>
+									<button class="btn btn-link saveBtn" data-target="card">Save</button>
+								</div>
+								<div class="editControl collapse text-center mt-3">
+									<button class="btn btn-outline-danger btn-sm w-100 deleteBtn" data-target="card">Delete</button>
+									<div data-parent="#editAccordion" data-toggle="collapse" data-target=".editControl">
+										<span class="iconify" data-icon="uil:angle-up" data-inline="false"></span>
+									</div>
+								</div>
+								<div
+									class="editControl collapse show"
+									data-parent="#editAccordion"
+									data-toggle="collapse"
+									data-target=".editControl"
+								>
+									<span class="iconify" data-icon="uil:angle-down" data-inline="false"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-9 d-flex flex-column">
+					<div class="row no-gutters border-left text-muted">
+						<div class="col text-center border-right">週日</div>
+						<div class="col text-center border-right">週一</div>
+						<div class="col text-center border-right">週二</div>
+						<div class="col text-center border-right">週三</div>
+						<div class="col text-center border-right">週四</div>
+						<div class="col text-center border-right">週五</div>
+						<div class="col text-center border-right">週六</div>
+					</div>
+					<div id="cale-content" class="d-flex flex-column flex-grow-1 no-gutters">
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+						</div>
+						<div class="col row no-gutters border-bottom border-left h-100">
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div
+			class="modal fade"
+			id="schModal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="schModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<!-- <h5 class="modal-title" id="schModalLabel">Modal title</h5> -->
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<input id="modalSchTitle" type="text" class="form-control mb-2" placeholder="New event title" />
+						<div class="tag-section" for="modal"></div>
+						<div class="row no-gutters px-1">
+							<div id="modalSchTimeEditFrom" class="col-9 time-edit">
+								<div id="modalSchDateFrom" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+								<div id="modalSchHHmmFrom" class="HHmm text-muted py-1">HH:mm</div>
+							</div>
+							<div class="col d-flex align-items-center justify-content-end">
+								<label class="toggle" for="modalDayToggle">
+									<input type="checkbox" class="toggle-input" id="modalDayToggle" checked />
+									<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
+									<div class="toggle-fill"></div>
+								</label>
+							</div>
+						</div>
+						<div class="time-scroll" data-for="modalSchTimeEditFrom">
+							<div class="scroll-year" data-for="modalSchDateFrom"></div>
+							-
+							<div class="scroll-month" data-for="modalSchDateFrom"></div>
+							-
+							<div class="scroll-date" data-for="modalSchDateFrom"></div>
+
+							<div class="scroll-hour HHmm" data-for="modalSchHHmmFrom"></div>
+							<span class="HHmm">:</span>
+							<div class="scroll-min HHmm" data-for="modalSchHHmmFrom"></div>
+						</div>
+						<div class="row no-gutters px-1">
+							<div id="modalSchTimeEditTo" class="col-9 time-edit">
+								<div id="modalSchDateTo" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+								<div id="modalSchHHmmTo" class="HHmm text-muted py-1">HH:mm</div>
+							</div>
+						</div>
+						<div class="time-scroll" data-for="modalSchTimeEditTo">
+							<div class="scroll-year" data-for="modalSchDateTo"></div>
+							-
+							<div class="scroll-month" data-for="modalSchDateTo"></div>
+							-
+							<div class="scroll-date" data-for="modalSchDateTo"></div>
+
+							<div class="scroll-hour HHmm" data-for="modalSchHHmmTo"></div>
+							<span class="HHmm">:</span>
+							<div class="scroll-min HHmm" data-for="modalSchHHmmTo"></div>
+						</div>
+						<textarea class="form-control" id="modalSchMemo" placeholder="Schedule memo"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary saveBtn" data-target="modal">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script type="module" src="./assets/calendar.js"></script>
+	</body>
+</html>
