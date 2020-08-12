@@ -25,13 +25,17 @@ window.onload = function () {
 	caleCell.forEach((c) =>
 		c.addEventListener("click", function () {
 			let date = this.getAttribute("date-for");
-			setCardNew(date, true);
+			setModalNew(date, true);
 		})
 	);
 
 	//edits save events
 	let saveBtns = document.querySelectorAll(".saveBtn");
 	saveBtns.forEach((btn) => btn.addEventListener("click", editSave));
+
+	//edits delete events
+	let deleteBtns = document.querySelectorAll(".deleteBtn");
+	deleteBtns.forEach((btn) => btn.addEventListener("click", editDelete));
 
 	//edit border color change
 	let tagsRadio = document.querySelectorAll("#cardSchEditContent .tag-input");
@@ -41,11 +45,13 @@ window.onload = function () {
 		})
 	);
 
-	//day toggle event
-	let cardDayToggle = document.getElementById("cardDayToggle");
-	cardDayToggle.addEventListener("change", function () {
-		toggleHHmm(this.checked);
-	});
+	//edit day toggle event
+	let dayToggles = document.querySelectorAll(".toggle-input");
+	dayToggles.forEach((t) =>
+		t.addEventListener("change", function () {
+			toggleHHmm(this.checked);
+		})
+	);
 
 	let timeEdits = document.querySelectorAll(".time-edit");
 	timeEdits.forEach((timeEdit) =>
@@ -161,9 +167,7 @@ function genScrollTime(type, array) {
 function toggleHHmm(isHide) {
 	let HHmms = document.querySelectorAll(".HHmm");
 	HHmms.forEach((HHmm) => {
-		// HHmm.classList.toggle('show');
 		isHide ? HHmm.classList.remove("show") : HHmm.classList.add("show");
-		// HHmm.style.display = isHide ? "none" : "block";
 	});
 	setScrollPosition();
 }
@@ -309,9 +313,8 @@ function setMiniCaleCellActive(miniCaleCell) {
 
 //---------modal----------
 
-function setModalNew() {
-	let timeString = `${this.getAttribute("date-for")} ${moment().format("HH:mm")}`;
-	setEditData({ date: moment(timeString) });
+function setModalNew(date, isActiveMiniCale) {
+	setCardNew(date, isActiveMiniCale);
 	$("#schModal").modal("show");
 }
 
@@ -365,8 +368,8 @@ function setEditData({
 			: date.set("minute", 30).format("HH:mm");
 	let formatHHmmTo = date.add("hour", 1).format("HH:mm");
 
-	// ["card", "modal"].forEach((target) => {
-	["card"].forEach((target) => {
+	// ["card"].forEach((target) => {
+	["card", "modal"].forEach((target) => {
 		let editDayToggle = document.getElementById(`${target}DayToggle`);
 		let editTag = document.querySelector(`.tag-input[name='${target}SchTag'][value='${rest.schTag}']`);
 		let editDateFrom = document.getElementById(`${target}SchDateFrom`);
@@ -382,6 +385,7 @@ function setEditData({
 			//clear selected tag
 			let tags = document.querySelectorAll(".tag-input");
 			tags.forEach((tag) => (tag.checked = false));
+			setCardBorderColor();
 		}
 		if (editDayToggle.checked != schWholeDay) {
 			editDayToggle.click();
@@ -399,6 +403,7 @@ function setEditData({
 	});
 }
 
+function editDelete() {}
 //---------local storage----------
 
 function saveLocalStorage({ schDateFrom, ...rest }) {
@@ -469,17 +474,17 @@ function genTags() {
 	let tagSections = document.querySelectorAll(".tag-section");
 	let colors = ["blue", "green", "yellow", "orange", "purple", "red"];
 	tagSections.forEach((x) => {
-		colors.forEach((c) => x.appendChild(genTag(c)));
+		colors.forEach((c) => x.appendChild(genTag(x.getAttribute("for"), c)));
 	});
 }
-function genTag(color) {
+function genTag(target, color) {
 	let label = document.createElement("label");
 
 	let input = document.createElement("input");
 	input.classList.add("tag-input");
 	input.type = "radio";
 	input.value = color;
-	input.name = "cardSchTag";
+	input.name = `${target}SchTag`;
 
 	let div = document.createElement("div");
 	div.classList.add("tag");

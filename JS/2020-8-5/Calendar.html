@@ -13,8 +13,8 @@
 			crossorigin="anonymous"
 		/>
 		<!-- slick CSS -->
-		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
 		<link rel="stylesheet" href="./styles/style.css" />
 		<title>Calendar</title>
@@ -108,65 +108,60 @@
 					<div id="cardSchEditContent" class="card">
 						<div class="card-body">
 							<input id="cardSchTitle" type="text" class="form-control card-title" placeholder="New event title" />
-							<div class="tag-section"></div>
-							<div class="">
-								<div class="row no-gutters px-1">
-									<div id="cardSchTimeEditFrom" class="col-9 time-edit">
-										<div id="cardSchDateFrom" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
-										<div id="cardSchHHmmFrom" class="HHmm text-muted py-1">HH:mm</div>
-									</div>
-									<div class="col d-flex align-items-center justify-content-end">
-										<label class="toggle" for="cardDayToggle">
-											<input type="checkbox" class="toggle-input" id="cardDayToggle" checked></input>
-											<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
-											<div class="toggle-fill"></div>
-										</label>
-									</div>
+							<div class="tag-section" for="card"></div>
+							<div class="row no-gutters px-1">
+								<div id="cardSchTimeEditFrom" class="col-9 time-edit">
+									<div id="cardSchDateFrom" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+									<div id="cardSchHHmmFrom" class="HHmm text-muted py-1">HH:mm</div>
 								</div>
-								<div class="time-scroll" data-for="cardSchTimeEditFrom">
-									<div class="scroll-year" data-for="cardSchDateFrom"></div>
-									-
-									<div class="scroll-month" data-for="cardSchDateFrom"></div>
-									-
-									<div class="scroll-date" data-for="cardSchDateFrom"></div>
-
-									<div class="scroll-hour HHmm" data-for="cardSchHHmmFrom"></div>
-									<span class="HHmm">:</span>
-									<div class="scroll-min HHmm" data-for="cardSchHHmmFrom"></div>
-								</div>
-								<div  class="row no-gutters px-1">
-									<div id="cardSchTimeEditTo" class="col-9 time-edit">
-										<div id="cardSchDateTo" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
-										<div id="cardSchHHmmTo" class="HHmm text-muted py-1">HH:mm</div>
-									</div>
-								</div>
-								<div class="time-scroll" data-for="cardSchTimeEditTo">
-									<div class="scroll-year" data-for="cardSchDateTo"></div>
-									-
-									<div class="scroll-month" data-for="cardSchDateTo"></div>
-									-
-									<div class="scroll-date" data-for="cardSchDateTo"></div>
-									
-									<div class="scroll-hour HHmm" data-for="cardSchHHmmTo"></div>
-									<span class="HHmm">:</span>
-									<div class="scroll-min HHmm" data-for="cardSchHHmmTo"></div>
+								<div class="col d-flex align-items-center justify-content-end">
+									<label class="toggle" for="cardDayToggle">
+										<input type="checkbox" class="toggle-input" id="cardDayToggle" checked />
+										<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
+										<div class="toggle-fill"></div>
+									</label>
 								</div>
 							</div>
-							
+							<div class="time-scroll" data-for="cardSchTimeEditFrom">
+								<div class="scroll-year" data-for="cardSchDateFrom"></div>
+								-
+								<div class="scroll-month" data-for="cardSchDateFrom"></div>
+								-
+								<div class="scroll-date" data-for="cardSchDateFrom"></div>
+
+								<div class="scroll-hour HHmm" data-for="cardSchHHmmFrom"></div>
+								<span class="HHmm">:</span>
+								<div class="scroll-min HHmm" data-for="cardSchHHmmFrom"></div>
+							</div>
+							<div class="row no-gutters px-1">
+								<div id="cardSchTimeEditTo" class="col-9 time-edit">
+									<div id="cardSchDateTo" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+									<div id="cardSchHHmmTo" class="HHmm text-muted py-1">HH:mm</div>
+								</div>
+							</div>
+							<div class="time-scroll" data-for="cardSchTimeEditTo">
+								<div class="scroll-year" data-for="cardSchDateTo"></div>
+								-
+								<div class="scroll-month" data-for="cardSchDateTo"></div>
+								-
+								<div class="scroll-date" data-for="cardSchDateTo"></div>
+
+								<div class="scroll-hour HHmm" data-for="cardSchHHmmTo"></div>
+								<span class="HHmm">:</span>
+								<div class="scroll-min HHmm" data-for="cardSchHHmmTo"></div>
+							</div>
 							<textarea class="form-control" id="cardSchMemo" placeholder="Schedule memo"></textarea>
 							<div id="editAccordion" class="accordion text-center">
 								<div class="expend-line"></div>
-								<div
-									class="editControl collapse text-center mt-3"
-									data-parent="#editAccordion"
-									data-toggle="collapse"
-									data-target=".editControl"
-								>
-									<div class="group">
-										<button class="btn btn-link" data-target="card">Cancel</button>
-										<button class="btn btn-link saveBtn" data-target="card">Save</button>
+								<div class="group">
+									<button class="btn btn-link" data-target="card">Cancel</button>
+									<button class="btn btn-link saveBtn" data-target="card">Save</button>
+								</div>
+								<div class="editControl collapse text-center mt-3">
+									<button class="btn btn-outline-danger btn-sm w-100 deleteBtn" data-target="card">Delete</button>
+									<div data-parent="#editAccordion" data-toggle="collapse" data-target=".editControl">
+										<span class="iconify" data-icon="uil:angle-up" data-inline="false"></span>
 									</div>
-									<span class="iconify" data-icon="uil:angle-up" data-inline="false"></span>
 								</div>
 								<div
 									class="editControl collapse show"
@@ -192,58 +187,58 @@
 					</div>
 					<div id="cale-content" class="d-flex flex-column flex-grow-1 no-gutters">
 						<div class="col row no-gutters border-bottom border-left h-100">
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
 						</div>
 						<div class="col row no-gutters border-bottom border-left h-100">
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
 						</div>
 						<div class="col row no-gutters border-bottom border-left h-100">
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
 						</div>
 						<div class="col row no-gutters border-bottom border-left h-100">
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
 						</div>
 						<div class="col row no-gutters border-bottom border-left h-100">
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
 						</div>
 						<div class="col row no-gutters border-bottom border-left h-100">
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
-							<div class="col text-center border-right p-1 cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
+							<div class="col text-center border-right cale-cell"></div>
 						</div>
 					</div>
 				</div>
@@ -269,10 +264,49 @@
 					</div>
 					<div class="modal-body">
 						<input id="modalSchTitle" type="text" class="form-control mb-2" placeholder="New event title" />
-						<div class="tag-section"></div>
-						<span id="modalSchDateFrom" class="mb-2" data-for="new"></span>
-						<span id="modalSchDateTo" class="mb-2" data-for="new"></span>
-						<textarea id="modalSchMemo" class="form-control" placeholder="Schedule memo"></textarea>
+						<div class="tag-section" for="modal"></div>
+						<div class="row no-gutters px-1">
+							<div id="modalSchTimeEditFrom" class="col-9 time-edit">
+								<div id="modalSchDateFrom" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+								<div id="modalSchHHmmFrom" class="HHmm text-muted py-1">HH:mm</div>
+							</div>
+							<div class="col d-flex align-items-center justify-content-end">
+								<label class="toggle" for="modalDayToggle">
+									<input type="checkbox" class="toggle-input" id="modalDayToggle" checked />
+									<span class="iconify toggle-text" data-icon="ri:24-hours-line" data-inline="false"></span>
+									<div class="toggle-fill"></div>
+								</label>
+							</div>
+						</div>
+						<div class="time-scroll" data-for="modalSchTimeEditFrom">
+							<div class="scroll-year" data-for="modalSchDateFrom"></div>
+							-
+							<div class="scroll-month" data-for="modalSchDateFrom"></div>
+							-
+							<div class="scroll-date" data-for="modalSchDateFrom"></div>
+
+							<div class="scroll-hour HHmm" data-for="modalSchHHmmFrom"></div>
+							<span class="HHmm">:</span>
+							<div class="scroll-min HHmm" data-for="modalSchHHmmFrom"></div>
+						</div>
+						<div class="row no-gutters px-1">
+							<div id="modalSchTimeEditTo" class="col-9 time-edit">
+								<div id="modalSchDateTo" class="text-muted py-1" data-for="new">yyyy-MM-DD</div>
+								<div id="modalSchHHmmTo" class="HHmm text-muted py-1">HH:mm</div>
+							</div>
+						</div>
+						<div class="time-scroll" data-for="modalSchTimeEditTo">
+							<div class="scroll-year" data-for="modalSchDateTo"></div>
+							-
+							<div class="scroll-month" data-for="modalSchDateTo"></div>
+							-
+							<div class="scroll-date" data-for="modalSchDateTo"></div>
+
+							<div class="scroll-hour HHmm" data-for="modalSchHHmmTo"></div>
+							<span class="HHmm">:</span>
+							<div class="scroll-min HHmm" data-for="modalSchHHmmTo"></div>
+						</div>
+						<textarea class="form-control" id="modalSchMemo" placeholder="Schedule memo"></textarea>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
