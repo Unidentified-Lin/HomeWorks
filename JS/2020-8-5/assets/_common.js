@@ -1,3 +1,5 @@
+export const caleCellsSelector = "#cale-content .cale-cell";
+export const miniCaleCellsSelector = "td.cale-cell";
 export function uuid() {
 	var d = Date.now();
 	if (typeof performance !== "undefined" && typeof performance.now === "function") {
@@ -8,4 +10,11 @@ export function uuid() {
 		d = Math.floor(d / 16);
 		return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
 	});
+}
+
+export function removeElementsByClass(className) {
+	var elements = document.getElementsByClassName(className);
+	while (elements.length > 0) {
+		elements[0].parentNode.removeChild(elements[0]);
+	}
 }
