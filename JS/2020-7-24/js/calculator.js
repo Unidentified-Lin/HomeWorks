@@ -21,10 +21,10 @@ window.onload = function () {
 	calDisplay.addEventListener("input", function () {
 		//event only from keyboard.
 		let val = calDisplay.value;
-		val = val.replace("+", "＋");
-		val = val.replace("-", "－");
-		val = val.replace("*", "×");
-		val = val.replace("/", "÷");
+		val = val.replace(/+/g, "＋");
+		val = val.replace(/-/g, "－");
+		val = val.replace(/\*/g, "×");
+		val = val.replace(/\//g, "÷");
 		calDisplay.value = checkCalDisplay(val);
 	});
 };
@@ -56,11 +56,11 @@ function calculate() {
 	} else {
 		let val = calDisplay.value;
 		expDisplay.innerText = val + "=";
-		val = val.replace("＋", "+");
-		val = val.replace("－", "-");
-		val = val.replace("×", "*");
-		val = val.replace("÷", "/");
-		val = val.replace("%", "*0.01");
+		val = val.replace(/＋/g, "+");
+		val = val.replace(/－/g, "-");
+		val = val.replace(/×/g, "*");
+		val = val.replace(/÷/g, "/");
+		val = val.replace(/%/g, "*0.01");
 		calDisplay.value = strip(eval(val));
 	}
 	isCalculate = true;
