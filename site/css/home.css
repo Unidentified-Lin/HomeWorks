@@ -1,0 +1,15 @@
+#page {
+    animation: page 1s ease-in-out infinite alternate;
+    /* transform-origin: 85% bottom; */
+    transform-origin: left 66%;
+    transform-box: fill-box;
+}
+
+@keyframes page {
+	from {
+        transform: rotateZ(-10deg);
+	}
+	to {
+        transform: rotateZ(-15deg);
+	}
+}
