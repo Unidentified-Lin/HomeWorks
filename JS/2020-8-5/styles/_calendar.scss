@@ -23,13 +23,13 @@ td.cale-cell span:hover {
 }
 
 .sch {
-	@include sch(pointer);
 	background-color: $default-color;
 	color: white;
 	border-radius: 5px;
 	border: 2px solid $default2-color;
 	margin: 0.25rem;
 	font-size: 0.8rem;
+	line-height: 0.8;
 	cursor: pointer;
 	&.sch-blank {
 		cursor: default;
@@ -44,5 +44,11 @@ td.cale-cell span:hover {
 			width: calc(#{100% * $i} + #{$i - 1px} - 0.5rem);
 			z-index: 1;
 		}
+	}
+}
+
+@media (min-width: $layout-breakpoint-medium) {
+	.sch {
+		line-height: 1;
 	}
 }

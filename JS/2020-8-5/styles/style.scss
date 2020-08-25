@@ -2,6 +2,7 @@
 @import "./calendar";
 @import "./tags";
 @import "./toggle";
+@import "./scroll";
 
 .expend-line {
 	height: 2px;
@@ -9,44 +10,16 @@
 	background-color: #eee;
 }
 
-.time-edit {
-	display: flex;
-	justify-content: space-between;
-	cursor: pointer;
-}
-.time-scroll {
-	display: none;
-	align-items: center;
-	margin: 0.8rem 0;
-	user-select: none;
-	color: $primary-text-color;
-	&.show {
-		display: flex;
-	}
-	@each $type, $value in $time-types {
-		.scroll-#{$type} {
-			width: 100% / $value;
-			@if $type== "date" {
-				margin-right: auto;
-			}
-		}
-	}
-}
-.time-pick {
-	color: $primary-text-color;
-	opacity: 0.5;
-	text-align: center;
-	&:focus {
-		outline: none;
-	}
-}
-.time-pick.slick-center {
-	opacity: 1;
-	transform: scale(1.1);
-}
-.HHmm {
-	display: none;
-	&.show {
-		display: block;
-	}
-}
+// body::after{
+// 	content: "A";
+// 	text-align: center;
+// 	display: block;
+// 	width: 30px;
+// 	height: 30px;
+// 	position: absolute;
+// 	bottom: 10px;
+// 	right: 10px;
+// 	background: url(/site/assets/avatar.png);
+// 	// background-color: pink;
+// 	border-radius: 50%;
+// }

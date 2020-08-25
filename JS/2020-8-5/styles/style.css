@@ -45,7 +45,17 @@ td.cale-cell span:hover {
   border: 2px solid rgba(0, 0, 0, 0.0625);
   margin: 0.25rem;
   font-size: 0.8rem;
+  line-height: 0.8;
   cursor: pointer;
+}
+
+.sch.sch-blank {
+  cursor: default;
+  opacity: 0;
+}
+
+.sch.sch-blank::after {
+  content: "blank";
 }
 
 .sch.sch-2 {
@@ -84,19 +94,10 @@ td.cale-cell span:hover {
   z-index: 1;
 }
 
-.sch-blank {
-  background-color: rgba(0, 0, 0, 0.125);
-  color: white;
-  border-radius: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.0625);
-  margin: 0.25rem;
-  font-size: 0.8rem;
-  cursor: default;
-  opacity: 0;
-}
-
-.sch-blank::after {
-  content: "blank";
+@media (min-width: 960px) {
+  .sch {
+    line-height: 1;
+  }
 }
 
 .tag-section {
@@ -258,12 +259,6 @@ td.cale-cell span:hover {
   transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
-.expend-line {
-  height: 2px;
-  width: 100%;
-  background-color: #eee;
-}
-
 .time-edit {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -336,5 +331,11 @@ td.cale-cell span:hover {
 
 .HHmm.show {
   display: block;
+}
+
+.expend-line {
+  height: 2px;
+  width: 100%;
+  background-color: #eee;
 }
 /*# sourceMappingURL=style.css.map */
