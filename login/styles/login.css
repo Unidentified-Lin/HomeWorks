@@ -1,0 +1,221 @@
+:root {
+  --line-gray: #adadad;
+  --back-paper: #fffefa;
+  --cust-color: #e4f4f5;
+  --cust-color: #c8e9ec;
+  --cust-color: #addee2;
+  --cust-color: #91d3d8;
+  --cust-color: #76c9cf;
+  --cust-color: #5abec5;
+  --cust-color: #3fb3bc;
+  --cust-color: #23a8b2;
+  --cust-color: #1f939c;
+  --cust-color: #1a7e85;
+  --cust-color: #16696f;
+  --cust-color: #125459;
+  --cust-color: #0d3f43;
+  --cust-color: #092a2c;
+  --cust-color: #041516;
+  --shop-color: #ffe6eb;
+  --shop-color: #ffced6;
+  --shop-color: #ffb5c2;
+  --shop-color: #ff9dad;
+  --shop-color: #ff8499;
+  --shop-color: #ff6b85;
+  --shop-color: #ff5370;
+  --shop-color: #ff3a5c;
+  --shop-color: #df3351;
+  --shop-color: #bf2b45;
+  --shop-color: #9f2439;
+  --shop-color: #801d2e;
+  --shop-color: #601622;
+  --shop-color: #400e17;
+  --shop-color: #20070b;
+  --platform-color: #fef3e2;
+  --platform-color: #fee6c5;
+  --platform-color: #fddaa8;
+  --platform-color: #fdce8b;
+  --platform-color: #fcc16d;
+  --platform-color: #fcb550;
+  --platform-color: #fba833;
+  --platform-color: #fb9c16;
+  --platform-color: #dc8913;
+  --platform-color: #bc7510;
+  --platform-color: #9d620e;
+  --platform-color: #7d4e0b;
+  --platform-color: #5e3b08;
+  --platform-color: #3f2705;
+  --platform-color: #1f1403;
+}
+
+text {
+  cursor: default;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #fffefa;
+  text-shadow: 0.2rem 0.2rem 0.8rem #000000;
+}
+
+body {
+  background-image: url("../assets/img-food.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#login-backImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+#cust {
+  color: #0d3f43;
+}
+
+#cust h2 > span {
+  color: #23a8b2;
+}
+
+#cust input {
+  border-bottom: 1px solid #0d3f43;
+}
+
+#cust .ticketReceipt {
+  background-color: #23a8b2;
+}
+
+#cust .ticketReceipt .ticketType {
+  color: #16696f;
+  text-shadow: 1px 1px 1px #76c9cf;
+}
+
+#shop {
+  color: #601622;
+}
+
+#shop h2 > span {
+  color: #ff3a5c;
+}
+
+#shop input {
+  border-bottom: 1px solid #601622;
+}
+
+#shop .ticketReceipt {
+  background-color: #ff3a5c;
+}
+
+#shop .ticketReceipt .ticketType {
+  color: #9f2439;
+  text-shadow: 1px 1px 1px #ff8499;
+}
+
+#platform {
+  color: #5e3b08;
+}
+
+#platform h2 > span {
+  color: #fb9c16;
+}
+
+#platform input {
+  border-bottom: 1px solid #5e3b08;
+}
+
+#platform .ticketReceipt {
+  background-color: #fb9c16;
+}
+
+#platform .ticketReceipt .ticketType {
+  color: #9d620e;
+  text-shadow: 1px 1px 1px #fcc16d;
+}
+
+.login-container {
+  position: absolute;
+  width: 75%;
+  -webkit-transition: left 1s ease-in-out;
+  transition: left 1s ease-in-out;
+  left: 13.85%;
+  z-index: 20;
+}
+
+.login-container:not(.active) {
+  left: -80%;
+  z-index: 10;
+}
+
+.login-container input {
+  background: transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.login-container input:focus {
+  outline: none;
+}
+
+.tickets {
+  min-height: 200px;
+  border-radius: 12px;
+  -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+
+.ticketStub {
+  background-color: #fffefa;
+  border-right: 2px dashed black;
+  -webkit-transform-origin: right 5%;
+          transform-origin: right 5%;
+}
+
+.ticketStub .coupon-img {
+  background-image: url("../assets/asian-food-decorative.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ticketStub .coupon-login {
+  border-left: 2px solid #adadad;
+}
+
+.ticketReceipt {
+  border-left: 2px dashed black;
+  -webkit-transform-origin: left 90%;
+          transform-origin: left 90%;
+}
+
+.ticketReceipt .barcode-content {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-transform: rotate(90deg) translate(-15%, 5%);
+          transform: rotate(90deg) translate(-15%, 5%);
+}
+
+.ticketReceipt .login {
+  text-decoration: none;
+  color: #fffefa;
+  font-weight: 200;
+  font-size: 1.2rem;
+  -webkit-transform: rotateZ(90deg) translate(-10%, -7%);
+          transform: rotateZ(90deg) translate(-10%, -7%);
+}
+
+.ticketReceipt .login:hover {
+  color: #fffefa;
+  font-weight: bold;
+  text-decoration: none;
+}
+/*# sourceMappingURL=login.css.map */
