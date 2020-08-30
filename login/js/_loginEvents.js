@@ -56,3 +56,18 @@ export function registerLoginContainers() {
 		);
 	});
 }
+
+export function registerSignUpLogInToggle(){
+	let signups = document.querySelectorAll(".signup");
+	signups.forEach(function (signup) {
+		signup.addEventListener("change", function () {
+			let targetId = this.getAttribute("data-target");
+			let actionType = document.querySelector(`#${targetId} .actionType`);
+			if (this.checked) {
+				actionType.textContent = "Sign up";
+			} else {
+				actionType.textContent = "Log in";
+			}
+		});
+	});
+}

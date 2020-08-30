@@ -1,51 +1,51 @@
 :root {
   --line-gray: #adadad;
   --back-paper: #fffefa;
-  --cust-color: #e4f4f5;
-  --cust-color: #c8e9ec;
-  --cust-color: #addee2;
-  --cust-color: #91d3d8;
-  --cust-color: #76c9cf;
-  --cust-color: #5abec5;
-  --cust-color: #3fb3bc;
-  --cust-color: #23a8b2;
-  --cust-color: #1f939c;
-  --cust-color: #1a7e85;
-  --cust-color: #16696f;
-  --cust-color: #125459;
-  --cust-color: #0d3f43;
-  --cust-color: #092a2c;
-  --cust-color: #041516;
-  --shop-color: #ffe6eb;
-  --shop-color: #ffced6;
-  --shop-color: #ffb5c2;
-  --shop-color: #ff9dad;
-  --shop-color: #ff8499;
-  --shop-color: #ff6b85;
-  --shop-color: #ff5370;
-  --shop-color: #ff3a5c;
-  --shop-color: #df3351;
-  --shop-color: #bf2b45;
-  --shop-color: #9f2439;
-  --shop-color: #801d2e;
-  --shop-color: #601622;
-  --shop-color: #400e17;
-  --shop-color: #20070b;
-  --platform-color: #fef3e2;
-  --platform-color: #fee6c5;
-  --platform-color: #fddaa8;
-  --platform-color: #fdce8b;
-  --platform-color: #fcc16d;
-  --platform-color: #fcb550;
-  --platform-color: #fba833;
-  --platform-color: #fb9c16;
-  --platform-color: #dc8913;
-  --platform-color: #bc7510;
-  --platform-color: #9d620e;
-  --platform-color: #7d4e0b;
-  --platform-color: #5e3b08;
-  --platform-color: #3f2705;
-  --platform-color: #1f1403;
+  --cust-color-1: #e4f4f5;
+  --cust-color-2: #c8e9ec;
+  --cust-color-3: #addee2;
+  --cust-color-4: #91d3d8;
+  --cust-color-5: #76c9cf;
+  --cust-color-6: #5abec5;
+  --cust-color-7: #3fb3bc;
+  --cust-color-8: #23a8b2;
+  --cust-color-9: #1f939c;
+  --cust-color-10: #1a7e85;
+  --cust-color-11: #16696f;
+  --cust-color-12: #125459;
+  --cust-color-13: #0d3f43;
+  --cust-color-14: #092a2c;
+  --cust-color-15: #041516;
+  --shop-color-1: #ffe6eb;
+  --shop-color-2: #ffced6;
+  --shop-color-3: #ffb5c2;
+  --shop-color-4: #ff9dad;
+  --shop-color-5: #ff8499;
+  --shop-color-6: #ff6b85;
+  --shop-color-7: #ff5370;
+  --shop-color-8: #ff3a5c;
+  --shop-color-9: #df3351;
+  --shop-color-10: #bf2b45;
+  --shop-color-11: #9f2439;
+  --shop-color-12: #801d2e;
+  --shop-color-13: #601622;
+  --shop-color-14: #400e17;
+  --shop-color-15: #20070b;
+  --platform-color-1: #fef3e2;
+  --platform-color-2: #fee6c5;
+  --platform-color-3: #fddaa8;
+  --platform-color-4: #fdce8b;
+  --platform-color-5: #fcc16d;
+  --platform-color-6: #fcb550;
+  --platform-color-7: #fba833;
+  --platform-color-8: #fb9c16;
+  --platform-color-9: #dc8913;
+  --platform-color-10: #bc7510;
+  --platform-color-11: #9d620e;
+  --platform-color-12: #7d4e0b;
+  --platform-color-13: #5e3b08;
+  --platform-color-14: #3f2705;
+  --platform-color-15: #1f1403;
 }
 
 text {
@@ -88,7 +88,7 @@ body {
   background-color: #23a8b2;
 }
 
-#cust .ticketReceipt .ticketType {
+#cust .ticketReceipt .ticketImprint {
   color: #16696f;
   text-shadow: 1px 1px 1px #76c9cf;
 }
@@ -137,15 +137,15 @@ body {
 
 .login-container {
   position: absolute;
-  width: 75%;
+  width: 90%;
   -webkit-transition: left 1s ease-in-out;
   transition: left 1s ease-in-out;
-  left: 13.85%;
+  left: 9%;
   z-index: 20;
 }
 
 .login-container:not(.active) {
-  left: -80%;
+  left: -83%;
   z-index: 10;
 }
 
@@ -162,7 +162,6 @@ body {
 }
 
 .tickets {
-  min-height: 200px;
   border-radius: 12px;
   -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
           box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
@@ -172,7 +171,7 @@ body {
 
 .ticketStub {
   background-color: #fffefa;
-  border-right: 2px dashed black;
+  border-bottom: 2px dashed black;
   -webkit-transform-origin: right 5%;
           transform-origin: right 5%;
 }
@@ -184,11 +183,11 @@ body {
 }
 
 .ticketStub .coupon-login {
-  border-left: 2px solid #adadad;
+  border-top: 2px solid #adadad;
 }
 
 .ticketReceipt {
-  border-left: 2px dashed black;
+  border-top: 2px dashed black;
   -webkit-transform-origin: left 90%;
           transform-origin: left 90%;
 }
@@ -200,22 +199,52 @@ body {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  -webkit-transform: rotate(90deg) translate(-15%, 5%);
-          transform: rotate(90deg) translate(-15%, 5%);
 }
 
 .ticketReceipt .login {
   text-decoration: none;
   color: #fffefa;
-  font-weight: 200;
-  font-size: 1.2rem;
-  -webkit-transform: rotateZ(90deg) translate(-10%, -7%);
-          transform: rotateZ(90deg) translate(-10%, -7%);
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 
 .ticketReceipt .login:hover {
   color: #fffefa;
   font-weight: bold;
   text-decoration: none;
+}
+
+@media screen and (min-width: 992px) {
+  .login-container {
+    width: 75%;
+    left: 13.85%;
+  }
+  .login-container:not(.active) {
+    left: -80%;
+  }
+  .ticketStub {
+    border-right: 2px dashed black;
+    border-bottom: none;
+  }
+  .ticketStub .coupon-login {
+    border-left: 2px solid #adadad;
+    border-top: none;
+  }
+  .ticketReceipt {
+    border-left: 2px dashed black;
+    border-top: none;
+  }
+  .ticketReceipt .barcode-content {
+    -webkit-transform: rotate(90deg) translate(0%, 5%);
+            transform: rotate(90deg) translate(0%, 5%);
+  }
+  .ticketReceipt .login {
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    font-weight: 200;
+    -webkit-transform: rotateZ(90deg) translate(17%, 0%);
+            transform: rotateZ(90deg) translate(17%, 0%);
+  }
 }
 /*# sourceMappingURL=login.css.map */

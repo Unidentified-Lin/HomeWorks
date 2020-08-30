@@ -19,56 +19,67 @@
 	<body>
 		<div id="login-backImg"></div>
 		<div class="container d-flex justify-content-center position-relative p-0">
-			<div id="cust" class="login-container row my-5 active">
-				<div class="col-10 ticketStub tickets d-flex py-2">
-					<div class="col-6 coupon-img text-center d-flex align-items-center">
+			<div id="cust" class="login-container row flex-column flex-md-row my-5 active">
+				<div class="col-12 col-md-10 ticketStub tickets d-flex flex-column flex-md-row py-2">
+					<div class="col-12 col-md-6 coupon-img text-center d-flex align-items-center">
 						<h1>Get More Discount!</h1>
 					</div>
-					<div class="col-6 coupon-login p-2">
+					<div class="col-12 col-md-6 coupon-login p-2">
 						<h2>Wellcom <span>TicketHub!</span></h2>
 						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, laudantium!</p>
 						<div class="input-group">
-							<span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account:</span
-							><input class="w-100 my-1" type="email" name="" id="cust-account" placeholder="example@tickethub.com" />
+							<div class="input-label w-100 d-flex justify-content-between">
+								<span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account:</span>
+								<label class="m-0">Sign up <input class="signup" type="checkbox" name="signup" id="cust-signup" data-target="cust"/></label>
+							</div>
+							<input class="w-100 my-1" type="email" name="" id="cust-account" placeholder="example@tickethub.com" />
 						</div>
 						<div class="input-group">
-							<span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password:</span
-							><input class="w-100 my-1" type="password" name="" id="cust-password" />
+							<span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password:</span>
+							<input class="w-100 my-1" type="password" name="" id="cust-password" />
 						</div>
 					</div>
 				</div>
-				<div class="col-2 ticketReceipt tickets d-flex flex-column align-items-center justify-content-between">
-					<text class="ticketType">Customers</text>
+				<div class="col-12 col-md-2 ticketReceipt tickets d-flex flex-row flex-md-column align-items-center justify-content-between">
+					<text class="ticketImprint d-none d-md-inline">Customers</text>
 					<div class="barcode-content">
 						<svg class="barcode"></svg>
 					</div>
-					<a id="cust-login" class="login" data-target="cust" href="#">Go Get Discount!</a>
+					<a id="cust-login" class="login px-2" data-target="cust" href="#">Go Get Discount!</a>
+					<div class="ticketImprint">
+						<text class="actionType">Log in </text>
+						<text class="d-inline d-md-none">Customers</text>
+					</div>
 				</div>
 			</div>
-			<div id="shop" class="login-container row my-5">
-				<div class="col-10 ticketStub tickets d-flex py-2">
-					<div class="col-6 coupon-img text-center d-flex align-items-center">
+			<div id="shop" class="login-container row flex-column flex-md-row my-5">
+				<div class="col-12 col-md-10 ticketStub tickets d-flex flex-column flex-md-row py-2">
+					<div class="col-12 col-md-6 coupon-img text-center d-flex align-items-center">
 						<h1>Get More Discount!</h1>
 					</div>
-					<div class="col-6 coupon-login p-2">
+					<div class="col-12 col-md-6 coupon-login p-2">
 						<h2>Wellcom <span>TicketHub!</span></h2>
 						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, laudantium!</p>
 						<div class="input-group">
-							<span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account:</span
-							><input class="w-100 my-1" type="email" name="" id="shop-account" placeholder="example@tickethub.com" />
+							<span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account:</span>
+							<input class="w-100 my-1" type="email" name="" id="shop-account" placeholder="example@tickethub.com" />
 						</div>
 						<div class="input-group">
-							<span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password:</span
-							><input class="w-100 my-1" type="password" name="" id="shop-password" />
+							<span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password:</span>
+							<input class="w-100 my-1" type="password" name="" id="shop-password" />
 						</div>
 					</div>
 				</div>
-				<div class="col-2 ticketReceipt tickets d-flex flex-column align-items-center justify-content-between">
-					<text class="ticketType">Shops</text>
+				<div class="col-12 col-md-2 ticketReceipt tickets d-flex flex-row flex-md-column align-items-center justify-content-between">
+					<text class="ticketImprint d-none d-md-inline">Shops</text>
 					<div class="barcode-content">
 						<svg class="barcode"></svg>
 					</div>
-					<a id="shop-login" class="login" data-target="shop" href="#">Go Get Discount!</a>
+					<a id="shop-login" class="login px-2" data-target="shop" href="#">Go Get Discount!</a>
+					<div class="ticketImprint">
+						<text class="actionType">Log in </text>
+						<text class="d-inline d-md-none">Shops</text>
+					</div>
 				</div>
 			</div>
 		</div>

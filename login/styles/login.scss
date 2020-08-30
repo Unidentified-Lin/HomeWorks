@@ -30,7 +30,7 @@ body {
 	}
 	.ticketReceipt {
 		background-color: $cust-color-8;
-		.ticketType {
+		.ticketImprint {
 			color: $cust-color-11;
 			text-shadow: 1px 1px 1px $cust-color-5;
 		}
@@ -68,14 +68,15 @@ body {
 		}
 	}
 }
+
 .login-container {
 	position: absolute;
-	width: 75%;
+	width: 90%;
 	transition: left 1s ease-in-out;
-	left: 13.85%;
+	left: 9%;
 	z-index: 20;
 	&:not(.active) {
-		left: -80%;
+		left: -83%;
 		z-index: 10;
 	}
 	input {
@@ -90,14 +91,13 @@ body {
 	}
 }
 .tickets {
-	min-height: 200px;
 	border-radius: 12px;
 	box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
 	transition: 0.8s;
 }
 .ticketStub {
 	background-color: $back-paper;
-	border-right: 2px dashed black;
+	border-bottom: 2px dashed black;
 	transform-origin: right 5%;
 	.coupon-img {
 		background-image: url("../assets/asian-food-decorative.jpg");
@@ -105,27 +105,55 @@ body {
 		background-repeat: no-repeat;
 	}
 	.coupon-login {
-		border-left: 2px solid $line-gray;
+		border-top: 2px solid $line-gray;
 	}
 }
 .ticketReceipt {
-	border-left: 2px dashed black;
+	border-top: 2px dashed black;
 	transform-origin: left 90%;
 	.barcode-content {
 		width: fit-content;
 		height: fit-content;
-		transform: rotate(90deg) translate(-15%, 5%);
 	}
 	.login {
 		text-decoration: none;
 		color: $back-paper;
-		font-weight: 200;
-		font-size: 1.2rem;
-		transform: rotateZ(90deg) translate(-10%, -7%);
+		font-weight: 400;
+		font-size: 1.1rem;
+
 		&:hover {
 			color: $back-paper;
 			font-weight: bold;
 			text-decoration: none;
+		}
+	}
+}
+@media screen and (min-width: 992px) {
+	.login-container {
+		width: 75%;
+		left: 13.85%;
+		&:not(.active) {
+			left: -80%;
+		}
+	}
+	.ticketStub {
+		border-right: 2px dashed black;
+		border-bottom: none;
+		.coupon-login {
+			border-left: 2px solid $line-gray;
+			border-top: none;
+		}
+	}
+	.ticketReceipt {
+		border-left: 2px dashed black;
+		border-top: none;
+		.barcode-content {
+			transform: rotate(90deg) translate(0%, 5%);
+		}
+		.login {
+			width: min-content;
+			font-weight: 200;
+			transform: rotateZ(90deg) translate(17%, 0%);
 		}
 	}
 }
