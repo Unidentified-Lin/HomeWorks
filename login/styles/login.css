@@ -72,46 +72,70 @@ body {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-#cust {
+#cust,
+#info-success {
   color: #0d3f43;
 }
 
-#cust h2 > span {
+#cust h2 > span,
+#info-success h2 > span {
   color: #23a8b2;
 }
 
-#cust input {
+#cust input,
+#info-success input {
   border-bottom: 1px solid #0d3f43;
 }
 
-#cust .ticketReceipt {
+#cust .ticketReceipt,
+#cust .ticketReceiptVertical,
+#info-success .ticketReceipt,
+#info-success .ticketReceiptVertical {
   background-color: #23a8b2;
 }
 
-#cust .ticketReceipt .ticketImprint {
+#cust .ticketReceipt .ticketImprint,
+#cust .ticketReceiptVertical .ticketImprint,
+#info-success .ticketReceipt .ticketImprint,
+#info-success .ticketReceiptVertical .ticketImprint {
   color: #16696f;
   text-shadow: 1px 1px 1px #76c9cf;
 }
 
-#shop {
+#shop,
+#info-fail {
   color: #601622;
 }
 
-#shop h2 > span {
+#shop h2 > span,
+#info-fail h2 > span {
   color: #ff3a5c;
 }
 
-#shop input {
+#shop input,
+#info-fail input {
   border-bottom: 1px solid #601622;
 }
 
-#shop .ticketReceipt {
+#shop .ticketReceipt,
+#shop .ticketReceiptVertical,
+#info-fail .ticketReceipt,
+#info-fail .ticketReceiptVertical {
   background-color: #ff3a5c;
 }
 
-#shop .ticketReceipt .ticketType {
+#shop .ticketReceipt .ticketType,
+#shop .ticketReceiptVertical .ticketType,
+#info-fail .ticketReceipt .ticketType,
+#info-fail .ticketReceiptVertical .ticketType {
   color: #9f2439;
   text-shadow: 1px 1px 1px #ff8499;
+}
+
+#info-success,
+#info-fail {
+  width: 35%;
+  min-width: 350px;
 }
 
 #platform {
@@ -136,20 +160,27 @@ body {
 }
 
 .login-container {
+  width: 90%;
+  margin: auto;
+}
+
+.login-card {
   position: absolute;
   width: 90%;
+  left: 10%;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-transition: left 1s ease-in-out;
   transition: left 1s ease-in-out;
-  left: 9%;
   z-index: 20;
 }
 
-.login-container:not(.active) {
-  left: -83%;
+.login-card:not(.active) {
+  left: -85%;
   z-index: 10;
 }
 
-.login-container input {
+.login-card input {
   background: transparent;
   border-top: 0;
   border-left: 0;
@@ -157,7 +188,7 @@ body {
   border-radius: 0.3rem 0.3rem 0 0;
 }
 
-.login-container input:focus {
+.login-card input:focus {
   outline: none;
 }
 
@@ -169,57 +200,79 @@ body {
   transition: 0.8s;
 }
 
-.ticketStub {
+.ticketStub,
+.ticketStubVertical {
   background-color: #fffefa;
   border-bottom: 2px dashed black;
   -webkit-transform-origin: right 5%;
           transform-origin: right 5%;
 }
 
-.ticketStub .coupon-img {
+.ticketStub .coupon-img,
+.ticketStubVertical .coupon-img {
   background-image: url("../assets/asian-food-decorative.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.ticketStub .coupon-login {
+.ticketStub .coupon-login,
+.ticketStubVertical .coupon-login {
   border-top: 2px solid #adadad;
 }
 
-.ticketReceipt {
+.ticketReceipt,
+.ticketReceiptVertical {
   border-top: 2px dashed black;
   -webkit-transform-origin: left 90%;
           transform-origin: left 90%;
 }
 
-.ticketReceipt .barcode-content {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.ticketReceipt .login {
-  text-decoration: none;
+.ticketReceipt .login,
+.ticketReceiptVertical .login {
+  background-color: transparent;
+  border: none;
   color: #fffefa;
   font-weight: 400;
   font-size: 1.1rem;
 }
 
-.ticketReceipt .login:hover {
+.ticketReceipt .login:hover,
+.ticketReceiptVertical .login:hover {
   color: #fffefa;
   font-weight: bold;
   text-decoration: none;
 }
 
-@media screen and (min-width: 992px) {
-  .login-container {
-    width: 75%;
-    left: 13.85%;
+.ticketReceipt .login:focus,
+.ticketReceiptVertical .login:focus {
+  outline: none;
+}
+
+.info-icon {
+  display: block;
+  margin: auto;
+  font-size: 10rem;
+}
+
+.info-icon.success {
+  color: green;
+}
+
+.info-icon.fail {
+  color: red;
+}
+
+.valid-summary {
+  z-index: 25;
+  position: absolute;
+  right: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .login-card {
+    width: 80%;
   }
-  .login-container:not(.active) {
+  .login-card:not(.active) {
     left: -80%;
   }
   .ticketStub {
@@ -239,12 +292,19 @@ body {
             transform: rotate(90deg) translate(0%, 5%);
   }
   .ticketReceipt .login {
-    width: -webkit-min-content;
-    width: -moz-min-content;
-    width: min-content;
     font-weight: 200;
-    -webkit-transform: rotateZ(90deg) translate(17%, 0%);
-            transform: rotateZ(90deg) translate(17%, 0%);
+    -webkit-transform: rotateZ(90deg) translate(12%, 0%);
+            transform: rotateZ(90deg) translate(12%, 0%);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .login-card {
+    width: 75%;
+    left: 12.5%;
+  }
+  .login-card:not(.active) {
+    left: -75%;
   }
 }
 /*# sourceMappingURL=login.css.map */

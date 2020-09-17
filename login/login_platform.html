@@ -19,27 +19,24 @@
 	<body>
 		<div id="login-backImg"></div>
 		<div class="container d-flex justify-content-center position-relative p-0">
-			<div id="platform" class="login-container row flex-column flex-md-row my-3 my-md-5 active">
+			<div id="platform" class="login-card row flex-column flex-md-row my-3 my-md-5 active">
 				<div class="col-12 col-md-10 ticketStub tickets d-flex flex-column flex-md-row py-2">
-					<div class="col-12 col-md-6 coupon-img text-center d-flex align-items-center">
+					<div class="col-12 col-md-6 coupon-img text-center d-flex flex-column justify-content-center">
 						<h1>Get More Money!</h1>
 					</div>
 					<div class="col-12 col-md-6 coupon-login p-2">
 						<h2>Manage <span>TicketHub!</span></h2>
 						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, laudantium!</p>
 						<div class="input-group">
-							<span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account:</span
-							><input
-								class="w-100 my-1"
-								type="email"
-								name=""
-								id="platform-account"
-								placeholder="example@tickethub.com"
-							/>
+							<div class="input-label w-100 d-flex justify-content-between">
+								<span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account: </span>
+								<label class="m-0">Remember <input class="remember" type="checkbox" name="RememberMe" value="true" id="platform-remember" data-target="platform" /></label>
+							</div>
+							<input class="w-100 my-1" type="email" name="Email" id="platform-email" placeholder="example@tickethub.com" data-val="true" data-val-required="required" />
 						</div>
 						<div class="input-group">
-							<span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password:</span
-							><input class="w-100 my-1" type="password" name="" id="platform-password" />
+							<span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password: </span>
+							<input class="w-100 my-1" type="password" name="Password" id="platform-password" data-val="true" data-val-required="required" />
 						</div>
 					</div>
 				</div>
@@ -48,7 +45,7 @@
 					<div class="barcode-content">
 						<svg class="barcode"></svg>
 					</div>
-					<a id="platform-login" class="login px-2" data-target="platform" href="#">Login to Manage!</a>
+					<button id="platform-login" class="login px-2" data-target="platform" type="submit">Login to Manage!</button>
 					<div class="ticketImprint">
 						<text class="actionType">Log in </text>
 						<text class="d-inline d-md-none">Platform</text>
