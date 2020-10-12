@@ -188,24 +188,19 @@
 			}
 
 			function setAddressCenter(geocoder, resultsMap, address) {
-				getGeocodeLatLng(geocoder, address).then(
-					function (location) {
-						resultsMap.setCenter(location);
-					},
-					function (status) {
-						alert("Geocode was not successful for the following reason: " + status);
-					}
-				);
+				pinAddressMark(geocoder, resultsMap, address);
 			}
 			function pinAddressMark(geocoder, resultsMap, address, icon) {
 				getGeocodeLatLng(geocoder, address).then(
 					function (location) {
 						resultsMap.setCenter(location);
-						new google.maps.Marker({
-							map: resultsMap,
-							position: location,
-							icon: icon,
-						});
+						if (icon) {
+							new google.maps.Marker({
+								map: resultsMap,
+								position: location,
+								icon: icon,
+							});
+						}
 					},
 					function (status) {
 						alert("Geocode was not successful for the following reason: " + status);
